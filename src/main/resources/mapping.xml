@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapping>
+    <class name="com.webinson.clickablebudget.dto.IncomeAndOutcomeDto">
+        <map-to xml="VykazFin212M"/>
+
+        <field name="incomes" collection="arraylist" type="com.webinson.clickablebudget.dto.VykazRadekDto"
+               container="false">
+            <bind-xml name="PrijmyRozpoctove" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="outcomes" collection="arraylist" type="com.webinson.clickablebudget.dto.VykazRadekDto"
+               container="false">
+            <bind-xml name="VydajeRozpoctove" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="vykazHlavicka" type="com.webinson.clickablebudget.dto.VykazHlavickaDto" container="false">
+            <bind-xml name="VykazHlavicka"
+                      xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+    </class>
+
+    <class name="com.webinson.clickablebudget.dto.VykazHlavickaDto">
+        <map-to xml="VykazHlavicka"/>
+
+        <field name="subjektIco" type="java.lang.Integer">
+            <bind-xml name="SubjektICO" node="element"
+                      xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="datumVykaz" type="java.lang.String" handler="com.webinson.clickablebudget.utils.DateHandler">
+            <bind-xml name="DatumVykaz" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="datumSestaveni" type="java.lang.String" handler="com.webinson.clickablebudget.utils.DateHandler">
+            <bind-xml name="DatumSestaveni" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="financniCastkaRad" type="java.lang.Integer">
+            <bind-xml name="FinancniCastkaRad" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+        <field name="mena" type="java.lang.String">
+            <bind-xml name="FinancniCastkaMena" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+    </class>
+
+    <class name="com.webinson.clickablebudget.dto.VykazRadekDto">
+        <map-to xml="VykazRadek"/>
+        <field name="paragraf" type="java.lang.Integer" required="true">
+            <bind-xml name="Paragraf" node="element" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+        <field name="polozka" type="java.lang.String" required="true">
+            <bind-xml name="Polozka" node="element" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+        <field name="approvedBudget" type="java.lang.Double" required="true">
+            <bind-xml name="RozpocetSchvaleny" node="element" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+        <field name="adjustedBudget" type="double" required="true">
+            <bind-xml name="RozpocetPoZmenach" node="element" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+        <field name="spentBudget" type="double" required="true">
+            <bind-xml name="Vysledek" node="element" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1"
+                      xmlns:ctm="urn:cz:isvs:micr:schemas:CommonTypes:v1"
+                      xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2"
+                      xmlns:stm="urn:cz:isvs:micr:schemas:StatementTypes:v1"
+                      xmlns:acc="urn:cz:isvs:micr:schemas:AccountTypes:v1"
+                      xmlns:sig="http://www.w3.org/2000/09/xmldsig#"
+                      xmlns="urn:cz:isvs:micr:schemas:Fin_2_12_m:v1"/>
+        </field>
+
+    </class>
+</mapping>

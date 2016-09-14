@@ -1,0 +1,144 @@
+package com.webinson.clickablebudget.dto;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Slavo on 13.09.2016.
+ */
+@Data
+@NoArgsConstructor
+public class VykazRadekDto {
+
+    long id;
+    private String name;
+    private Integer paragraf;
+    private String polozka;
+    private Double approvedBudget;
+    private Double adjustedBudget;
+    private Double spentBudget;
+    private double state;
+    private Date date;
+    private String getStringApprovedBudget;
+    private List<VykazRadekDto> children;
+    private VykazRadekDto parent;
+
+    /*public VykazRadekDto(VykazRadekDto parent) {
+        this.parent = parent;
+    }*/
+
+    public VykazRadekDto(VykazRadekDto another) {
+        this.name = another.name;
+        this.paragraf = another.paragraf;
+        this.polozka = another.polozka;
+        this.approvedBudget = another.approvedBudget;
+        this.adjustedBudget = another.adjustedBudget;
+        this.spentBudget = another.spentBudget;
+        this.state = another.state;
+        this.date = another.date;
+        this.getStringApprovedBudget = another.getStringApprovedBudget;
+        this.children = another.children;
+        this.parent = another.parent;
+    }
+
+    public VykazRadekDto(String name, Double approvedBudget, Double adjustedBudget, Double spentBudget) {
+        this.name = name;
+        this.approvedBudget = approvedBudget;
+        this.adjustedBudget = adjustedBudget;
+        this.spentBudget = spentBudget;
+    }
+
+    public VykazRadekDto(Double approvedBudget) {
+        this.approvedBudget = approvedBudget;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((approvedBudget == null) ? 0 : approvedBudget.hashCode());
+        result = prime * result + ((adjustedBudget == null) ? 0 : adjustedBudget.hashCode());
+        result = prime * result + ((spentBudget == null) ? 0 : spentBudget.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        VykazRadekDto other = (VykazRadekDto) obj;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (approvedBudget == null) {
+            if (other.approvedBudget != null)
+                return false;
+        } else if (!approvedBudget.equals(other.approvedBudget))
+            return false;
+        if (adjustedBudget == null) {
+            if (other.adjustedBudget != null)
+                return false;
+        } else if (!adjustedBudget.equals(other.adjustedBudget))
+            return false;
+        if (spentBudget == null) {
+            if (other.spentBudget != null)
+                return false;
+        } else if (!spentBudget.equals(other.spentBudget))
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public int compareTo(VykazRadekDto vykazRadekDto) {
+        return this.getName().compareTo(vykazRadekDto.getName());
+    }
+
+    public String getStringApprovedBudget() {
+
+        String pattern = "###,###.###";
+        DecimalFormat df = new DecimalFormat(pattern);
+        Double aBudget = new Double(this.approvedBudget);
+        System.out.println(df.format(this.approvedBudget));
+        return df.format(this.approvedBudget);
+
+    }
+
+    public Double getApprovedBudget() {
+        return this.approvedBudget;
+    }
+
+    public void setChildren(List<VykazRadekDto> children) {
+        if (children != null) {
+            this.children = children;
+        }
+    }
+
+    public void setChildren(VykazRadekDto children) {
+        this.children.add(children);
+    }
+
+    private static VykazRadekDto addChild(VykazRadekDto parent, long id) {
+        VykazRadekDto node = new VykazRadekDto(parent);
+        node.setId(id);
+        parent.getChildren().add(node);
+
+        return node;
+    }
+
+}

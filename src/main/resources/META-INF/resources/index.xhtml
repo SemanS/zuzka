@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ct="http://www.chartistjsf.org/charts">
+
+<f:view contentType="text/html">
+
+    <h:head/>
+
+    <h:body>
+
+       <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
+
+        <b:container>
+            <b:row>
+                <b:column>
+                    <h1>Hello, world!</h1>
+                </b:column>
+            </b:row>
+        </b:container>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-3"></div>
+
+            <div class="ui-g-12 ui-md-6 ui-lg-6">
+
+                <div class="ui-g">
+                    <h:form>
+                        <p:growl id="message1"></p:growl>
+                        <p:megaMenu style="!important; border:none;">
+                            <p:menuitem value="2015" url="#"/>
+                            <p:menuitem value="2016" url="#"/>
+                            <p:menuitem value="2017" url="#"/>
+                        </p:megaMenu>
+                    </h:form>
+                </div>
+
+                <div class="ui-g">
+                    <h:form>
+                        <p:tabView value="#{clickableBudgetView.getMonths()}" var="month">
+                            <p:tab title="#{month}">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:tabView>
+                    </h:form>
+                </div>
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-left: 0">
+                        <p:outputPanel id="container1" layout="block">
+                            <p:panel layout="block" id="basic11" header="Basic">
+
+                                <ct:chart id="pieChart" type="pie" model="#{chartDataBean.pieChartModel}">
+                                    <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
+                                            update="pieChartMessage"/>
+                                </ct:chart>
+                                <p:message id="pieChartMessage" for="pieChart" showDetail="true"/>
+                            </p:panel>
+                        </p:outputPanel>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-bottom: 0">
+
+                        <p:outputPanel id="container2" layout="block">
+                            <p:panel layout="block" id="basic22" header="Basic">
+
+
+                                <ct:chart id="pieChart2" type="pie" model="#{chartDataBean.pieChartModel}">
+                                    <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
+                                            update="pieChartMessage"/>
+                                </ct:chart>
+                                <p:message id="pieChartMessage2" for="pieChart" showDetail="true"/>
+                            </p:panel>
+                        </p:outputPanel>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-right: 0">
+
+                        <p:outputPanel id="container3" layout="block">
+                            <p:panel layout="block" id="basic33" header="Basic">
+
+
+                                <ct:chart id="pieChart3" type="pie" model="#{chartDataBean.pieChartModel}">
+                                    <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
+                                            update="pieChartMessage"/>
+                                </ct:chart>
+                                <p:message id="pieChartMessage3" for="pieChart" showDetail="true"/>
+
+                            </p:panel>
+                        </p:outputPanel>
+                    </div>
+                </div>
+
+
+                <div class="ui-g">
+                    <h:form id="form">
+                        <p:treeTable value="#{clickableBudgetView.root}" var="vykazRadekDto"
+                                     style="font-size: 90% !important;">
+                            <f:facet name="header">
+                                Document Viewer
+                            </f:facet>
+                            <p:column headerText="Name">
+                                <h:outputText value="#{vykazRadekDto.polozka}"/>
+                            </p:column>
+                            <p:column headerText="Size">
+                                <h:outputText value="#{vykazRadekDto.stringApprovedBudget}"/>
+                            </p:column>
+                            <p:column style="width:24px">
+                                <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()"
+                                               title="View Detail" styleClass="ui-icon ui-icon-search">
+                                    <f:setPropertyActionListener value="#{vykazRadekDto}"
+                                                                 target="#{clickableBudgetView.selectedVykazRadek}"/>
+                                </p:commandLink>
+                            </p:column>
+                        </p:treeTable>
+
+                        <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog"
+                                  modal="true" resizable="false">
+                            <p:outputPanel id="documentPanel">
+                                <p:panelGrid columns="2" columnClasses="label,value"
+                                             rendered="#{not empty clickableBudgetView.selectedVykazRadek}">
+                                    <h:outputLabel for="name" value="Name: "/>
+                                    <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadek.name}"
+                                                  style="font-weight:bold"/>
+
+                                    <h:outputLabel for="size" value="Size: "/>
+                                    <h:outputText id="size"
+                                                  value="#{clickableBudgetView.selectedVykazRadek.stringApprovedBudget}"
+                                                  style="font-weight:bold"/>
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-3"></div>
+            </div>
+        </div>
+
+    </h:body>
+</f:view>
+</html>
