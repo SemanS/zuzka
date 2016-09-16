@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/starter.jsf").permitAll()
+                .antMatchers("/index.jsf").permitAll()
                 .anyRequest().authenticated();
     }
 

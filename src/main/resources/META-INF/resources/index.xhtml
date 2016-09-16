@@ -17,13 +17,16 @@
 
        <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
 
-        <b:container>
-            <b:row>
-                <b:column>
-                    <h1>Hello, world!</h1>
-                </b:column>
-            </b:row>
-        </b:container>
+        <h:form>
+            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+                <b:tab title="JSF markup">
+                    ...
+                </b:tab>
+                <b:tab title="second tab">
+                    Put some text here.
+                </b:tab>
+            </b:tabView>
+        </h:form>
 
         <div class="ui-g">
             <div class="ui-g-12 ui-md-6 ui-lg-3"></div>
@@ -99,7 +102,6 @@
                     </div>
                 </div>
 
-
                 <div class="ui-g">
                     <h:form id="form">
                         <p:treeTable value="#{clickableBudgetView.root}" var="vykazRadekDto"
@@ -107,10 +109,10 @@
                             <f:facet name="header">
                                 Document Viewer
                             </f:facet>
-                            <p:column headerText="Name">
-                                <h:outputText value="#{vykazRadekDto.polozka}"/>
+                            <p:column headerText="Název">
+                                <h:outputText value="#{vykazRadekDto.name}"/>
                             </p:column>
-                            <p:column headerText="Size">
+                            <p:column headerText="Schválený rozpočet">
                                 <h:outputText value="#{vykazRadekDto.stringApprovedBudget}"/>
                             </p:column>
                             <p:column style="width:24px">

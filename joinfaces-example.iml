@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/webinson/clickablebudget/ApplicationConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/webinson/clickablebudget/SecurityConfig.java</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/codehaus/castor/castor-xml/1.4.1/castor-xml-1.4.1.jar!/org/castor/xml/XmlConfigurations.class</file>
+          <file>file://$MAVEN_REPOSITORY$/org/codehaus/castor/castor-xml/1.4.1/castor-xml-1.4.1.jar</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <exclude-output />
@@ -11,6 +23,7 @@
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/java" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire-reports" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -169,5 +182,6 @@
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:6.0" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces.themes:all-themes:1.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.chartistjsf:ChartistJSF:2.0" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.saxon:Saxon-HE:9.7.0-4" level="project" />
   </component>
 </module>

@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.webinson.clickablebudget.assembler.VykazRadekIncomeAssembler;
 import com.webinson.clickablebudget.dao.CityDao;
 import com.webinson.clickablebudget.dao.IncomeDao;
+import com.webinson.clickablebudget.dao.IncomeDecreeCzechDao;
 import com.webinson.clickablebudget.dao.OutcomeDao;
 import com.webinson.clickablebudget.dto.IncomeAndOutcomeDto;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
@@ -41,6 +42,9 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
 
     @Autowired
     CityDao cityDao;
+
+    @Autowired
+    IncomeDecreeCzechDao decreeCzechDao;
 
     @Autowired
     OutcomeDao outcomeDao;
@@ -160,6 +164,12 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
                 mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
                 mapper.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
+                try {
+                    mapper.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(vyk.getPolozka()).getName());
+                } catch (RuntimeException e) {
+                    System.out.println("somarina");
+                }
+
             }
 
             List<VykazRadekDto> vyks2 = new ArrayList<VykazRadekDto>();
@@ -169,12 +179,22 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             String d = "000";
 
             for (String s : mapper.keySet()) {
+                try {
+                    mapper.get(s).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
+                } catch (RuntimeException e) {
+                    System.out.println("somarina");
+                }
 
                 if (s.startsWith(i)) {
 
                     if (s.length() == 2) {
                         vyk2 = mapper.get(s);
                         vyk2.setPolozka(s);
+                        try {
+                            vyk2.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
+                        } catch (RuntimeException e) {
+                            System.out.println("somarina");
+                        }
                         vyks2.add(vyk2);
                         vyk2 = new VykazRadekDto();
                         mapper.get(s.substring(0, 1)).setChildren(vyks2);
@@ -187,6 +207,11 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                         }
                         vyk3 = mapper.get(s);
                         vyk3.setPolozka(s);
+                        try {
+                            vyk3.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
+                        } catch (RuntimeException e) {
+                            System.out.println("somarina");
+                        }
                         vyks3.add(vyk3);
                         mapper.get(s.substring(0, 2)).setChildren(vyks3);
                         vyk3 = new VykazRadekDto();

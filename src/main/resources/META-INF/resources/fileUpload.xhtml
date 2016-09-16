@@ -13,7 +13,15 @@
             <h:outputStylesheet name="starter.css" />
         </h:head>
         <h:body>
-            <pe:layout fullPage="true" >
+
+            <h:form enctype="multipart/form-data" style="width:500px">
+                <p:fileUpload value="#{fileMBean.uploadedFile}" mode="advanced" multiple="true"
+                              fileUploadListener="#{fileMBean.upload}">
+
+                </p:fileUpload>
+            </h:form>
+
+          <!--  <pe:layout fullPage="true" >
                 <pe:layoutPane position="center" >
                     <h:form prependId="false" enctype="multipart/form-data">
                         <div id="starterDiv" class="ui-fluid">
@@ -29,7 +37,7 @@
                         </div>
                     </h:form>
                 </pe:layoutPane>
-            </pe:layout>
+            </pe:layout>-->
         </h:body>
     </f:view>
 </html>
