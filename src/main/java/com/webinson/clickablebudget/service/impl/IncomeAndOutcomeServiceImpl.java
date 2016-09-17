@@ -22,6 +22,11 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,6 +67,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     public void saveIncomes(IncomeAndOutcomeDto incomeAndOutcomes) {
 
         List<Income> incomes = new ArrayList<Income>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         for (VykazRadekDto inc : incomeAndOutcomes.getIncomes()) {
             Income income = new Income();
@@ -70,7 +76,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             income.setSpentBudget(inc.getSpentBudget());
             income.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
             income.setPolozka(inc.getPolozka());
-            income.setDate(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz());
+            income.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
             incomes.add(income);
             incomeDao.save(incomes);
         }
@@ -80,6 +86,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     public void saveOutcomes(IncomeAndOutcomeDto incomeAndOutcomes) {
 
         List<Outcome> outcomes = new ArrayList<Outcome>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         for (VykazRadekDto inc : incomeAndOutcomes.getOutcomes()) {
             Outcome outcome = new Outcome();
@@ -88,6 +95,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             outcome.setSpentBudget(inc.getSpentBudget());
             outcome.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
             outcome.setParagraf(inc.getParagraf());
+            outcome.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
             outcomes.add(outcome);
             outcomeDao.save(outcomes);
         }
@@ -101,6 +109,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return dates;
     }
 
+
     @Override
     public List<IncomeAndOutcomeDto> findAllByDate(Date date) {
         final JPAQuery<Income> query = new JPAQuery<>(entityManager);
@@ -109,11 +118,11 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return null;
     }
 
-    public TreeNode createIncomesAndOutcomes() {
+    public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedcity) {
 
         TreeNode rootNode = new DefaultTreeNode(new VykazRadekDto("name", 1.0, 2.0, 3.0), null);
 
-        List<VykazRadekDto> vykazRadekRootNodeList = getVykazRadekRoot();
+        List<VykazRadekDto> vykazRadekRootNodeList = getVykazRadekRoot(selectedDate, selectedcity);
 
         for (VykazRadekDto vykRad : vykazRadekRootNodeList) {
             TreeNode node = new DefaultTreeNode(vykRad, rootNode);
@@ -121,6 +130,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         }
         return rootNode;
     }
+
 
     private List<VykazRadekDto> createSubIncomesAndOutcomes(VykazRadekDto vykaz, TreeNode node) {
         List<VykazRadekDto> vykazList = createSubVykazRadek(vykaz);
@@ -148,11 +158,11 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     }
 
 
-    private List<VykazRadekDto> getVykazRadekRoot() {
+    private List<VykazRadekDto> getVykazRadekRoot(String selectedDate, String selectedCity) {
 
         List<VykazRadekDto> root = new ArrayList<VykazRadekDto>();
 
-        for (String i : incomeDao.findDistinctVykazy()) {
+        for (String i : incomeDao.findDistinctVykazy(selectedCity, selectedDate)) {
 
             HashMap<String, VykazRadekDto> mapper = new HashMap();
 

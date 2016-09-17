@@ -7,7 +7,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import com.webinson.clickablebudget.dto.Company;
 import com.webinson.clickablebudget.dto.IncomeAndOutcomeDto;
 import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
 import com.webinson.clickablebudget.utils.Converter;
@@ -83,8 +82,7 @@ public class FileMBean implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(incomeAndOutcomes.getVykazHlavicka().getSubjektIco());
 
-        //incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
+        incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
     }
 }

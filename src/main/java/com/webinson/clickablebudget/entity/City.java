@@ -25,7 +25,7 @@ public class City implements Serializable {
     private String name;
 
     @Column(name = "ico")
-    private Integer ico;
+    private String ico;
 
     @Column(name = "mena")
     private String mena;

@@ -1,5 +1,6 @@
 package com.webinson.clickablebudget.bean;
 
+import com.webinson.clickablebudget.dao.IncomeDao;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.service.CityService;
 import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
@@ -11,10 +12,12 @@ import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeUnselectEvent;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
@@ -36,16 +39,24 @@ public class ClickableBudgetView implements Serializable {
     @Autowired
     private CityService cityService;
 
-    public List<String> getMonths() {
+    @Autowired
+    private IncomeDao incomeDao;
 
-        MonthFormatter monthFormatter = new MonthFormatter();
-        List<String> months = new ArrayList<String>();
+    @Getter
+    @Setter
+    private String selectedDate;
 
-        for (Date dat : incomeAndOutcomeService.findAllDatesByCity(cityService.getCity(1L))) {
-            months.add(monthFormatter.monthFormat(dat));
-        }
-        return months;
-    }
+    @Getter
+    @Setter
+    private String selectedYear;
+
+    @Getter
+    @Setter
+    private String selectedMonth;
+
+    @Getter
+    @Setter
+    private String selectedCity;
 
     @Getter
     @Setter
@@ -59,9 +70,52 @@ public class ClickableBudgetView implements Serializable {
     @Setter
     private TreeNode selectedNode;
 
+    public List<String> getMonths() {
+
+        MonthFormatter monthFormatter = new MonthFormatter();
+        List<String> months = new ArrayList<String>();
+
+        for (String dat : incomeDao.findAllMonthsByYear(selectedCity, "2015")) {
+            months.add(monthFormatter.monthFormat(dat));
+        }
+        return months;
+    }
+
+    public List<String> getYears() {
+
+        List<String> years = new ArrayList<String>();
+
+        for (String dat : incomeDao.findAllYearsByCity(selectedCity)) {
+            years.add(dat);
+        }
+        return years;
+    }
+
+    /*public List<String> getMonths() {
+
+        MonthFormatter monthFormatter = new MonthFormatter();
+        List<String> months = new ArrayList<String>();
+
+        for (Date dat : incomeAndOutcomeService.findAllDatesByCity(cityService.getCity(1L))) {
+            months.add(monthFormatter.monthFormat(dat));
+        }
+        return months;
+    }*/
+
+
+    public String submit() {
+        
+        System.out.println("Submit using value " + param);
+        return null;
+    }
+
     @PostConstruct
     public void init() {
-        root = incomeAndOutcomeService.createIncomesAndOutcomes();
+
+        selectedDate = "08-31";
+        selectedCity = "Nelahozeves";
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
+
     }
 
     public void onNodeExpand(NodeExpandEvent event) {

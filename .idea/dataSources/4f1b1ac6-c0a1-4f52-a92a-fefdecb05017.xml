@@ -32,8 +32,8 @@
     <schema id="8" parent="1" name="clickable_budget">
       <object-id>16393</object-id>
       <visible>1</visible>
-      <introspection-state-number>954</introspection-state-number>
-      <introspection-timestamp>2016-09-14.15:35:04.115</introspection-timestamp>
+      <introspection-state-number>1032</introspection-state-number>
+      <introspection-timestamp>2016-09-17.07:16:41.600</introspection-timestamp>
     </schema>
     <schema id="9" parent="1" name="test">
       <object-id>16394</object-id>
@@ -424,7 +424,7 @@
     </sequence>
     <table id="99" parent="8" name="city">
       <object-id>24698</object-id>
-      <state-number>932</state-number>
+      <state-number>1030</state-number>
     </table>
     <table id="100" parent="8" name="decree_income_czech">
       <object-id>24801</object-id>
@@ -432,7 +432,7 @@
     </table>
     <table id="101" parent="8" name="income">
       <object-id>24722</object-id>
-      <state-number>932</state-number>
+      <state-number>1032</state-number>
     </table>
     <table id="102" parent="8" name="outcome">
       <object-id>24734</object-id>
@@ -3293,8 +3293,8 @@
       <data-type>varchar(20)|0</data-type>
     </column>
     <column id="816" parent="99" name="ico">
-      <state-number>818</state-number>
-      <data-type>integer|0</data-type>
+      <state-number>1030</state-number>
+      <data-type>varchar(15)|0</data-type>
     </column>
     <index id="817" parent="99" name="city_name_uindex">
       <object-id>24712</object-id>
@@ -3320,146 +3320,152 @@
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="821" parent="99" name="city_id_pk">
+    <index id="821" parent="99" name="city_ico_uindex">
+      <object-id>32979</object-id>
+      <columns>ico</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="822" parent="99" name="city_id_pk">
       <object-id>24709</object-id>
       <columns>id</columns>
       <underlying-index>city_id_pk</underlying-index>
       <primary>1</primary>
     </key>
-    <column id="822" parent="100" name="id">
+    <column id="823" parent="100" name="id">
       <state-number>950</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
       <default-expression>nextval(&apos;decree_income_czech_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="823" parent="100" name="name">
+    <column id="824" parent="100" name="name">
       <state-number>950</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="824" parent="100" name="klass">
+    <column id="825" parent="100" name="klass">
       <state-number>950</state-number>
       <data-type>varchar(10)|0</data-type>
     </column>
-    <column id="825" parent="100" name="prev_id">
+    <column id="826" parent="100" name="prev_id">
       <state-number>954</state-number>
       <data-type>bigint|0</data-type>
     </column>
-    <index id="826" parent="100" name="decree_income_czech_id_uindex">
+    <index id="827" parent="100" name="decree_income_czech_id_uindex">
       <object-id>24807</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="827" parent="100" name="decree_income_czech_pkey">
+    <index id="828" parent="100" name="decree_income_czech_pkey">
       <object-id>24805</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="828" parent="100" name="decree_income_czech_pkey">
+    <key id="829" parent="100" name="decree_income_czech_pkey">
       <object-id>24806</object-id>
       <columns>id</columns>
       <underlying-index>decree_income_czech_pkey</underlying-index>
       <primary>1</primary>
     </key>
-    <column id="829" parent="101" name="id">
+    <column id="830" parent="101" name="id">
       <state-number>821</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
       <default-expression>nextval(&apos;income_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="830" parent="101" name="polozka">
+    <column id="831" parent="101" name="polozka">
       <state-number>848</state-number>
       <data-type>varchar(20)|0</data-type>
     </column>
-    <column id="831" parent="101" name="approved_budget">
+    <column id="832" parent="101" name="approved_budget">
       <state-number>821</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="832" parent="101" name="adjusted_budget">
+    <column id="833" parent="101" name="adjusted_budget">
       <state-number>821</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="833" parent="101" name="spent_budget">
+    <column id="834" parent="101" name="spent_budget">
       <state-number>821</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="834" parent="101" name="date">
+    <column id="835" parent="101" name="date">
       <state-number>821</state-number>
       <data-type>date|0</data-type>
     </column>
-    <column id="835" parent="101" name="city_id">
+    <column id="836" parent="101" name="city_id">
       <state-number>821</state-number>
       <data-type>integer|0</data-type>
     </column>
-    <index id="836" parent="101" name="income_id_uindex">
+    <index id="837" parent="101" name="income_id_uindex">
       <object-id>24728</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="837" parent="101" name="income_pkey">
+    <index id="838" parent="101" name="income_pkey">
       <object-id>24726</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="838" parent="101" name="income_pkey">
+    <key id="839" parent="101" name="income_pkey">
       <object-id>24727</object-id>
       <columns>id</columns>
       <underlying-index>income_pkey</underlying-index>
       <primary>1</primary>
     </key>
-    <foreign-key id="839" parent="101" name="fksgkoc3x52bm08ff5wqnb9slka">
+    <foreign-key id="840" parent="101" name="fksgkoc3x52bm08ff5wqnb9slka">
       <object-id>24740</object-id>
       <columns>city_id</columns>
       <ref-key>~.city.city_id_pk</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <column id="840" parent="102" name="id">
+    <column id="841" parent="102" name="id">
       <state-number>824</state-number>
       <mandatory>1</mandatory>
       <data-type>bigint|0</data-type>
       <default-expression>nextval(&apos;clickable_budget.outcome_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="841" parent="102" name="adjusted_budget">
+    <column id="842" parent="102" name="adjusted_budget">
       <state-number>824</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="842" parent="102" name="approved_budget">
+    <column id="843" parent="102" name="approved_budget">
       <state-number>824</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="843" parent="102" name="date">
+    <column id="844" parent="102" name="date">
       <state-number>824</state-number>
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="844" parent="102" name="paragraf">
+    <column id="845" parent="102" name="paragraf">
       <state-number>824</state-number>
       <data-type>integer|0</data-type>
     </column>
-    <column id="845" parent="102" name="spent_budget">
+    <column id="846" parent="102" name="spent_budget">
       <state-number>824</state-number>
       <data-type>double precision|0</data-type>
     </column>
-    <column id="846" parent="102" name="city_id">
+    <column id="847" parent="102" name="city_id">
       <state-number>824</state-number>
       <data-type>bigint|0</data-type>
     </column>
-    <index id="847" parent="102" name="outcome_pkey">
+    <index id="848" parent="102" name="outcome_pkey">
       <object-id>24738</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="848" parent="102" name="outcome_pkey">
+    <key id="849" parent="102" name="outcome_pkey">
       <object-id>24739</object-id>
       <columns>id</columns>
       <underlying-index>outcome_pkey</underlying-index>
       <primary>1</primary>
     </key>
-    <foreign-key id="849" parent="102" name="fkdhc3076nca9rpon5idhkj1w1t">
+    <foreign-key id="850" parent="102" name="fkdhc3076nca9rpon5idhkj1w1t">
       <object-id>24745</object-id>
       <columns>city_id</columns>
       <ref-key>~.city.city_id_pk</ref-key>

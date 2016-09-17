@@ -15,10 +15,11 @@
 
     <h:body>
 
-       <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
+        <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
 
         <h:form>
-            <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
+            <b:tabView
+                    contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
                 <b:tab title="JSF markup">
                     ...
                 </b:tab>
@@ -37,9 +38,17 @@
                     <h:form>
                         <p:growl id="message1"></p:growl>
                         <p:megaMenu style="!important; border:none;">
-                            <p:menuitem value="2015" url="#"/>
-                            <p:menuitem value="2016" url="#"/>
-                            <p:menuitem value="2017" url="#"/>
+                            <c:forEach items="${clickableBudgetView.getYears()}" var="year">
+                                
+                                <p:menuitem value="#{year}"/>
+
+                                <!--<ui:repeat value="#{clickableBudgetView.getYears()}" var="year">
+                                    <p:megaMenu style="!important; border:none;">
+                                        <p:menuitem value="#{year}"/>
+                                    </p:megaMenu>
+                                </ui:repeat>-->
+
+                            </c:forEach>
                         </p:megaMenu>
                     </h:form>
                 </div>
@@ -47,7 +56,7 @@
                 <div class="ui-g">
                     <h:form>
                         <p:tabView value="#{clickableBudgetView.getMonths()}" var="month">
-                            <p:tab title="#{month}">
+                            <p:tab title="#{month}" action="#{clickableBudgetView.submit(month)}">
                                 <h:panelGrid columns="2" cellpadding="5">
                                 </h:panelGrid>
                             </p:tab>

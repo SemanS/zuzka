@@ -8,54 +8,48 @@ import java.util.Date;
  */
 public class MonthFormatter {
 
-    public String monthFormat(Date date) {
+    public String monthFormat(String date) {
 
-
-        String datum = new String();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        Integer month = cal.get(Calendar.MONTH);
-
-        switch (month)
+        switch (date)
 
         {
-            case 0:
-                datum = "Leden";
+            case "01":
+                date = "Leden";
                 break;
-            case 1:
-                datum = "Únor";
+            case "02":
+                date = "Únor";
                 break;
-            case 2:
-                datum = "Březen";
+            case "03":
+                date = "Březen";
                 break;
-            case 3:
-                datum = "Duben";
+            case "04":
+                date = "Duben";
                 break;
-            case 4:
-                datum = "Květen";
+            case "05":
+                date = "Květen";
                 break;
-            case 5:
-                datum = "Červen";
+            case "06":
+                date = "Červen";
                 break;
-            case 6:
-                datum = "Červenec";
+            case "07":
+                date = "Červenec";
                 break;
-            case 7:
-                datum = "Srpen";
+            case "08":
+                date = "Srpen";
                 break;
-            case 8:
-                datum = "Září";
+            case "09":
+                date = "Září";
                 break;
-            case 9:
-                datum = "Říjen";
+            case "10":
+                date = "Říjen";
                 break;
-            case 10:
-                datum = "Listopad";
+            case "11":
+                date = "Listopad";
                 break;
-            case 11:
-                datum = "Prosinec";
+            case "12":
+                date = "Prosinec";
                 break;
         }
-        return datum;
+        return date;
     }
 }

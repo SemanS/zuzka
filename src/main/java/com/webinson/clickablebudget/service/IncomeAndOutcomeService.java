@@ -20,5 +20,6 @@ public interface IncomeAndOutcomeService {
 
     List<IncomeAndOutcomeDto> findAllByDate(Date date);
 
-    public TreeNode createIncomesAndOutcomes();
+    public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedCity);
+
 }

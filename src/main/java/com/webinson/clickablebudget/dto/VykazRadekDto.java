@@ -16,17 +16,33 @@ import java.util.List;
  */
 @Data
 @NoArgsConstructor
+@XmlRootElement(name = "VykazRadek")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class VykazRadekDto {
 
     long id;
     private String name;
+
+    @XmlElement(name = "Paragraf")
     private Integer paragraf;
+
+    @XmlElement(name = "Polozka")
     private String polozka;
+
+    @XmlElement(name = "RozpocetSchvaleny")
     private Double approvedBudget;
+
+    @XmlElement(name = "RozpocetPoZmenach")
     private Double adjustedBudget;
+
+    @XmlElement(name = "Vysledek")
     private Double spentBudget;
+
     private double state;
+
+    @XmlElement(name = "DatumVykaz")
     private Date date;
+
     private String getStringApprovedBudget;
     private List<VykazRadekDto> children;
     private VykazRadekDto parent;

@@ -109,9 +109,17 @@ public class ApplicationConfig extends SpringBootServletInitializer {
     public Jaxb2Marshaller getCastorMarshaller() {
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
         jaxb2Marshaller.setPackagesToScan("com.webinson.clickablebudget.dto");
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("jaxb.formatted.output", true);
         jaxb2Marshaller.setMarshallerProperties(map);
         return jaxb2Marshaller;
+    }
+
+    @Bean
+    public FilterRegistrationBean FileUploadFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new org.primefaces.webapp.filter.FileUploadFilter());
+        registration.setName("PrimeFaces FileUpload Filter");
+        return registration;
     }
 }
