@@ -5,11 +5,13 @@ import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.service.CityService;
 import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
 import com.webinson.clickablebudget.utils.MonthFormatter;
+import com.webinson.clickablebudget.utils.MonthFormatterReverse;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeUnselectEvent;
+import org.primefaces.event.TabChangeEvent;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +31,7 @@ import java.util.List;
  * Created by Slavo on 13.09.2016.
  */
 @Component
-@Scope("request")
+@Scope("session")
 public class ClickableBudgetView implements Serializable {
 
     @Autowired
@@ -60,7 +62,7 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private TreeNode root;
+    private TreeNode root = null;
 
     @Getter
     @Setter
@@ -91,28 +93,23 @@ public class ClickableBudgetView implements Serializable {
         return years;
     }
 
-    /*public List<String> getMonths() {
+    public TreeNode onTabChange(TabChangeEvent event) {
+        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
 
-        MonthFormatter monthFormatter = new MonthFormatter();
-        List<String> months = new ArrayList<String>();
-
-        for (Date dat : incomeAndOutcomeService.findAllDatesByCity(cityService.getCity(1L))) {
-            months.add(monthFormatter.monthFormat(dat));
-        }
-        return months;
-    }*/
-
-
-    public String submit() {
-        
-        System.out.println("Submit using value " + param);
-        return null;
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
+        System.out.println(monthFormatterReverse.monthFormat(event.getTab().getTitle()));
+        selectedDate = monthFormatterReverse.monthFormat(event.getTab().getTitle());
+        selectedCity = "Nelahozeves";
+        root = null;
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return root;
     }
 
     @PostConstruct
     public void init() {
 
-        selectedDate = "08-31";
+        selectedDate = "07";
         selectedCity = "Nelahozeves";
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
 
