@@ -27,10 +27,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Slavo on 13.09.2016.
@@ -173,14 +170,23 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)))));
                 mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
                 mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
-                mapper.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
-                try {
-                    mapper.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(vyk.getPolozka()).getName());
+                //mapper.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
+                /*try {
+                    mapper.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(mapper.get(vyk.getPolozka().substring(0, 4)).getPolozka()).getName());
                 } catch (RuntimeException e) {
                     System.out.println("somarina");
+                }*/
+                for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
+                    try {
+                        pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
+                        //mapper.get(pomVykaz.getPolozka()).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
+                        //pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
+                    } catch (RuntimeException e) {
+                        System.out.println("somarina");
+                    }
                 }
-
             }
+
 
             List<VykazRadekDto> vyks2 = new ArrayList<VykazRadekDto>();
             List<VykazRadekDto> vyks3 = new ArrayList<VykazRadekDto>();
@@ -188,7 +194,9 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             VykazRadekDto vyk3 = new VykazRadekDto();
             String d = "000";
 
-            for (String s : mapper.keySet()) {
+            Map<String, VykazRadekDto> map = new TreeMap<String, VykazRadekDto>(mapper);
+
+            for (String s : map.keySet()) {
                 try {
                     mapper.get(s).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
                 } catch (RuntimeException e) {
@@ -223,6 +231,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                             System.out.println("somarina");
                         }
                         vyks3.add(vyk3);
+
                         mapper.get(s.substring(0, 2)).setChildren(vyks3);
                         vyk3 = new VykazRadekDto();
                         d = s;

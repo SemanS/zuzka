@@ -105,6 +105,7 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         castorMarshaller.setMappingLocation(resource);
         return castorMarshaller;
     }*/
+
     @Bean
     public Jaxb2Marshaller getCastorMarshaller() {
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();

@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -93,23 +94,22 @@ public class ClickableBudgetView implements Serializable {
         return years;
     }
 
-    public TreeNode onTabChange(TabChangeEvent event) {
+    public TreeNode onTabChange(String event) {
         MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
 
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
-        System.out.println(monthFormatterReverse.monthFormat(event.getTab().getTitle()));
-        selectedDate = monthFormatterReverse.monthFormat(event.getTab().getTitle());
+//        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
+        selectedDate = monthFormatterReverse.monthFormat(event);
         selectedCity = "Nelahozeves";
         root = null;
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
         return root;
     }
 
     @PostConstruct
     public void init() {
 
-        selectedDate = "07";
+        selectedDate = "08";
         selectedCity = "Nelahozeves";
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
 

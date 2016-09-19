@@ -36,15 +36,21 @@ public class VykazRadekIncomeAssembler {
 
         VykazRadekDto vykazRadekDto = new VykazRadekDto();
         double approvedBudget = 0;
+        double adjustedBudget = 0;
+        double spentBudget = 0;
         String name = null;
         String polozka = null;
 
         if (isNotEmpty(models)) {
             for (final Income income : models) {
                 approvedBudget = approvedBudget + income.getApprovedBudget();
+                adjustedBudget = adjustedBudget + income.getAdjustedbudget();
+                spentBudget = spentBudget + income.getSpentBudget();
                 polozka = income.getPolozka();
             }
             vykazRadekDto.setApprovedBudget(approvedBudget);
+            vykazRadekDto.setAdjustedBudget(adjustedBudget);
+            vykazRadekDto.setSpentBudget(spentBudget);
             vykazRadekDto.setPolozka(polozka);
             vykazRadekDto.setName(name);
 
@@ -52,7 +58,7 @@ public class VykazRadekIncomeAssembler {
         return vykazRadekDto;
     }
 
-    public VykazRadekDto dtosToDto2(final Collection<VykazRadekDto> models) {
+    /*public VykazRadekDto dtosToDto2(final Collection<VykazRadekDto> models) {
 
         VykazRadekDto vykazRadekDto = new VykazRadekDto();
         double approvedBudget = 0;
@@ -64,7 +70,7 @@ public class VykazRadekIncomeAssembler {
             vykazRadekDto.setApprovedBudget(approvedBudget);
         }
         return vykazRadekDto;
-    }
+    }*/
 
     public boolean isNotEmpty(final Collection<?> col) {
         return !isEmpty(col);

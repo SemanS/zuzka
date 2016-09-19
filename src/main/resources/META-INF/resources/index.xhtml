@@ -12,8 +12,8 @@
 <f:view contentType="text/html">
 
     <h:head/>
-
     <h:body>
+
 
         <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
 
@@ -28,11 +28,11 @@
                 </b:tab>
             </b:tabView>
         </h:form>-->
-
+        <h:outputStylesheet library="css" name="style.css"/>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-6 ui-lg-3"></div>
+            <div class="ui-g-12 ui-md-6 ui-lg-2"></div>
 
-            <div class="ui-g-12 ui-md-6 ui-lg-6">
+            <div class="ui-g-12 ui-md-6 ui-lg-8">
 
                 <div class="ui-g">
                     <h:form>
@@ -53,24 +53,49 @@
                     </h:form>
                 </div>
 
+
                 <div class="ui-g">
                     <h:form>
-                        <p:tabView value="#{clickableBudgetView.getMonths()}" var="month">
-                            <p:ajax event="tabChange" listener="#{clickableBudgetView.onTabChange}"
-                                    update=":form"/>
-                            <p:tab title="#{month}">
-                                <h:panelGrid columns="2" cellpadding="5">
-                                </h:panelGrid>
-                            </p:tab>
-                        </p:tabView>
+                        <c:forEach items="${clickableBudgetView.getMonths()}" var="month">
+                            <p:commandLink id="monthCommandLink" update=":form"
+                                           actionListener="#{clickableBudgetView.onTabChange(month)}"
+                                           style="text-decoration: none; color: black">
+                                <h:outputText value="#{month}" style="margin-right:10px;"/>
+                            </p:commandLink>
+                        </c:forEach>
                     </h:form>
                 </div>
 
+                <!-- <div class="ui-g">
+                     <h:form>
+                         <p:tabView value="#{clickableBudgetView.getMonths()}" var="month">
+                             <p:ajax event="tabChange" listener="#{clickableBudgetView.onTabChange}"
+                                     update=":form"/>
+                             <p:tab title="#{month}">
+                                 &lt;!&ndash;<h:panelGrid columns="2" cellpadding="5">
+                                 </h:panelGrid>&ndash;&gt;
+                             </p:tab>
+                         </p:tabView>
+                     </h:form>
+                 </div>-->
+
                 <div class="ui-g">
 
-                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-left: 0">
+                    <div class="ui-g-12 ui-md-6 ui-lg-3" style="padding-left: 0">
                         <p:outputPanel id="container1" layout="block">
-                            <p:panel layout="block" id="basic11" header="Basic">
+                            <p:panel layout="block" id="basic11" header="Celkové příjmy">
+
+                                <p:panelGrid columns="2" layout="grid" style="display:block; text-align:center">
+                                    <h:outputText value="Schválený"/>
+                                    <h:outputText value="44 000 000"/>
+                                    <h:outputText value="Content"/>
+                                    <h:outputText value="Content"/>
+                                    <h:outputText value="Content"/>
+                                    <h:outputText value="Content"/>
+                                    <h:outputText value="Content"/>
+                                    <h:outputText value="Content"/>
+                                </p:panelGrid>
+
 
                                 <ct:chart id="pieChart" type="pie" model="#{chartDataBean.pieChartModel}">
                                     <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
@@ -80,8 +105,9 @@
                             </p:panel>
                         </p:outputPanel>
                     </div>
-
-                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-bottom: 0">
+                    <div class="ui-g-12 ui-md-6 ui-lg-1" style="padding-left: 0">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-3">
 
                         <p:outputPanel id="container2" layout="block">
                             <p:panel layout="block" id="basic22" header="Basic">
@@ -95,36 +121,45 @@
                             </p:panel>
                         </p:outputPanel>
                     </div>
-
-                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-right: 0">
+                    <div class="ui-g-12 ui-md-6 ui-lg-1">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-3">
 
                         <p:outputPanel id="container3" layout="block">
                             <p:panel layout="block" id="basic33" header="Basic">
+                                <div class="ct-chart ct-golden-section">
 
-
-                                <ct:chart id="pieChart3" type="pie" model="#{chartDataBean.pieChartModel}">
-                                    <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
-                                            update="pieChartMessage"/>
-                                </ct:chart>
-                                <p:message id="pieChartMessage3" for="pieChart" showDetail="true"/>
-
+                                    <ct:chart id="pieChart3" type="pie" model="#{chartDataBean.pieChartModel}">
+                                        <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
+                                                update="pieChartMessage"/>
+                                    </ct:chart>
+                                    <p:message id="pieChartMessage3" for="pieChart" showDetail="true"/>
+                                </div>
                             </p:panel>
                         </p:outputPanel>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-1">
                     </div>
                 </div>
 
                 <div class="ui-g">
                     <h:form id="form">
                         <p:treeTable value="#{clickableBudgetView.root}" var="vykazRadekDto"
-                                     style="font-size: 90% !important;">
+                                     style="font-size: 120% !important;">
                             <f:facet name="header">
                                 Document Viewer
                             </f:facet>
-                            <p:column headerText="Název">
+                            <p:column headerText="Název" style="width:70%">
                                 <h:outputText value="#{vykazRadekDto.name}"/>
                             </p:column>
-                            <p:column headerText="Schválený rozpočet">
+                            <p:column headerText="Schválený rozpočet" style="width:20%">
                                 <h:outputText value="#{vykazRadekDto.stringApprovedBudget}"/>
+                            </p:column>
+                            <p:column headerText="Upravený rozpočet" style="width:20%">
+                                <h:outputText value="#{vykazRadekDto.stringAdjustedBudget}"/>
+                            </p:column>
+                            <p:column headerText="Čerpání" style="width:20%">
+                                <h:outputText value="#{vykazRadekDto.stringSpentBudget}"/>
                             </p:column>
                             <p:column style="width:24px">
                                 <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()"
@@ -144,16 +179,26 @@
                                     <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadek.name}"
                                                   style="font-weight:bold"/>
 
-                                    <h:outputLabel for="size" value="Size: "/>
-                                    <h:outputText id="size"
+                                    <h:outputLabel for="approvedBudget" value="Size: "/>
+                                    <h:outputText id="approvedBudget"
                                                   value="#{clickableBudgetView.selectedVykazRadek.stringApprovedBudget}"
+                                                  style="font-weight:bold"/>
+
+                                    <h:outputLabel for="adjustedBudget" value="Size: "/>
+                                    <h:outputText id="adjustedBudget"
+                                                  value="#{clickableBudgetView.selectedVykazRadek.stringAdjustedBudget}"
+                                                  style="font-weight:bold"/>
+
+                                    <h:outputLabel for="spentBudget" value="Size: "/>
+                                    <h:outputText id="spentBudget"
+                                                  value="#{clickableBudgetView.selectedVykazRadek.stringSpentBudget}"
                                                   style="font-weight:bold"/>
                                 </p:panelGrid>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </div>
-                <div class="ui-g-12 ui-md-6 ui-lg-3"></div>
+                <div class="ui-g-12 ui-md-6 ui-lg-2"></div>
             </div>
         </div>
 

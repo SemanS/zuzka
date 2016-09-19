@@ -44,6 +44,8 @@ public class VykazRadekDto {
     private Date date;
 
     private String getStringApprovedBudget;
+    private String getStringAdjustedBudget;
+    private String getStringSpentBudget;
     private List<VykazRadekDto> children;
     private VykazRadekDto parent;
 
@@ -61,6 +63,8 @@ public class VykazRadekDto {
         this.state = another.state;
         this.date = another.date;
         this.getStringApprovedBudget = another.getStringApprovedBudget;
+        this.getStringAdjustedBudget = another.getStringAdjustedBudget;
+        this.getStringSpentBudget = another.getStringSpentBudget;
         this.children = another.children;
         this.parent = another.parent;
     }
@@ -136,6 +140,26 @@ public class VykazRadekDto {
         Double aBudget = new Double(this.approvedBudget);
         System.out.println(df.format(this.approvedBudget));
         return df.format(this.approvedBudget);
+
+    }
+
+    public String getStringAdjustedBudget() {
+
+        String pattern = "###,###";
+        DecimalFormat df = new DecimalFormat(pattern);
+        Double aBudget = new Double(this.adjustedBudget);
+        System.out.println(df.format(this.approvedBudget));
+        return df.format(this.adjustedBudget);
+
+    }
+
+    public String getStringSpentBudget() {
+
+        String pattern = "###,###";
+        DecimalFormat df = new DecimalFormat(pattern);
+        Double aBudget = new Double(this.spentBudget);
+        System.out.println(df.format(this.spentBudget));
+        return df.format(this.spentBudget);
 
     }
 
