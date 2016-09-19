@@ -170,12 +170,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)))));
                 mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
                 mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
-                //mapper.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
-                /*try {
-                    mapper.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(mapper.get(vyk.getPolozka().substring(0, 4)).getPolozka()).getName());
-                } catch (RuntimeException e) {
-                    System.out.println("somarina");
-                }*/
+
                 for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
                     try {
                         pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());

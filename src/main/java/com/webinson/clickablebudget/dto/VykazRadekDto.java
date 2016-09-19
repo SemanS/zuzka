@@ -38,7 +38,7 @@ public class VykazRadekDto {
     @XmlElement(name = "Vysledek")
     private Double spentBudget;
 
-    private double state;
+    private String state;
 
     @XmlElement(name = "DatumVykaz")
     private Date date;
@@ -135,31 +135,43 @@ public class VykazRadekDto {
 
     public String getStringApprovedBudget() {
 
-        String pattern = "###,###.###";
+        String pattern = "###,###.### Kč";
         DecimalFormat df = new DecimalFormat(pattern);
         Double aBudget = new Double(this.approvedBudget);
-        System.out.println(df.format(this.approvedBudget));
         return df.format(this.approvedBudget);
 
     }
 
     public String getStringAdjustedBudget() {
 
-        String pattern = "###,###";
+        String pattern = "###,### Kč";
         DecimalFormat df = new DecimalFormat(pattern);
         Double aBudget = new Double(this.adjustedBudget);
-        System.out.println(df.format(this.approvedBudget));
         return df.format(this.adjustedBudget);
 
     }
 
     public String getStringSpentBudget() {
 
-        String pattern = "###,###";
+        String pattern = "###,### Kč";
         DecimalFormat df = new DecimalFormat(pattern);
         Double aBudget = new Double(this.spentBudget);
-        System.out.println(df.format(this.spentBudget));
         return df.format(this.spentBudget);
+
+    }
+
+    public String getState() {
+
+        Double aBudget = new Double(this.adjustedBudget);
+        Double sBudget = new Double(this.spentBudget);
+
+        Integer a = aBudget.intValue();
+        Integer s = sBudget.intValue();
+
+        Double state = (sBudget / aBudget) * 100;
+        Integer st = (int) Math.round(state);
+
+        return st.toString()+" %";
 
     }
 

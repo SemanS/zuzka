@@ -1,3 +1,14 @@
 .ui-widget, .ui-widget-header, .ui-widget-content, .ui-widget-header .ui-widget-header, .ui-widget-content .ui-widget-content, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
     font-size: 100% !important;
 }
+
+div.mainContainer {
+    width: 1170px;
+}
+
+div.mainContainer {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

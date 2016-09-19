@@ -14,25 +14,8 @@
     <h:head/>
     <h:body>
 
-
-        <!-- <h:outputStylesheet library="css" name="styles.css"/>-->
-
-        <!--<h:form>
-            <b:tabView
-                    contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px">
-                <b:tab title="JSF markup">
-                    ...
-                </b:tab>
-                <b:tab title="second tab">
-                    Put some text here.
-                </b:tab>
-            </b:tabView>
-        </h:form>-->
-        <h:outputStylesheet library="css" name="style.css"/>
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-6 ui-lg-2"></div>
-
-            <div class="ui-g-12 ui-md-6 ui-lg-8">
+        <h:outputStylesheet name="css/styles.css"/>
+        <div id="mainCont" class="mainContainer">
 
                 <div class="ui-g">
                     <h:form>
@@ -53,7 +36,6 @@
                     </h:form>
                 </div>
 
-
                 <div class="ui-g">
                     <h:form>
                         <c:forEach items="${clickableBudgetView.getMonths()}" var="month">
@@ -65,19 +47,6 @@
                         </c:forEach>
                     </h:form>
                 </div>
-
-                <!-- <div class="ui-g">
-                     <h:form>
-                         <p:tabView value="#{clickableBudgetView.getMonths()}" var="month">
-                             <p:ajax event="tabChange" listener="#{clickableBudgetView.onTabChange}"
-                                     update=":form"/>
-                             <p:tab title="#{month}">
-                                 &lt;!&ndash;<h:panelGrid columns="2" cellpadding="5">
-                                 </h:panelGrid>&ndash;&gt;
-                             </p:tab>
-                         </p:tabView>
-                     </h:form>
-                 </div>-->
 
                 <div class="ui-g">
 
@@ -145,10 +114,10 @@
                 <div class="ui-g">
                     <h:form id="form">
                         <p:treeTable value="#{clickableBudgetView.root}" var="vykazRadekDto"
-                                     style="font-size: 120% !important;">
-                            <f:facet name="header">
+                                     style="font-size: 100% !important;">
+                            <!--<f:facet name="header">
                                 Document Viewer
-                            </f:facet>
+                            </f:facet>-->
                             <p:column headerText="Název" style="width:70%">
                                 <h:outputText value="#{vykazRadekDto.name}"/>
                             </p:column>
@@ -161,13 +130,16 @@
                             <p:column headerText="Čerpání" style="width:20%">
                                 <h:outputText value="#{vykazRadekDto.stringSpentBudget}"/>
                             </p:column>
-                            <p:column style="width:24px">
+                            <p:column headerText="Stav" style="width:40px">
+                                <h:outputText value="#{vykazRadekDto.state}"/>
+                            </p:column>
+                            <!--<p:column style="width:24px">
                                 <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()"
                                                title="View Detail" styleClass="ui-icon ui-icon-search">
                                     <f:setPropertyActionListener value="#{vykazRadekDto}"
                                                                  target="#{clickableBudgetView.selectedVykazRadek}"/>
                                 </p:commandLink>
-                            </p:column>
+                            </p:column>-->
                         </p:treeTable>
 
                         <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog"
@@ -193,14 +165,20 @@
                                     <h:outputText id="spentBudget"
                                                   value="#{clickableBudgetView.selectedVykazRadek.stringSpentBudget}"
                                                   style="font-weight:bold"/>
+
+                                    <h:outputLabel for="state" value="Size: "/>
+                                    <h:outputText id="state"
+                                                  value="#{clickableBudgetView.selectedVykazRadek.state}"
+                                                  style="font-weight:bold"/>
+
+
                                 </p:panelGrid>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </div>
-                <div class="ui-g-12 ui-md-6 ui-lg-2"></div>
             </div>
-        </div>
+
 
     </h:body>
 </f:view>
