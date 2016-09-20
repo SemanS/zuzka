@@ -23,14 +23,12 @@ public class ChartDataBean {
 
     public void createPieChart() {
         pieChartModel = new PieChartModel();
-
+/*
         pieChartModel.addLabel("Bananas");
-        pieChartModel.addLabel("Apples");
-        pieChartModel.addLabel("Grapes");
+        pieChartModel.addLabel("Apples");*/
 
         pieChartModel.set(20);
         pieChartModel.set(10);
-        pieChartModel.set(30);
 
         pieChartModel.setShowTooltip(true);
     }

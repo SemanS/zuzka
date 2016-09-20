@@ -12,3 +12,17 @@ div.mainContainer {
     margin-right: auto;
     margin-left: auto;
 }
+
+.ct-chart .ct-series.ct-series-a .ct-area, .ct-chart .ct-series.ct-series-a .ct-slice-pie:not(.ct-donut) {
+    fill: #0F7C14;
+}
+
+.ct-chart .ct-series.ct-series-b .ct-area, .ct-chart .ct-series.ct-series-b .ct-slice-pie:not(.ct-donut) {
+    fill: #80F37B;
+}
+
+.className {
+    position: relative;
+    margin: 0 auto;
+
+}

@@ -15,6 +15,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,6 +77,45 @@ public class IncomeDecreeTest {
         }
 
 
+    }
+
+    @Test
+    public void testik() {
+        VykazRadekDto vyk1 = new VykazRadekDto();
+        vyk1.setPolozka("1111");
+        vyk1.setApprovedBudget(1.0);
+
+        VykazRadekDto vyk2 = new VykazRadekDto();
+        vyk2.setPolozka("1111");
+        vyk2.setApprovedBudget(4.0);
+
+        List<VykazRadekDto> incomes = new ArrayList<VykazRadekDto>();
+        incomes.add(vyk1);
+        incomes.add(vyk2);
+
+
+        for (VykazRadekDto inc : incomes) {
+
+            if (inc.getPolozka() == inc.getPolozka()) {
+                inc.setApprovedBudget(inc.getApprovedBudget() + inc.getApprovedBudget());
+                System.out.println(inc.getApprovedBudget());
+            }
+
+        }
+
+       /* HashMap<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            String text = list.get(i).getPolozka();
+            if (map.get(text) == null) {
+                map.put(text, 1);
+            } else {
+                map.put(text, map.get(text) + 1);
+            }
+        }
+
+        for (String text : map.keySet()) {
+            System.out.println(text + " " + map.get(text));
+        }*/
     }
 
 }

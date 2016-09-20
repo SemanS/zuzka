@@ -79,6 +79,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         }
     }
 
+
     @Override
     public void saveOutcomes(IncomeAndOutcomeDto incomeAndOutcomes) {
 
@@ -174,8 +175,6 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
                     try {
                         pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
-                        //mapper.get(pomVykaz.getPolozka()).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
-                        //pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
                     } catch (RuntimeException e) {
                         System.out.println("somarina");
                     }
