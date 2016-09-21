@@ -9,26 +9,18 @@ import com.webinson.clickablebudget.utils.MonthFormatterReverse;
 import lombok.Getter;
 import lombok.Setter;
 import org.chartistjsf.model.chart.*;
-import org.primefaces.event.NodeCollapseEvent;
-import org.primefaces.event.NodeExpandEvent;
-import org.primefaces.event.NodeUnselectEvent;
-import org.primefaces.event.TabChangeEvent;
+import org.primefaces.extensions.util.Constants;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Slavo on 13.09.2016.
@@ -39,13 +31,17 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
+    List<VykazRadekDto> fiveIncomes = null;
+
+    @Getter
+    @Setter
     private BarChartModel barChartModel;
 
     @Getter
     @Setter
     VykazRadekDto selectedVykaz;
 
-    public BarChartModel createBarModel(VykazRadekDto selectedVykaz) {
+    public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
         //Random random = new Random();
         barChartModel = new BarChartModel();
         barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
@@ -64,50 +60,42 @@ public class ClickableBudgetView implements Serializable {
         barChartModel.addSeries(series1);
         barChartModel.addSeries(series2);
 
-        //barChartModel.addLabel(selectedVykaz.getName());
-        /*barChartModel.addLabel("Tuesday");
-        barChartModel.addLabel("Wednesday");
-        barChartModel.addLabel("Thursday");*/
-
-
-        /*BarChartSeries series1 = new BarChartSeries();
-        series1.setName(selectedVykaz.getName());
-
-        series1.set(selectedVykaz.getApprovedBudget());*/
-/*        series1.set(random.nextInt(10));
-        series1.set(random.nextInt(10));
-        series1.set(random.nextInt(10));*/
-
-
-        /*BarChartSeries series2 = new BarChartSeries();
-        series2.setName("Series 2");
-
-        series2.set(random.nextInt(10));
-        series2.set(random.nextInt(10));
-        series2.set(random.nextInt(10));
-        series2.set(random.nextInt(10));
-
-
-        BarChartSeries series3 = new BarChartSeries();
-        series3.setName("Series 3");
-
-        series3.set(random.nextInt(10));
-        series3.set(random.nextInt(10));
-        series3.set(random.nextInt(10));
-        series3.set(random.nextInt(10));*/
-
-
         Axis xAxis = barChartModel.getAxis(AxisType.X);
         xAxis.setShowGrid(false);
-
-        //barChartModel.addSeries(series1);
-/*        barChartModel.addSeries(series2);
-        barChartModel.addSeries(series3);*/
 
         barChartModel.setShowTooltip(true);
         barChartModel.setSeriesBarDistance(15);
         barChartModel.setStackBars(true);
         //barChartModel.setAnimateAdvanced(true);
+        return barChartModel;
+    }
+
+    public BarChartModel createBarModelCollapse(VykazRadekDto selectedVykaz) {
+
+        barChartModel = new BarChartModel();
+        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
+
+        BarChartSeries series1 = new BarChartSeries();
+        BarChartSeries series2 = new BarChartSeries();
+        series1.setName("Prijate");
+        series2.setName("Prijate");
+
+        for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
+            barChartModel.addLabel(vyk.getName());
+            series1.set(vyk.getApprovedBudget());
+            series2.set(vyk.getAdjustedBudget());
+        }
+
+        barChartModel.addSeries(series1);
+        barChartModel.addSeries(series2);
+
+        Axis xAxis = barChartModel.getAxis(AxisType.X);
+        xAxis.setShowGrid(false);
+
+        barChartModel.setShowTooltip(true);
+        barChartModel.setSeriesBarDistance(15);
+        barChartModel.setStackBars(true);
+
         return barChartModel;
     }
 
@@ -189,31 +177,28 @@ public class ClickableBudgetView implements Serializable {
 
     @PostConstruct
     public void init() {
-
         selectedDate = "08";
         selectedCity = "Nelahozeves";
-        root = incomeAndOutcomeService.createIncomesAndOutcomes("04", selectedCity);
+
+        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(selectedDate, selectedCity);
+        System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedDate, selectedCity).get(0).getApprovedBudget());
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
         selectedVykaz = incomeAndOutcomeService.createFirstRoots(selectedDate, selectedCity);
-        barChartModel = createBarModel(selectedVykaz);
+        barChartModel = createBarModelExpand(selectedVykaz);
     }
 
     public void onNodeExpand(VykazRadekDto vykaz) {
         /*FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);*/
         //vykaz = selectedVykaz;
-        createBarModel(vykaz);
+        createBarModelExpand(vykaz);
         System.out.println(vykaz.getName());
 
     }
 
-   /* public void onNodeExpand(NodeExpandEvent event) {
-
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }*/
-
     public void onNodeCollapse(VykazRadekDto vykaz) {
-        createBarModel(vykaz);
+        vykaz = selectedVykaz;
+        createBarModelExpand(vykaz);
     }
 
     /*public void onNodeUnselect(NodeUnselectEvent event) {

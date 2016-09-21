@@ -24,4 +24,6 @@ public interface IncomeAndOutcomeService {
     public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedCity);
 
     public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity);
+
+    public List<VykazRadekDto> getFiveIncomes(String selectedDate, String selectedCity);
 }

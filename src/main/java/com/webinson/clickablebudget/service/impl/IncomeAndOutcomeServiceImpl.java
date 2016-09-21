@@ -20,6 +20,7 @@ import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -161,6 +162,13 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return vykazRadokNodeList;
     }
 
+    public List<VykazRadekDto> getFiveIncomes(String selectedDate, String selectedCity) {
+
+        //vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedDate, new PageRequest(0, 5)));
+        //System.out.println(vykazy.get(0).getApprovedBudget());
+        return vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedDate, new PageRequest(0, 5)));
+    }
+
     public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity) {
 
         List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();
@@ -193,6 +201,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
                     try {
                         pomVykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(pomVykaz.getPolozka()).getName());
+                        mapper.get(vyk.getPolozka().substring(0, 3)).setParent(pomVykaz);
                     } catch (RuntimeException e) {
                         System.out.println("somarina");
                     }
@@ -220,6 +229,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                     if (s.length() == 2) {
                         vyk2 = mapper.get(s);
                         vyk2.setPolozka(s);
+                        vyk2.setParent(mapper.get(s.charAt(0)));
                         try {
                             vyk2.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
                         } catch (RuntimeException e) {

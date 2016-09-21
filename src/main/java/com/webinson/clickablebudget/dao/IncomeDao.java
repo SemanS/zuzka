@@ -1,6 +1,7 @@
 package com.webinson.clickablebudget.dao;
 
 import com.webinson.clickablebudget.entity.Income;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
@@ -39,4 +40,7 @@ public interface IncomeDao extends JpaRepository<Income, Long>, QueryDslPredicat
 
     @Query("select distinct substring(cast (i.date as text), 1, 4) from Income i where i.city.name = :selectedCity order by substring(cast (i.date as text), 1, 4) asc")
     List<String> findAllYearsByCity(@Param("selectedCity") String selectedCity);
+
+    @Query("select i from Income i where i.city.name = :selectedCity and substring(cast (i.date as text), 6, 2) = :selectedDate order by i.spentBudget desc")
+    List<Income> findFiveIncomes(@Param("selectedCity") String selectedCity, @Param("selectedDate") String selectedDate, Pageable pageable);
 }
