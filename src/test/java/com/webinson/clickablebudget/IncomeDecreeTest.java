@@ -52,7 +52,7 @@ public class IncomeDecreeTest {
     @Test
     public void test2() {
 
-        for (String i : incomeDao.findDistinctVykazy("Nelahozeves", "08")) {
+
 
             /*HashMap<String, VykazRadekDto> mapper = new HashMap();
 
@@ -73,11 +73,9 @@ public class IncomeDecreeTest {
 
             }*/
 
-            //System.out.println(mapper.get("1").getPolozka());
-        }
-
-
+        //System.out.println(mapper.get("1").getPolozka());
     }
+
 
     @Test
     public void testik() {

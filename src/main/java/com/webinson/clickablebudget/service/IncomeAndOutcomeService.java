@@ -21,9 +21,9 @@ public interface IncomeAndOutcomeService {
 
     List<IncomeAndOutcomeDto> findAllByDate(Date date);
 
-    public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedCity);
+    public TreeNode createIncomesAndOutcomes(String selectedYear, String selectedMonth, String selectedCity);
 
-    public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity);
+    public VykazRadekDto createFirstRoots();
 
-    public List<VykazRadekDto> getFiveIncomes(String selectedDate, String selectedCity);
+    public List<VykazRadekDto> getFiveIncomes(String selectedMonth, String selectedCity, String selectedYear);
 }

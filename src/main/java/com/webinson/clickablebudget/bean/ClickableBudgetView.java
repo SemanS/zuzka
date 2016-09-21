@@ -9,15 +9,12 @@ import com.webinson.clickablebudget.utils.MonthFormatterReverse;
 import lombok.Getter;
 import lombok.Setter;
 import org.chartistjsf.model.chart.*;
-import org.primefaces.extensions.util.Constants;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,18 +25,6 @@ import java.util.List;
 @Component
 @Scope("request")
 public class ClickableBudgetView implements Serializable {
-
-    @Getter
-    @Setter
-    List<VykazRadekDto> fiveIncomes = null;
-
-    @Getter
-    @Setter
-    private BarChartModel barChartModel;
-
-    @Getter
-    @Setter
-    VykazRadekDto selectedVykaz;
 
     public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
         //Random random = new Random();
@@ -99,6 +84,17 @@ public class ClickableBudgetView implements Serializable {
         return barChartModel;
     }
 
+    @Getter
+    @Setter
+    List<VykazRadekDto> fiveIncomes = null;
+
+    @Getter
+    @Setter
+    private BarChartModel barChartModel;
+
+    @Getter
+    @Setter
+    VykazRadekDto selectedVykaz;
 
     @Autowired
     @Setter
@@ -112,15 +108,11 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private String selectedDate;
+    private String selectedMonth;
 
     @Getter
     @Setter
     private String selectedYear;
-
-    @Getter
-    @Setter
-    private String selectedMonth;
 
     @Getter
     @Setter
@@ -159,14 +151,26 @@ public class ClickableBudgetView implements Serializable {
         return years;
     }
 
+    public TreeNode onYearChange(String year) {
+        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
+
+//        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
+        selectedYear = year;
+        selectedCity = "Nelahozeves";
+        root = null;
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
+        return root;
+    }
+
     public TreeNode onTabChange(String event) {
         MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
 
 //        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
-        selectedDate = monthFormatterReverse.monthFormat(event);
+        selectedMonth = monthFormatterReverse.monthFormat(event);
         selectedCity = "Nelahozeves";
         root = null;
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
         //FacesContext.getCurrentInstance().addMessage(null, msg);
         return root;
     }
@@ -177,13 +181,14 @@ public class ClickableBudgetView implements Serializable {
 
     @PostConstruct
     public void init() {
-        selectedDate = "08";
+        selectedYear = "2015";
+        selectedMonth = "08";
         selectedCity = "Nelahozeves";
 
-        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(selectedDate, selectedCity);
-        System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedDate, selectedCity).get(0).getApprovedBudget());
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedDate, selectedCity);
-        selectedVykaz = incomeAndOutcomeService.createFirstRoots(selectedDate, selectedCity);
+        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear);
+        //System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear).get(0).getApprovedBudget());
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
+        selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
     }
 
@@ -205,4 +210,6 @@ public class ClickableBudgetView implements Serializable {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }*/
+
+
 }

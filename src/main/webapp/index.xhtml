@@ -88,26 +88,16 @@
         <div id="mainCont" class="mainContainer">
 
             <div class="ui-g">
-                <!--<h:form>
-                    <p:growl id="message1"></p:growl>
-                    <p:megaMenu style="!important; border:none;">
-                        <c:forEach items="${clickableBudgetView.getYears()}" var="year">
-
-                            <p:menuitem value="#{year}"/>
-
-                        </c:forEach>
-                    </p:megaMenu>
-                </h:form>
--->
 
                 <h:form>
                     <c:forEach items="${clickableBudgetView.getYears()}" var="year">
-                        <!--<p:commandLink id="yearCommandLink" update=":form"
-                                       actionListener="#{clickableBudgetView.onTabChange(month)}"
+                        <p:commandLink id="yearCommandLink" update=":form"
+                                       actionListener="#{clickableBudgetView.onYearChange(year)}"
                                        style="text-decoration: none; color: black">
                             <h:outputText value="#{year}" style="margin-right:10px;"/>
-                        </p:commandLink>-->
+                        </p:commandLink>
                     </c:forEach>
+
                 </h:form>
 
             </div>
@@ -128,6 +118,7 @@
             <div style="text-align: center">
                 <p:outputLabel value="Celkový rozpočet"
                                style="text-align: center; margin:0px; font-weight: bold; font-size: 200% !important; "/>
+                <br/>
                 <br/>
                 <p:outputLabel value="Stav ke dni" style="text-align: center; margin:0px; "/>
             </div>
@@ -242,7 +233,6 @@
                 </div>
             </div>
 
-
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-6 ui-lg-6" style="padding-left: 0;">
                     <h:form id="fiveIncomes">
@@ -291,6 +281,8 @@
 
 
             <div style="text-align: left">
+                <br/>
+                <br/>
                 <br/>
                 <p:outputLabel value="Příjmy"
                                style="color: #0F7C14; text-align: left; margin:0px; font-weight: bold; font-size: 200% !important; "/>

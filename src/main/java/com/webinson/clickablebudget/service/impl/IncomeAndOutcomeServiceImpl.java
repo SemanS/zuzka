@@ -123,11 +123,11 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return null;
     }
 
-    public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedcity) {
+    public TreeNode createIncomesAndOutcomes(String selectedMonth, String selectedCity, String selectedYear) {
 
         TreeNode rootNode = new DefaultTreeNode(new VykazRadekDto("name", 1.0, 2.0, 3.0), null);
 
-        List<VykazRadekDto> vykazRadekRootNodeList = getVykazRadekRoot(selectedDate, selectedcity);
+        List<VykazRadekDto> vykazRadekRootNodeList = getVykazRadekRoot(selectedYear, selectedMonth, selectedCity);
 
         for (VykazRadekDto vykRad : vykazRadekRootNodeList) {
             TreeNode node = new DefaultTreeNode(vykRad, rootNode);
@@ -135,7 +135,6 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         }
         return rootNode;
     }
-
 
     private List<VykazRadekDto> createSubIncomesAndOutcomes(VykazRadekDto vykaz, TreeNode node) {
         List<VykazRadekDto> vykazList = createSubVykazRadek(vykaz);
@@ -162,14 +161,15 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return vykazRadokNodeList;
     }
 
-    public List<VykazRadekDto> getFiveIncomes(String selectedDate, String selectedCity) {
+    public List<VykazRadekDto> getFiveIncomes(String selectedMonth, String selectedCity, String selectedYear) {
 
-        //vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedDate, new PageRequest(0, 5)));
+        //vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedMonth, new PageRequest(0, 5)));
         //System.out.println(vykazy.get(0).getApprovedBudget());
-        return vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedDate, new PageRequest(0, 5)));
+        return vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedMonth, selectedYear, new PageRequest(0, 5)));
     }
 
-    public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity) {
+    @Override
+    public VykazRadekDto createFirstRoots() {
 
         List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();
         VykazRadekDto vykaz = new VykazRadekDto();
@@ -178,25 +178,25 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 vykazy.add(mapper.get(s));
             }
         }
-        //List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findDistinctVykazy(selectedCity, selectedDate));
+        //List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findDistinctVykazy(selectedCity, selectedMonth));
         vykaz.setChildren(vykazy);
         return vykaz;
     }
 
-    private List<VykazRadekDto> getVykazRadekRoot(String selectedDate, String selectedCity) {
+    private List<VykazRadekDto> getVykazRadekRoot(String selectedYear, String selectedMonth, String selectedCity) {
 
         List<VykazRadekDto> root = new ArrayList<VykazRadekDto>();
 
-        for (String i : incomeDao.findDistinctVykazy(selectedCity, selectedDate)) {
+        for (String i : incomeDao.findDistinctVykazy(selectedCity, selectedMonth, selectedYear)) {
 
 
-            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i), selectedCity, selectedDate));
+            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i), selectedCity, selectedMonth, selectedYear));
 
             for (VykazRadekDto vyk : vykazy) {
-                mapper.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(vyk.getPolozka().substring(0, 1)), selectedCity, selectedDate)));
-                mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)), selectedCity, selectedDate)));
-                mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedDate)));
-                mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedDate)));
+                mapper.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(vyk.getPolozka().substring(0, 1)), selectedCity, selectedMonth, selectedYear)));
+                mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)), selectedCity, selectedMonth, selectedYear)));
+                mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedMonth, selectedYear)));
+                mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedMonth, selectedYear)));
 
                 for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
                     try {
