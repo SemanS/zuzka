@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="joinfaces-example:war exploded">
+  <artifact type="exploded-war" name="clickable-budget-cz:war exploded">
     <output-path>$PROJECT_DIR$/target/clickable-budget-cz-2.2.4-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="joinfaces-example" />
+          <element id="module-output" name="clickable-budget-cz" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: net.bootsfaces:bootsfaces:0.9.1" />
@@ -151,7 +151,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/clickable-budget-cz-2.2.4-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="joinfaces-example/web/Web" />
+      <element id="javaee-facet-resources" facet="clickable-budget-cz/web/Web" />
     </root>
   </artifact>
 </component>

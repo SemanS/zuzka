@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="joinfaces-example" />
+        <module name="clickable-budget-cz" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="joinfaces-example" target="1.8" />
+      <module name="clickable-budget-cz" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

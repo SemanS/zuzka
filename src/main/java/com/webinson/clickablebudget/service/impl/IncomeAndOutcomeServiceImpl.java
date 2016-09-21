@@ -14,6 +14,8 @@ import com.webinson.clickablebudget.entity.Outcome;
 import com.webinson.clickablebudget.entity.QIncome;
 import com.webinson.clickablebudget.service.CityService;
 import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
+import lombok.Getter;
+import lombok.Setter;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,10 @@ import java.util.*;
 @Scope("session")
 @Service
 public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
+
+    @Getter
+    @Setter
+    HashMap<String, VykazRadekDto> mapper = new HashMap();
 
     @Autowired
     IncomeDao incomeDao;
@@ -155,6 +161,19 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return vykazRadokNodeList;
     }
 
+    public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity) {
+
+        List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();
+        VykazRadekDto vykaz = new VykazRadekDto();
+        for (String s : mapper.keySet()) {
+            if (s.length() == 1) {
+                vykazy.add(mapper.get(s));
+            }
+        }
+        //List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findDistinctVykazy(selectedCity, selectedDate));
+        vykaz.setChildren(vykazy);
+        return vykaz;
+    }
 
     private List<VykazRadekDto> getVykazRadekRoot(String selectedDate, String selectedCity) {
 
@@ -162,15 +181,14 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
 
         for (String i : incomeDao.findDistinctVykazy(selectedCity, selectedDate)) {
 
-            HashMap<String, VykazRadekDto> mapper = new HashMap();
 
-            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i)));
+            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i), selectedCity, selectedDate));
 
             for (VykazRadekDto vyk : vykazy) {
-                mapper.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(vyk.getPolozka().substring(0, 1)))));
-                mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)))));
-                mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
-                mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
+                mapper.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(vyk.getPolozka().substring(0, 1)), selectedCity, selectedDate)));
+                mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)), selectedCity, selectedDate)));
+                mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedDate)));
+                mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)), selectedCity, selectedDate)));
 
                 for (VykazRadekDto pomVykaz : mapper.get(vyk.getPolozka().substring(0, 3)).getChildren()) {
                     try {

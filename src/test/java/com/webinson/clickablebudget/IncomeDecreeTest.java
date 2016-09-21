@@ -54,7 +54,7 @@ public class IncomeDecreeTest {
 
         for (String i : incomeDao.findDistinctVykazy("Nelahozeves", "08")) {
 
-            HashMap<String, VykazRadekDto> mapper = new HashMap();
+            /*HashMap<String, VykazRadekDto> mapper = new HashMap();
 
             List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i)));
 
@@ -71,7 +71,7 @@ public class IncomeDecreeTest {
                 }
 
 
-            }
+            }*/
 
             //System.out.println(mapper.get("1").getPolozka());
         }

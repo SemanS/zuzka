@@ -28,8 +28,8 @@ public interface IncomeDao extends JpaRepository<Income, Long>, QueryDslPredicat
     @Query("select distinct i from Income i where substring(i.polozka,0 + :i,1) = :cisloSubstring order by i.polozka")
     List<Income> findIncomeByPolozkaString(@Param("i") int i, @Param("cisloSubstring") String cisloSubstring);
 
-    @Query("select distinct i from Income i where substring(i.polozka,1, :i) = :cisloSubstring order by i.polozka")
-    List<Income> findIncomeByPolozkaString2(@Param("i") int i, @Param("cisloSubstring") String cisloSubstring);
+    @Query("select distinct i from Income i where substring(i.polozka,1, :i) = :cisloSubstring and i.city.name = :selectedCity and substring(cast (i.date as text), 6, 2) = :selectedDate order by i.polozka")
+    List<Income> findIncomeByPolozkaString2(@Param("i") int i, @Param("cisloSubstring") String cisloSubstring, @Param("selectedCity") String selectedCity, @Param("selectedDate") String selectedDate);
 
     @Query("select distinct substring(i.polozka, 1, 1) from Income i where i.city.name = :selectedCity and substring(cast (i.date as text), 6, 2) = :selectedDate order by substring(i.polozka, 1, 1) asc")
     List<String> findDistinctVykazy(@Param("selectedCity") String selectedCity, @Param("selectedDate") String selectedDate);

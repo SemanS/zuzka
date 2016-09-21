@@ -13,16 +13,44 @@ div.mainContainer {
     margin-left: auto;
 }
 
-.ct-chart .ct-series.ct-series-a .ct-area, .ct-chart .ct-series.ct-series-a .ct-slice-pie:not(.ct-donut) {
+.chart1 .ct-chart .ct-series.ct-series-a .ct-slice-pie:not(.ct-donut) {
     fill: #0F7C14;
 }
 
-.ct-chart .ct-series.ct-series-b .ct-area, .ct-chart .ct-series.ct-series-b .ct-slice-pie:not(.ct-donut) {
+.chart1 .ct-chart .ct-series.ct-series-b .ct-slice-pie:not(.ct-donut) {
     fill: #80F37B;
 }
 
 .className {
     position: relative;
     margin: 0 auto;
+
+}
+
+.chart2 .ct-chart .ct-series.ct-series-a .ct-slice-pie:not(.ct-donut) {
+    fill: #eb0003;
+}
+
+.chart2 .ct-chart .ct-series.ct-series-b .ct-slice-pie:not(.ct-donut) {
+
+    fill: #FF9C81;
+}
+
+.ct-bar {
+    stroke-width: 200px
+}
+
+.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-pie.ct-donut {
+    stroke: #80F37B;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-pie.ct-donut {
+    stroke: #0F7C14;
+}
+
+
+span.ct-label.ct-vertical.ct-start {
+width: 50px;
+    display: inline !important;
 
 }

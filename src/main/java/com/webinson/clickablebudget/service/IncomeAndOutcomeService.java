@@ -1,6 +1,7 @@
 package com.webinson.clickablebudget.service;
 
 import com.webinson.clickablebudget.dto.IncomeAndOutcomeDto;
+import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.entity.City;
 import org.primefaces.model.TreeNode;
 
@@ -22,4 +23,5 @@ public interface IncomeAndOutcomeService {
 
     public TreeNode createIncomesAndOutcomes(String selectedDate, String selectedCity);
 
+    public VykazRadekDto createFirstRoots(String selectedDate, String selectedCity);
 }
