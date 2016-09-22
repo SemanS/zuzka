@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(userDetailsService())
                 .formLogin()
-                .defaultSuccessUrl("/starter.jsf").and()
+                .defaultSuccessUrl("/index.xhtml").and()
                 .csrf()
                 .disable()
                 .authorizeRequests()

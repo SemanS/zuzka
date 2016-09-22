@@ -87,33 +87,45 @@
         <h:outputStylesheet type="text/css" name="css/styles.css"/>
         <div id="mainCont" class="mainContainer">
 
+            <h:button value="Simular" outcome="index.xhtml">
+                <f:param name="foo" value="42"/>
+            </h:button>
+
             <div class="ui-g">
 
                 <h:form>
-                    <c:forEach items="${clickableBudgetView.getYears()}" var="year">
-                        <p:commandLink id="yearCommandLink" update=":form"
-                                       actionListener="#{clickableBudgetView.onYearChange(year)}"
-                                       style="text-decoration: none; color: black">
+                    <ui:repeat value="#{clickableBudgetView.getYears()}" var="year">
+                        <!--  <c:forEach items="${clickableBudgetView.getYears()}" var="year">-->
+                        <p:commandLink id="yearCommandLink" update=":form :months"
+                                      action="#{clickableBudgetView.onYearChange(year)}"
+                                      style="text-decoration: none; color: black">
                             <h:outputText value="#{year}" style="margin-right:10px;"/>
+                            <f:param name="thisYear" value="#{year}"/>
                         </p:commandLink>
-                    </c:forEach>
 
+                        <!-- </c:forEach>-->
+                    </ui:repeat>
                 </h:form>
 
             </div>
 
             <div class="ui-g">
-                <h:form>
-                    <c:forEach items="${clickableBudgetView.getMonths()}" var="month">
-                        <p:commandLink id="monthCommandLink" update=":form"
-                                       actionListener="#{clickableBudgetView.onTabChange(month)}"
+                <h:form id="months">
+                    <ui:repeat var="month" value="#{clickableBudgetView.getMonths(thisYear)}">
+                        <!--<c:forEach items="${clickableBudgetView.getMonths(thisYear)}" var="month">-->
+                        <p:commandLink id="monthCommandLink" update=":form "
+                                       action="#{clickableBudgetView.onMonthChange(month, thisYear)}"
                                        style="text-decoration: none; color: black">
                             <h:outputText value="#{month}" style="margin-right:10px;"/>
                         </p:commandLink>
-                    </c:forEach>
+                        <!--</c:forEach>-->
+                    </ui:repeat>
                 </h:form>
             </div>
 
+            <f:metadata>
+                <f:viewParam name="thisYear"/>
+            </f:metadata>
 
             <div style="text-align: center">
                 <p:outputLabel value="Celkový rozpočet"

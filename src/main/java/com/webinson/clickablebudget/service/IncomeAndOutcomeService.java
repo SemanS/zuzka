@@ -26,4 +26,10 @@ public interface IncomeAndOutcomeService {
     public VykazRadekDto createFirstRoots();
 
     public List<VykazRadekDto> getFiveIncomes(String selectedMonth, String selectedCity, String selectedYear);
+
+    public Date getLastDateByCity(String city);
+
+    public Date getLastDateByCityAndYear(String city, String Year);
+
+    public List<String> getAllYears(String city);
 }

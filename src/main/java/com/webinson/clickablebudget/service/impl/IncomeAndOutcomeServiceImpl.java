@@ -169,6 +169,38 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     }
 
     @Override
+    public Date getLastDateByCity(String city) {
+        final JPAQuery<Income> query = new JPAQuery<>(entityManager);
+        QIncome income = QIncome.income;
+        return query.from(income).select(income.date.max()).where(income.city.name.eq(city)).fetchFirst();
+    }
+
+    @Override
+    public Date getLastDateByCityAndYear(String city, String year) {
+
+        final JPAQuery<Income> query = new JPAQuery<>(entityManager);
+        QIncome income = QIncome.income;
+        return query.from(income).select(income.date.max()).where(income.city.name.eq(city).and(income.date.year().eq(Integer.parseInt(year)))).fetchFirst();
+
+    }
+
+    @Override
+    public List<String> getAllYears(String city) {
+        final JPAQuery<Income> query = new JPAQuery<>(entityManager);
+        QIncome income = QIncome.income;
+        List<Date> dates = query.from(income).select(income.date).where(income.city.name.eq(city)).fetch();
+        List<String> dats = new ArrayList<String>();
+
+        for (Date dat : dates) {
+            String datum = new String();
+            datum = dat.toString().substring(0, 4);
+            dats.add(datum);
+        }
+
+        return dats;
+    }
+
+    @Override
     public VykazRadekDto createFirstRoots() {
 
         List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();

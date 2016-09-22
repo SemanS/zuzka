@@ -1,5 +1,6 @@
 package com.webinson.clickablebudget;
 
+import com.ocpsoft.pretty.PrettyFilter;
 import com.webinson.clickablebudget.utils.Converter;
 import org.primefaces.webapp.filter.FileUploadFilter;
 import org.springframework.boot.SpringApplication;
@@ -123,4 +124,29 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         registration.setName("PrimeFaces FileUpload Filter");
         return registration;
     }
+
+    @Bean
+    public FilterRegistrationBean prettyFilter() {
+        FilterRegistrationBean rewriteFilter = new FilterRegistrationBean(new PrettyFilter());
+
+        // Filter Forward, Request, Asyc, and Error-related requests.
+        rewriteFilter.setDispatcherTypes(DispatcherType.FORWARD,
+                DispatcherType.REQUEST,
+                DispatcherType.ASYNC,
+                DispatcherType.ERROR);
+
+        // Attach the filter to the root URL for the website. e.g.) http://www.example.com/*
+        rewriteFilter.addUrlPatterns("/*");
+
+        return rewriteFilter;
+    }
+
+/*    @Bean
+    public FilterRegistrationBean prettyFilter() {
+        FilterRegistrationBean prettyFilter = new FilterRegistrationBean(new PrettyFilter());
+        prettyFilter.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST,
+                DispatcherType.ASYNC, DispatcherType.ERROR);
+        prettyFilter.addUrlPatterns("");
+        return prettyFilter;
+    }*/
 }

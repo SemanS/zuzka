@@ -11,13 +11,20 @@ import lombok.Setter;
 import org.chartistjsf.model.chart.*;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Slavo on 13.09.2016.
@@ -25,6 +32,10 @@ import java.util.List;
 @Component
 @Scope("request")
 public class ClickableBudgetView implements Serializable {
+
+    @Getter
+    @Setter
+    List<String> allYears = new ArrayList<String>();
 
     public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
         //Random random = new Random();
@@ -112,10 +123,11 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private String selectedYear;
+    public String selectedYear;
 
     @Getter
     @Setter
+    @ManagedProperty(value = "#{param.selectedCity}")
     private String selectedCity;
 
     @Getter
@@ -130,12 +142,12 @@ public class ClickableBudgetView implements Serializable {
     @Setter
     private TreeNode selectedNode;
 
-    public List<String> getMonths() {
+    public List<String> getMonths(String thisYear) {
 
         MonthFormatter monthFormatter = new MonthFormatter();
         List<String> months = new ArrayList<String>();
 
-        for (String dat : incomeDao.findAllMonthsByYear(selectedCity, "2015")) {
+        for (String dat : incomeDao.findAllMonthsByYear(selectedCity, selectedYear)) {
             months.add(monthFormatter.monthFormat(dat));
         }
         return months;
@@ -152,44 +164,62 @@ public class ClickableBudgetView implements Serializable {
     }
 
     public TreeNode onYearChange(String year) {
-        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
 
-//        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
-        selectedYear = year;
-        selectedCity = "Nelahozeves";
+        this.selectedYear = year;
+        System.out.println(selectedCity);
+        //selectedCity = "Nelahozeves";
+        selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear("Nelahozeves", year).toString().substring(5, 7);
         root = null;
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
+        //System.out.println(selectedCity + selectedMonth + selectedYear);
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
         //FacesContext.getCurrentInstance().addMessage(null, msg);
         return root;
     }
 
-    public TreeNode onTabChange(String event) {
-        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
+    public TreeNode onMonthChange(String month, String year) {
 
+        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
+        //selectedYear = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year");
 //        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
-        selectedMonth = monthFormatterReverse.monthFormat(event);
+        System.out.println(year);
+        /*if (year == "") {
+            year = incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
+        }*/
+        //System.out.println(selectedYear);
+        selectedMonth = monthFormatterReverse.monthFormat(month);
+        //selectedYear = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year");
         selectedCity = "Nelahozeves";
+        //System.out.println(selectedYear);
+
         root = null;
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
         return root;
     }
 
     public void onRowChange(VykazRadekDto vykaz) {
-        System.out.println(vykaz.getName());
+        //System.out.println(vykaz.getName());
     }
 
     @PostConstruct
     public void init() {
+
+        //incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
+        allYears = incomeAndOutcomeService.getAllYears("Nelahozeves");
         selectedYear = "2015";
-        selectedMonth = "08";
+
+
+        /*if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year") != null) {
+            System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year"));
+        }*/
+
         selectedCity = "Nelahozeves";
 
-        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear);
+        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(5, 7), selectedCity, selectedYear);
         //System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear).get(0).getApprovedBudget());
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, selectedYear);
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(5, 7), selectedCity, selectedYear);
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
+        //selectedYear = ;
     }
 
     public void onNodeExpand(VykazRadekDto vykaz) {
@@ -197,7 +227,7 @@ public class ClickableBudgetView implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);*/
         //vykaz = selectedVykaz;
         createBarModelExpand(vykaz);
-        System.out.println(vykaz.getName());
+        //System.out.println(vykaz.getName());
 
     }
 
@@ -211,5 +241,10 @@ public class ClickableBudgetView implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }*/
 
+
+    public String simular() {
+
+        return "index.xhtml?foo=42&faces-redirect=true";
+    }
 
 }

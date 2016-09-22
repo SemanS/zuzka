@@ -1,9 +1,12 @@
 package com.webinson.clickablebudget;
 
+import com.querydsl.jpa.impl.JPAQuery;
 import com.webinson.clickablebudget.assembler.VykazRadekIncomeAssembler;
 import com.webinson.clickablebudget.dao.IncomeDao;
 import com.webinson.clickablebudget.dao.IncomeDecreeCzechDao;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
+import com.webinson.clickablebudget.entity.Income;
+import com.webinson.clickablebudget.entity.QIncome;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,6 +41,9 @@ public class IncomeDecreeTest {
 
     @Autowired
     VykazRadekIncomeAssembler vykazRadekIncomeAssembler;
+
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Test
     public void test() throws TransformerException {
@@ -75,6 +84,16 @@ public class IncomeDecreeTest {
 
         //System.out.println(mapper.get("1").getPolozka());
     }
+
+    @Test
+    public void testoss() {
+        final JPAQuery<Income> query = new JPAQuery<>(entityManager);
+        QIncome income = QIncome.income;
+        Date date = query.from(income).select(income.date.max()).fetchFirst();
+        System.out.println(date);
+    }
+
+
 
 
     @Test

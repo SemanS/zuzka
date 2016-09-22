@@ -20,7 +20,7 @@
 
     <properties>
         <!--Uncomment this if you want to use tomcat7-->
-       <!-- <tomcat.version>7.0.70</tomcat.version>-->
+        <!-- <tomcat.version>7.0.70</tomcat.version>-->
         <!-- Uncomment this if you want to use with java6
         <jackson.version>2.7.6</jackson.version>
         -->
@@ -29,10 +29,27 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-        </dependency>-->
+        <!--        <dependency>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-jasper</artifactId>
+                </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.ocpsoft/prettyfaces-jsf2 -->
+        <dependency>
+            <groupId>com.ocpsoft</groupId>
+            <artifactId>prettyfaces-jsf2</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-servlet</artifactId>
+            <version>3.4.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-config-prettyfaces</artifactId>
+            <version>3.4.1.Final</version>
+        </dependency>
         <dependency>
             <groupId>net.bootsfaces</groupId>
             <artifactId>bootsfaces</artifactId>
