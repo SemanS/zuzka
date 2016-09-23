@@ -32,4 +32,7 @@ public interface IncomeAndOutcomeService {
     public Date getLastDateByCityAndYear(String city, String Year);
 
     public List<String> getAllYears(String city);
+
+    public VykazRadekDto getAllPrijmy(String city, String year, String month);
+
 }

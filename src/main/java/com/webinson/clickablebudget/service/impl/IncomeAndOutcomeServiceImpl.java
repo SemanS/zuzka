@@ -67,6 +67,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     @Autowired
     VykazRadekIncomeAssembler incomeAssembler;
 
+
     @Override
     public void saveIncomes(IncomeAndOutcomeDto incomeAndOutcomes) {
 
@@ -198,6 +199,17 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         }
 
         return dats;
+    }
+
+    @Override
+    public VykazRadekDto getAllPrijmy(String city, String year, String month) {
+
+        VykazRadekDto prijmy = new VykazRadekDto();
+        prijmy = vykazRadekIncomeAssembler.dtosToDto(incomeDao.findGeneralIncome(city, month, year));
+
+        //System.out.println(prijmy.getApprovedBudget());
+
+        return prijmy;
     }
 
     @Override

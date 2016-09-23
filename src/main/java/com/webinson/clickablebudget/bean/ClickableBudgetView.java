@@ -10,22 +10,19 @@ import com.webinson.clickablebudget.utils.MonthFormatterReverse;
 import lombok.Getter;
 import lombok.Setter;
 import org.chartistjsf.model.chart.*;
+import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Slavo on 13.09.2016.
@@ -33,10 +30,18 @@ import java.util.Map;
 @Component
 @Scope("request")
 public class ClickableBudgetView implements Serializable {
-    
+
     @Getter
     @Setter
-    List<VykazRadekDto> fiveIncomes = null;
+    VykazRadekDto generalIncome;
+
+    @Getter
+    @Setter
+    private PieChartModel pieChartModel;
+
+    @Getter
+    @Setter
+    List<VykazRadekDto> fiveIncomes;
 
     @Getter
     @Setter
@@ -111,7 +116,7 @@ public class ClickableBudgetView implements Serializable {
         return year;
     }
 
-    public TreeNode onMonthChange(String month, String year) {
+    public String onMonthChange(String month, String year) {
 
         if (year == "") {
             year = selectedYear;
@@ -122,29 +127,27 @@ public class ClickableBudgetView implements Serializable {
         selectedCity = "Nelahozeves";
         root = null;
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
-        return root;
-    }
-
-    public void onRowChange(VykazRadekDto vykaz) {
-        //System.out.println(vykaz.getName());
+        generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, year, selectedMonth);
+        createPieChart();
+        return month;
     }
 
     @PostConstruct
     public void init() {
 
         selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(1);
-        selectedYear = incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
+        selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
         fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
         root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
-
+        generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, selectedYear, incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7));
+        createPieChart();
+        selectedMonth = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7);
     }
 
     public void onNodeExpand(VykazRadekDto vykaz) {
-
         createBarModelExpand(vykaz);
-
     }
 
     public void onNodeCollapse(VykazRadekDto vykaz) {
@@ -208,6 +211,25 @@ public class ClickableBudgetView implements Serializable {
         barChartModel.setStackBars(true);
 
         return barChartModel;
+    }
+
+    public void createPieChart() {
+        pieChartModel = new PieChartModel();
+
+        pieChartModel.addLabel("Upravený");
+        pieChartModel.addLabel("Skutečnost");
+
+        pieChartModel.set(generalIncome.getAdjustedBudget());
+        pieChartModel.set(generalIncome.getAdjustedBudget() - generalIncome.getSpentBudget());
+
+        //pieChartModel.setShowTooltip(true);
+    }
+
+    public void pieItemSelect(ItemSelectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected", "Item Value: "
+                + pieChartModel.getData().get(event.getItemIndex()));
+
+        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
     }
 
 }

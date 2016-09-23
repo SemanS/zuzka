@@ -43,4 +43,8 @@ public interface IncomeDao extends JpaRepository<Income, Long>, QueryDslPredicat
 
     @Query("select i from Income i where i.city.name = :selectedCity and substring(cast (i.date as text), 6, 2) = :selectedMonth and substring(cast (i.date as text), 1, 4) = :selectedYear order by i.spentBudget desc")
     List<Income> findFiveIncomes(@Param("selectedCity") String selectedCity, @Param("selectedMonth") String selectedMonth, @Param("selectedYear") String selectedYear, Pageable pageable);
+
+    @Query("select i from Income i where i.city.name = :selectedCity and substring(cast (i.date as text), 6, 2) = :selectedMonth and substring(cast (i.date as text), 1, 4) = :selectedYear")
+    List<Income> findGeneralIncome(@Param("selectedCity") String selectedCity, @Param("selectedMonth") String selectedMonth, @Param("selectedYear") String selectedYear);
+
 }
