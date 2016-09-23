@@ -14,8 +14,7 @@
         </navigation-case>
     </navigation-rule>-->
 
-<!--
-    <application>
+<!--    <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
 

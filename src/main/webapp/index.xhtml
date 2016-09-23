@@ -83,6 +83,14 @@
             <p:menuitem value="Portfolio" icon="/resources/demo/images/dock/portfolio.png" url="#"/>
         </p:stack>-->
 
+        <!--<f:metadata>
+            <f:viewParam name="selectedCity" value="#{clickableBudgetView.selectedCity}"/>
+            &lt;!&ndash;<f:viewAction action="#{clickableBudgetView.init}" />&ndash;&gt;
+           &lt;!&ndash; <f:event type="preRenderView" listener="#{clickableBudgetView.initializeCity}"/>&ndash;&gt;
+        </f:metadata>-->
+
+
+        <h:outputText value="#{clickableBudgetView.selectedCity}"/>
 
         <h:outputStylesheet type="text/css" name="css/styles.css"/>
         <div id="mainCont" class="mainContainer">
@@ -97,8 +105,8 @@
                     <ui:repeat value="#{clickableBudgetView.getYears()}" var="year">
                         <!--  <c:forEach items="${clickableBudgetView.getYears()}" var="year">-->
                         <p:commandLink id="yearCommandLink" update=":form :months"
-                                      action="#{clickableBudgetView.onYearChange(year)}"
-                                      style="text-decoration: none; color: black">
+                                       action="#{clickableBudgetView.onYearChange(year)}"
+                                       style="text-decoration: none; color: black">
                             <h:outputText value="#{year}" style="margin-right:10px;"/>
                             <f:param name="thisYear" value="#{year}"/>
                         </p:commandLink>

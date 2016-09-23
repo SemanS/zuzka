@@ -59,6 +59,12 @@ public class IncomeDecreeTest {
     }
 
     @Test
+    public void sad() {
+        String s = "/Nelahozeves";
+        System.out.println(s.substring(1));
+    }
+
+    @Test
     public void test2() {
 
 
@@ -92,8 +98,6 @@ public class IncomeDecreeTest {
         Date date = query.from(income).select(income.date.max()).fetchFirst();
         System.out.println(date);
     }
-
-
 
 
     @Test

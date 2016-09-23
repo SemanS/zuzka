@@ -1,5 +1,6 @@
 package com.webinson.clickablebudget.bean;
 
+import com.ocpsoft.pretty.PrettyContext;
 import com.webinson.clickablebudget.dao.IncomeDao;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.service.CityService;
@@ -36,6 +37,14 @@ public class ClickableBudgetView implements Serializable {
     @Getter
     @Setter
     List<String> allYears = new ArrayList<String>();
+
+    public void initializeCity() {
+
+        selectedCity = "Nelahozeves";
+        String version = FacesContext.class.getPackage().getImplementationVersion();
+        System.out.println(version);
+        //this.selectedCity = selectedCity;
+    }
 
     public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
         //Random random = new Random();
@@ -166,9 +175,9 @@ public class ClickableBudgetView implements Serializable {
     public TreeNode onYearChange(String year) {
 
         this.selectedYear = year;
-        System.out.println(selectedCity);
+        //System.out.println(selectedCity);
         //selectedCity = "Nelahozeves";
-        selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear("Nelahozeves", year).toString().substring(5, 7);
+        selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear(selectedCity, year).toString().substring(5, 7);
         root = null;
         //System.out.println(selectedCity + selectedMonth + selectedYear);
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
@@ -202,17 +211,11 @@ public class ClickableBudgetView implements Serializable {
 
     @PostConstruct
     public void init() {
+        selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(1);
 
-        //incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
-        allYears = incomeAndOutcomeService.getAllYears("Nelahozeves");
-        selectedYear = "2015";
-
-
-        /*if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year") != null) {
-            System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year"));
-        }*/
-
-        selectedCity = "Nelahozeves";
+        selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
+        System.out.println(PrettyContext.getCurrentInstance().getRequestURL().toURL());
+        
 
         fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(5, 7), selectedCity, selectedYear);
         //System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear).get(0).getApprovedBudget());
@@ -220,6 +223,7 @@ public class ClickableBudgetView implements Serializable {
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
         //selectedYear = ;
+
     }
 
     public void onNodeExpand(VykazRadekDto vykaz) {

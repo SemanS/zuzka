@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
@@ -8,7 +9,13 @@
 </h:head>
 
 <h:body>
-    <h1>Welcome page</h1>
+    <h1>Welcome</h1>
     <h:outputText value="#{dummyBean.text}" />
+
+    <f:metadata>
+        <f:viewParam name="selectedCity" value="#{dummyBean.text}"/>
+        <f:event type="preRenderView" listener="#{dummyBean.initializeText}"/>
+    </f:metadata>
+
 </h:body>
 </html>
