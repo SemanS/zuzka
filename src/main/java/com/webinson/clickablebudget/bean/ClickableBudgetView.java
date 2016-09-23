@@ -33,77 +33,7 @@ import java.util.Map;
 @Component
 @Scope("request")
 public class ClickableBudgetView implements Serializable {
-
-    @Getter
-    @Setter
-    List<String> allYears = new ArrayList<String>();
-
-    public void initializeCity() {
-
-        selectedCity = "Nelahozeves";
-        String version = FacesContext.class.getPackage().getImplementationVersion();
-        System.out.println(version);
-        //this.selectedCity = selectedCity;
-    }
-
-    public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
-        //Random random = new Random();
-        barChartModel = new BarChartModel();
-        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
-
-        BarChartSeries series1 = new BarChartSeries();
-        BarChartSeries series2 = new BarChartSeries();
-        series1.setName("Prijate");
-        series2.setName("Prijate");
-
-        for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
-            barChartModel.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
-            series2.set(vyk.getAdjustedBudget());
-        }
-
-        barChartModel.addSeries(series1);
-        barChartModel.addSeries(series2);
-
-        Axis xAxis = barChartModel.getAxis(AxisType.X);
-        xAxis.setShowGrid(false);
-
-        barChartModel.setShowTooltip(true);
-        barChartModel.setSeriesBarDistance(15);
-        barChartModel.setStackBars(true);
-        //barChartModel.setAnimateAdvanced(true);
-        return barChartModel;
-    }
-
-    public BarChartModel createBarModelCollapse(VykazRadekDto selectedVykaz) {
-
-        barChartModel = new BarChartModel();
-        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
-
-        BarChartSeries series1 = new BarChartSeries();
-        BarChartSeries series2 = new BarChartSeries();
-        series1.setName("Prijate");
-        series2.setName("Prijate");
-
-        for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
-            barChartModel.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
-            series2.set(vyk.getAdjustedBudget());
-        }
-
-        barChartModel.addSeries(series1);
-        barChartModel.addSeries(series2);
-
-        Axis xAxis = barChartModel.getAxis(AxisType.X);
-        xAxis.setShowGrid(false);
-
-        barChartModel.setShowTooltip(true);
-        barChartModel.setSeriesBarDistance(15);
-        barChartModel.setStackBars(true);
-
-        return barChartModel;
-    }
-
+    
     @Getter
     @Setter
     List<VykazRadekDto> fiveIncomes = null;
@@ -172,34 +102,24 @@ public class ClickableBudgetView implements Serializable {
         return years;
     }
 
-    public TreeNode onYearChange(String year) {
+    public String onYearChange(String year) {
 
-        this.selectedYear = year;
-        //System.out.println(selectedCity);
-        //selectedCity = "Nelahozeves";
         selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear(selectedCity, year).toString().substring(5, 7);
         root = null;
-        //System.out.println(selectedCity + selectedMonth + selectedYear);
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
-        return root;
+        selectedYear = year;
+        return year;
     }
 
     public TreeNode onMonthChange(String month, String year) {
 
-        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
-        //selectedYear = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year");
-//        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.g);
-        System.out.println(year);
-        /*if (year == "") {
-            year = incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
-        }*/
-        //System.out.println(selectedYear);
-        selectedMonth = monthFormatterReverse.monthFormat(month);
-        //selectedYear = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("year");
-        selectedCity = "Nelahozeves";
-        //System.out.println(selectedYear);
+        if (year == "") {
+            year = selectedYear;
+        }
 
+        MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
+        selectedMonth = monthFormatterReverse.monthFormat(month);
+        selectedCity = "Nelahozeves";
         root = null;
         root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
         return root;
@@ -211,27 +131,19 @@ public class ClickableBudgetView implements Serializable {
 
     @PostConstruct
     public void init() {
+
         selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(1);
-
-        selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
-        System.out.println(PrettyContext.getCurrentInstance().getRequestURL().toURL());
-        
-
-        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(5, 7), selectedCity, selectedYear);
-        //System.out.println(incomeAndOutcomeService.getFiveIncomes(selectedMonth, selectedCity, selectedYear).get(0).getApprovedBudget());
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(5, 7), selectedCity, selectedYear);
+        selectedYear = incomeAndOutcomeService.getLastDateByCity("Nelahozeves").toString().substring(0, 4);
+        fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
+        root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
-        //selectedYear = ;
 
     }
 
     public void onNodeExpand(VykazRadekDto vykaz) {
-        /*FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
-        FacesContext.getCurrentInstance().addMessage(null, message);*/
-        //vykaz = selectedVykaz;
+
         createBarModelExpand(vykaz);
-        //System.out.println(vykaz.getName());
 
     }
 
@@ -240,15 +152,62 @@ public class ClickableBudgetView implements Serializable {
         createBarModelExpand(vykaz);
     }
 
-    /*public void onNodeUnselect(NodeUnselectEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }*/
+    public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
+        //Random random = new Random();
+        barChartModel = new BarChartModel();
+        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
 
+        BarChartSeries series1 = new BarChartSeries();
+        BarChartSeries series2 = new BarChartSeries();
+        series1.setName("Prijate");
+        series2.setName("Prijate");
 
-    public String simular() {
+        for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
+            barChartModel.addLabel(vyk.getName());
+            series1.set(vyk.getApprovedBudget());
+            series2.set(vyk.getAdjustedBudget());
+        }
 
-        return "index.xhtml?foo=42&faces-redirect=true";
+        barChartModel.addSeries(series1);
+        barChartModel.addSeries(series2);
+
+        Axis xAxis = barChartModel.getAxis(AxisType.X);
+        xAxis.setShowGrid(false);
+
+        barChartModel.setShowTooltip(true);
+        barChartModel.setSeriesBarDistance(15);
+        barChartModel.setStackBars(true);
+        //barChartModel.setAnimateAdvanced(true);
+        return barChartModel;
+    }
+
+    public BarChartModel createBarModelCollapse(VykazRadekDto selectedVykaz) {
+
+        barChartModel = new BarChartModel();
+        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
+
+        BarChartSeries series1 = new BarChartSeries();
+        BarChartSeries series2 = new BarChartSeries();
+        series1.setName("Prijate");
+        series2.setName("Prijate");
+
+        for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
+            barChartModel.addLabel(vyk.getName());
+            series1.set(vyk.getApprovedBudget());
+            series2.set(vyk.getAdjustedBudget());
+        }
+
+        barChartModel.addSeries(series1);
+        barChartModel.addSeries(series2);
+
+        Axis xAxis = barChartModel.getAxis(AxisType.X);
+        xAxis.setShowGrid(false);
+
+        barChartModel.setShowTooltip(true);
+        barChartModel.setSeriesBarDistance(15);
+        barChartModel.setStackBars(true);
+
+        return barChartModel;
     }
 
 }

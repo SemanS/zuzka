@@ -6,7 +6,6 @@
     <url-mapping id="welcome">
         <pattern value="/#{clickableBudgetView.selectedCity}"/>
         <view-id value="/index.xhtml?selectedCity=#{clickableBudgetView.selectedCity}"/>
-       <!-- <action>#{clickableBudgetView.initializeCity}</action>-->
     </url-mapping>
 
     <!--<url-mapping id="example" >
