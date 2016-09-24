@@ -1,6 +1,6 @@
 package com.webinson.clickablebudget.bean;
 
-import com.ocpsoft.pretty.PrettyContext;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,8 +45,8 @@ public class DummyBean {
         String originalURI = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(RequestDispatcher.FORWARD_REQUEST_URI);
         System.out.println(originalURI);
 
-        PrettyContext.getCurrentInstance().getRequestURL().toURL();
-        System.out.println(PrettyContext.getCurrentInstance().getRequestURL().toURL());
+        //PrettyContext.getCurrentInstance().getRequestURL().toURL();
+        //System.out.println(PrettyContext.getCurrentInstance().getRequestURL().toURL());
     }
 
 

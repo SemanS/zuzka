@@ -1,6 +1,6 @@
 package com.webinson.clickablebudget;
 
-import com.ocpsoft.pretty.PrettyFilter;
+
 import com.webinson.clickablebudget.utils.Converter;
 import org.primefaces.webapp.filter.FileUploadFilter;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +25,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,16 +82,21 @@ public class ApplicationConfig extends SpringBootServletInitializer {
     }
 
     @Bean
-    public ServletContextInitializer servletContextInitializer() {
-        return servletContext -> {
-            servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-            servletContext.setInitParameter("primefaces.THEME", "omega");
-            servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", Boolean.TRUE.toString());
-            servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
-            servletContext.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());
-            servletContext.setInitParameter("primefaces.UPLOADER", "commons");
+    public ServletContextInitializer initializer() {
+        return new ServletContextInitializer() {
+            @Override
+            public void onStartup(ServletContext servletContext) throws ServletException {
+                servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+                servletContext.setInitParameter("primefaces.THEME", "omega");
+                servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", Boolean.TRUE.toString());
+                servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
+                servletContext.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());
+                servletContext.setInitParameter("primefaces.UPLOADER", "commons");
+            }
         };
+
     }
+
 
     @Bean
     public Converter getHandler() {
@@ -125,7 +132,7 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         return registration;
     }
 
-    @Bean
+    /*@Bean
     public FilterRegistrationBean prettyFilter() {
         FilterRegistrationBean rewriteFilter = new FilterRegistrationBean(new PrettyFilter());
 
@@ -135,18 +142,10 @@ public class ApplicationConfig extends SpringBootServletInitializer {
                 DispatcherType.ASYNC,
                 DispatcherType.ERROR);
 
-        // Attach the filter to the root URL for the website. e.g.) http://www.example.com/*
-        rewriteFilter.addUrlPatterns("/*");
+        // Attach the filter to the root URL for the website. e.g.) http://www.example.com
+        rewriteFilter.addUrlPatterns("");
 
         return rewriteFilter;
-    }
-
-/*    @Bean
-    public FilterRegistrationBean prettyFilter() {
-        FilterRegistrationBean prettyFilter = new FilterRegistrationBean(new PrettyFilter());
-        prettyFilter.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST,
-                DispatcherType.ASYNC, DispatcherType.ERROR);
-        prettyFilter.addUrlPatterns("");
-        return prettyFilter;
     }*/
+
 }

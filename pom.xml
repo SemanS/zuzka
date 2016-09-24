@@ -35,12 +35,12 @@
                     <artifactId>tomcat-embed-jasper</artifactId>
                 </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.ocpsoft/prettyfaces-jsf2 -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.ocpsoft</groupId>
             <artifactId>prettyfaces-jsf2</artifactId>
             <version>3.3.3</version>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.ocpsoft.rewrite</groupId>
             <artifactId>rewrite-servlet</artifactId>

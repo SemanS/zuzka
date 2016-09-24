@@ -1,6 +1,8 @@
-package com.webinson.clickablebudget.view;
+package com.webinson.clickablebudget.bean;
 
 import java.io.*;
+import java.util.Scanner;
+import javax.servlet.http.Part;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -12,8 +14,6 @@ import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
 import com.webinson.clickablebudget.utils.Converter;
 import lombok.Getter;
 import lombok.Setter;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,23 +35,57 @@ public class FileMBean implements Serializable {
     @Setter
     private UploadedFile uploadedFile;
 
+    @Getter
+    @Setter
+    private Part file;
+
+    private String fileContent;
+
+    public void insert() throws IOException, SAXException, ParserConfigurationException {
+
+    }
+    public void upload() throws ParserConfigurationException, SAXException, IOException {
+        System.out.println("ok");
+        //uploadedFile=event.getFile();
+
+        try {
+            fileContent = new Scanner(file.getInputStream())
+                    .useDelimiter("\\A").next();
+
+        } catch (IOException e) {
+            // Error handling
+        }
+
+        /*if (uploadedFile != null) {
+            downloadFile = new DefaultStreamedContent(uploadedFile.getInputstream()
+                    , uploadedFile.getContentType(), uploadedFile.getFileName());
+        }*/
+        parseIncomeAndOutcome();
+
+       /* String fileName = uploadedFile.getFileName();
+        String contentType = uploadedFile.getContentType();
+        byte[] contents = uploadedFile.getContents(); // Or getInputStream()*/
+        // ... Save it, now!
+    }
+
     private StreamedContent downloadFile;
 
     public StreamedContent getDownloadFile() {
         return downloadFile;
     }
 
-    public void upload(FileUploadEvent e) throws IOException, ParserConfigurationException, SAXException {
+    /*public void upload(FileUploadEvent e) throws IOException, ParserConfigurationException, SAXException {
+        System.out.println("Marshaling performed");
         this.uploadedFile = e.getFile();
         if (uploadedFile != null) {
             downloadFile = new DefaultStreamedContent(uploadedFile.getInputstream()
                     , uploadedFile.getContentType(), uploadedFile.getFileName());
         }
         parseIncomeAndOutcome();
-    }
+    }*/
 
     public InputStream simpleTransform(InputStream inputStream, String xsltPath) throws UnsupportedEncodingException {
-
+        System.out.println("Marshaling performed");
         TransformerFactory tFactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
 
         StringWriter xmlAsWriter = new StringWriter();
@@ -73,10 +107,9 @@ public class FileMBean implements Serializable {
     public void parseIncomeAndOutcome() throws ParserConfigurationException, IOException, SAXException {
         IncomeAndOutcomeDto incomeAndOutcomes = new IncomeAndOutcomeDto();
         System.out.println("Marshaling performed");
-
         //Perform UnMarshaling
         try {
-            incomeAndOutcomes = (IncomeAndOutcomeDto) converter.doUnMarshaling(simpleTransform(uploadedFile.getInputstream(),
+            incomeAndOutcomes = (IncomeAndOutcomeDto) converter.doUnMarshaling(simpleTransform(file.getInputStream(),
                     "jdm.xsl"));
 
         } catch (IOException e) {

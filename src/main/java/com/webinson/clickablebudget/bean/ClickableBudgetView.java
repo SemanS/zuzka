@@ -1,5 +1,6 @@
 package com.webinson.clickablebudget.bean;
 
+
 import com.ocpsoft.pretty.PrettyContext;
 import com.webinson.clickablebudget.dao.IncomeDao;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
@@ -15,11 +16,13 @@ import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UrlPathHelper;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,7 +138,7 @@ public class ClickableBudgetView implements Serializable {
     @PostConstruct
     public void init() {
 
-        selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(1);
+        selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
         selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
         fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
         root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
