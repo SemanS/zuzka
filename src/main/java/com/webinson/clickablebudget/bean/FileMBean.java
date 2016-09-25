@@ -39,50 +39,16 @@ public class FileMBean implements Serializable {
     @Setter
     private Part file;
 
-    private String fileContent;
-
-    public void insert() throws IOException, SAXException, ParserConfigurationException {
-
-    }
     public void upload() throws ParserConfigurationException, SAXException, IOException {
-        System.out.println("ok");
-        //uploadedFile=event.getFile();
 
         try {
-            fileContent = new Scanner(file.getInputStream())
-                    .useDelimiter("\\A").next();
+            parseIncomeAndOutcome();
 
         } catch (IOException e) {
             // Error handling
         }
 
-        /*if (uploadedFile != null) {
-            downloadFile = new DefaultStreamedContent(uploadedFile.getInputstream()
-                    , uploadedFile.getContentType(), uploadedFile.getFileName());
-        }*/
-        parseIncomeAndOutcome();
-
-       /* String fileName = uploadedFile.getFileName();
-        String contentType = uploadedFile.getContentType();
-        byte[] contents = uploadedFile.getContents(); // Or getInputStream()*/
-        // ... Save it, now!
     }
-
-    private StreamedContent downloadFile;
-
-    public StreamedContent getDownloadFile() {
-        return downloadFile;
-    }
-
-    /*public void upload(FileUploadEvent e) throws IOException, ParserConfigurationException, SAXException {
-        System.out.println("Marshaling performed");
-        this.uploadedFile = e.getFile();
-        if (uploadedFile != null) {
-            downloadFile = new DefaultStreamedContent(uploadedFile.getInputstream()
-                    , uploadedFile.getContentType(), uploadedFile.getFileName());
-        }
-        parseIncomeAndOutcome();
-    }*/
 
     public InputStream simpleTransform(InputStream inputStream, String xsltPath) throws UnsupportedEncodingException {
         System.out.println("Marshaling performed");

@@ -71,32 +71,22 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
     @Override
     public void saveIncomes(IncomeAndOutcomeDto incomeAndOutcomes) {
 
+
         List<Income> incomes = new ArrayList<Income>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         for (VykazRadekDto inc : incomeAndOutcomes.getIncomes()) {
-            for (VykazRadekDto inc2 : incomeAndOutcomes.getIncomes()) {
-                if (inc.getPolozka() == inc2.getPolozka()) {
-                    Income pomIncome = new Income();
-                    pomIncome.setApprovedBudget(inc.getApprovedBudget() + inc2.getApprovedBudget());
-                    pomIncome.setAdjustedbudget(inc.getAdjustedBudget() + inc2.getAdjustedBudget());
-                    pomIncome.setSpentBudget(inc.getSpentBudget() + inc2.getSpentBudget());
-                    pomIncome.setDate(inc.getDate());
-                    pomIncome.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
-                    pomIncome.setPolozka(inc.getPolozka());
-                    incomes.add(pomIncome);
-                    incomeDao.save(incomes);
-                } else {
-                    Income pomIncome = new Income();
-                    pomIncome.setApprovedBudget(inc.getApprovedBudget() + inc2.getApprovedBudget());
-                    pomIncome.setAdjustedbudget(inc.getAdjustedBudget() + inc2.getAdjustedBudget());
-                    pomIncome.setSpentBudget(inc.getSpentBudget() + inc2.getSpentBudget());
-                    pomIncome.setDate(inc.getDate());
-                    pomIncome.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
-                    pomIncome.setPolozka(inc.getPolozka());
-                    incomes.add(pomIncome);
-                    incomeDao.save(incomes);
-                }
+            Income income = new Income();
+            income.setAdjustedbudget(inc.getAdjustedBudget());
+            income.setApprovedBudget(inc.getApprovedBudget());
+            income.setSpentBudget(inc.getSpentBudget());
+            income.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
+            income.setPolozka(inc.getPolozka());
+            income.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
+            incomes.add(income);
+            incomeDao.save(incomes);
+        }
+
 
                 /*Income income = new Income();
                 income.setAdjustedbudget(inc.getAdjustedBudget());
@@ -107,8 +97,6 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 income.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
                 incomes.add(income);
                 incomeDao.save(incomes);*/
-            }
-        }
     }
 
 
