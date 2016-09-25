@@ -1,7 +1,12 @@
 package com.webinson.clickablebudget.bean;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -39,15 +44,23 @@ public class FileMBean implements Serializable {
     @Setter
     private Part file;
 
-    public void upload() throws ParserConfigurationException, SAXException, IOException {
 
-        try {
-            parseIncomeAndOutcome();
+    public static Collection<Part> getAllParts(Part part) throws ServletException, IOException {
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        return request.getParts().stream().filter(p -> part.getName().equals(p.getName())).collect(Collectors.toList());
+    }
 
-        } catch (IOException e) {
-            // Error handling
+    public void upload() throws ParserConfigurationException, SAXException, IOException, ServletException {
+
+        for (Part part : getAllParts(file)) {
+
+            try {
+                parseIncomeAndOutcome();
+
+            } catch (IOException e) {
+                // Error handling
+            }
         }
-
     }
 
     public InputStream simpleTransform(InputStream inputStream, String xsltPath) throws UnsupportedEncodingException {
