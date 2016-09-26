@@ -21,17 +21,21 @@ import org.springframework.web.util.UrlPathHelper;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Slavo on 13.09.2016.
  */
 @Component
-@Scope("request")
+@ViewScoped
 public class ClickableBudgetView implements Serializable {
 
     @Getter
@@ -79,7 +83,7 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private TreeNode root = null;
+    private TreeNode root;
 
     @Getter
     @Setter
@@ -135,6 +139,8 @@ public class ClickableBudgetView implements Serializable {
         return month;
     }
 
+    private boolean responseRendered = false;
+
     @PostConstruct
     public void init() {
 
@@ -142,6 +148,7 @@ public class ClickableBudgetView implements Serializable {
         selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
         fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
         root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
+
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
         barChartModel = createBarModelExpand(selectedVykaz);
         generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, selectedYear, incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7));

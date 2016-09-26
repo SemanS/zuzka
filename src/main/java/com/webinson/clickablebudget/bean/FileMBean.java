@@ -53,10 +53,8 @@ public class FileMBean implements Serializable {
     public void upload() throws ParserConfigurationException, SAXException, IOException, ServletException {
 
         for (Part part : getAllParts(file)) {
-
             try {
                 parseIncomeAndOutcome();
-
             } catch (IOException e) {
                 // Error handling
             }

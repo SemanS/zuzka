@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ct="http://www.chartistjsf.org/charts">
+<div class="ui-g">
+    <h:form>
+        <ui:repeat value="#{clickableBudgetView.getYears()}" var="year">
+            <p:commandLink id="yearCommandLink" update=":form :months"
+                           action="#{clickableBudgetView.onYearChange(year)}"
+                           style="text-decoration: none; color: black">
+                <h:outputText value="#{year}" style="margin-right:10px;"/>
+                <f:param name="thisYear" value="#{year}"/>
+            </p:commandLink>
+        </ui:repeat>
+    </h:form>
+</div>
+
+<div class="ui-g">
+    <h:form id="months">
+        <ui:repeat var="month" value="#{clickableBudgetView.getMonths(thisYear)}">
+            <p:commandLink id="monthCommandLink" update=":form :generalIncomes: :stateOfDate"
+                           action="#{clickableBudgetView.onMonthChange(month, thisYear)}"
+                           style="text-decoration: none; color: black">
+                <h:outputText value="#{month}" style="margin-right:10px;"/>
+            </p:commandLink>
+        </ui:repeat>
+    </h:form>
+</div>
+
+<h:form id="stateOfDate">
+    <div style="text-align: center">
+        <p:outputLabel value="Celkový rozpočet"
+                       style="text-align: center; margin:0px; font-weight: bold; font-size: 200% !important; "/>
+        <br/>
+        <br/>
+        <p:outputLabel
+                value="Stav ke dni: #{clickableBudgetView.selectedMonth}.#{clickableBudgetView.selectedYear}"
+                style="text-align: center; margin:0px; "/>
+    </div>
+</h:form>
+</html>

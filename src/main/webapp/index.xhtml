@@ -14,382 +14,56 @@
     <h:head/>
 
     <h:body>
-
-        <h:form>
-            <p:growl id="messages"/>
-
-            <p:menubar>
-                <p:submenu label="File" icon="ui-icon-document">
-                    <p:submenu label="New" icon="ui-icon-contact">
-                        <p:menuitem value="Project" url="#"/>
-                        <p:menuitem value="Other" url="#"/>
-                    </p:submenu>
-                    <p:menuitem value="Open" url="#"/>
-                    <p:separator/>
-                    <p:menuitem value="Quit" url="#"/>
-                </p:submenu>
-
-                <p:submenu label="Edit" icon="ui-icon-pencil">
-                    <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w"/>
-                    <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e"/>
-                </p:submenu>
-
-                <p:submenu label="Help" icon="ui-icon-help">
-                    <p:menuitem value="Contents" url="#"/>
-                    <p:submenu label="Search" icon="ui-icon-search">
-                        <p:submenu label="Text">
-                            <p:menuitem value="Workspace" url="#"/>
-                        </p:submenu>
-                        <p:menuitem value="File" url="#"/>
-                    </p:submenu>
-                </p:submenu>
-
-                <p:submenu label="Actions" icon="ui-icon-gear">
-                    <p:submenu label="Ajax" icon="ui-icon-refresh">
-                        <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk"
-                                    update="messages"/>
-                        <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w"
-                                    update="messages"/>
-                    </p:submenu>
-                    <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close"
-                                    update="messages" ajax="false"/>
-                    </p:submenu>
-                </p:submenu>
-
-                <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close"/>
-
-                <f:facet name="options">
-                    <p:inputText style="margin-right:10px" placeholder="Search"/>
-                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink"/>
-                </f:facet>
-            </p:menubar>
-        </h:form>
-
-        <br/>
-        <br/>
-
         <h:outputStylesheet type="text/css" name="css/styles.css"/>
+
+        <div id="header">
+            <ui:insert name="header">
+                <ui:include src="/WEB-INF/templates/header.xhtml"/>
+            </ui:insert>
+        </div>
+
+        <br/>
+        <br/>
+
         <div id="mainCont" class="mainContainer">
 
-            <div class="ui-g">
+            <ui:insert name="date">
+                <ui:insert name="header">
+                    <ui:include src="/WEB-INF/templates/date.xhtml"/>
+                </ui:insert>
+            </ui:insert>
+
+
+            <ui:insert name="generalIncomesAndOutcomes">
+                <ui:insert name="header">
+                    <ui:include src="/WEB-INF/templates/generalIncomesAndOutcomes.xhtml"/>
+                </ui:insert>
+            </ui:insert>
+
+            <ui:insert name="mainIncomes">
+                <ui:insert name="header">
+                    <ui:include src="/WEB-INF/templates/mainIncomes.xhtml"/>
+                </ui:insert>
+            </ui:insert>
 
-                <h:form>
-                    <ui:repeat value="#{clickableBudgetView.getYears()}" var="year">
-                        <!--  <c:forEach items="${clickableBudgetView.getYears()}" var="year">-->
-                        <p:commandLink id="yearCommandLink" update=":form :months"
-                                       action="#{clickableBudgetView.onYearChange(year)}"
-                                       style="text-decoration: none; color: black">
-                            <h:outputText value="#{year}" style="margin-right:10px;"/>
-                            <f:param name="thisYear" value="#{year}"/>
-                        </p:commandLink>
-
-                        <!-- </c:forEach>-->
-                    </ui:repeat>
-                </h:form>
-
-            </div>
-
-            <div class="ui-g">
-                <h:form id="months">
-                    <ui:repeat var="month" value="#{clickableBudgetView.getMonths(thisYear)}">
-                        <!--<c:forEach items="${clickableBudgetView.getMonths(thisYear)}" var="month">-->
-                        <p:commandLink id="monthCommandLink" update=":form :generalIncomes: :stateOfDate"
-                                       action="#{clickableBudgetView.onMonthChange(month, thisYear)}"
-                                       style="text-decoration: none; color: black">
-                            <h:outputText value="#{month}" style="margin-right:10px;"/>
-
-                        </p:commandLink>
-                        <!--</c:forEach>-->
-                    </ui:repeat>
-                </h:form>
-            </div>
-
-            <f:metadata>
-                <f:viewParam name="thisYear"/>
-            </f:metadata>
-
-            <h:form id="stateOfDate">
-                <div style="text-align: center">
-                    <p:outputLabel value="Celkový rozpočet"
-                                   style="text-align: center; margin:0px; font-weight: bold; font-size: 200% !important; "/>
-                    <br/>
-                    <br/>
-                    <p:outputLabel
-                            value="Stav ke dni: #{clickableBudgetView.selectedMonth}.#{clickableBudgetView.selectedYear}"
-                            style="text-align: center; margin:0px; "/>
-                </div>
-            </h:form>
-
-            <h:form id="generalIncomes">
-                <div class="ui-g">
-
-                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-left: 0;">
-                        <p:outputPanel id="container1" layout="block" style="text-align: center">
-                            <p:panel layout="block" id="basic11" header="Celkové příjmy">
-
-                                <h:panelGrid columns="2" styleClass="className" columnClasses="logo,detail">
-
-                                    <p:outputPanel>
-                                        <ui:repeat value="#{clickableBudgetView.generalIncome}" var="gIncome">
-                                            <h:panelGrid columns="2" cellpadding="5">
-
-                                                <h:outputText value="Schválený:"/>
-                                                <h:outputText value="#{gIncome.stringApprovedBudget}"
-                                                              style="font-weight: bold"/>
-
-                                                <h:outputText value="Upravený:"/>
-                                                <h:outputText value="#{gIncome.stringAdjustedBudget}"
-                                                              style="font-weight: bold"/>
-
-                                                <h:outputText value="Skutečnost:"/>
-                                                <h:outputText value="#{gIncome.stringSpentBudget}"
-                                                              style="font-weight: bold"/>
-
-                                                <h:outputText value="Stav plnění:"/>
-                                                <h:outputText value="#{gIncome.state}" style="font-weight: bold"/>
-
-                                            </h:panelGrid>
-                                        </ui:repeat>
-                                    </p:outputPanel>
-
-                                </h:panelGrid>
-
-
-                                <div class="chart1" id="chart1">
-
-                                    <ct:chart id="pieChart1" type="pie"
-                                              model="#{clickableBudgetView.pieChartModel}">
-                                        <p:ajax event="itemSelect" listener="#{clickableBudgetView.pieItemSelect}"
-                                                update="pieChartMessage"/>
-                                    </ct:chart>
-                                    <p:message id="pieChartMessage" for="pieChart1" showDetail="true"/>
-
-                                </div>
-
-
-                            </p:panel>
-                        </p:outputPanel>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4">
-
-                        <p:outputPanel id="container2" style="text-align: center" layout="block">
-
-                            <p:panel layout="block" id="basic22" header="Výsledek hospodaření">
-                                <h:panelGrid styleClass="className" columns="2" cellpadding="5">
-
-
-                                    <h:outputText value="Schválený:"/>
-                                    <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                    <h:outputText value="Upravený:"/>
-                                    <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                    <h:outputText value="Skutečnost:"/>
-                                    <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                    <h:outputText value="Stav plnění:"/>
-                                    <h:outputText value="98 %" style="font-weight: bold"/>
-
-                                </h:panelGrid>
-                            </p:panel>
-
-                        </p:outputPanel>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-right: 0;">
-
-                        <p:outputPanel id="container3" layout="block" style="text-align: center">
-                            <p:panel layout="block" id="basic33" header="Celkové výdaje">
-                                <h:panelGrid columns="2" styleClass="className" columnClasses="logo,detail">
-
-                                    <p:outputPanel>
-
-                                        <h:panelGrid columns="2" cellpadding="5">
-
-                                            <h:outputText value="Schválený:"/>
-                                            <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                            <h:outputText value="Upravený:"/>
-                                            <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                            <h:outputText value="Skutečnost:"/>
-                                            <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
-
-                                            <h:outputText value="Stav plnění:"/>
-                                            <h:outputText value="98 %" style="font-weight: bold"/>
-
-                                        </h:panelGrid>
-
-                                    </p:outputPanel>
-
-                                </h:panelGrid>
-                                <div class="chart2">
-
-                                    <ct:chart id="pieChart3" type="pie" model="#{chartDataBean.pieChartModel}">
-                                        <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
-                                                update="pieChartMessage3"/>
-                                    </ct:chart>
-                                    <p:message id="pieChartMessage3" for="pieChart3" showDetail="true"/>
-                                </div>
-                            </p:panel>
-                        </p:outputPanel>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-1">
-                    </div>
-                </div>
-            </h:form>
-
-            <div class="ui-g">
-                <div class="ui-g-12 ui-md-6 ui-lg-6" style="padding-left: 0;">
-                    <h:form id="fiveIncomes">
-                        <p:dataTable var="income" value="#{clickableBudgetView.fiveIncomes}">
-                            <f:facet name="header">
-                                Nejvyšší příjmy
-                            </f:facet>
-                            <p:column headerText="Rozpočet">
-                                <h:outputText value="#{income.stringApprovedBudget}"/>
-                            </p:column>
-
-                            <p:column headerText="Čerpání">
-                                <h:outputText value="#{income.stringSpentBudget}"/>
-                            </p:column>
-                            <!--
-                                                         <p:column headerText="Brand">
-                                                             <h:outputText value="#{car.brand}"/>
-                                                         </p:column>
-
-                                                         <p:column headerText="Color">
-                                                             <h:outputText value="#{car.color}"/>
-                                                         </p:column>-->
-                        </p:dataTable>
-                    </h:form>
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-lg-6" style="padding-right: 0;">
-                    <p:dataTable var="income" value="#{clickabeBudgetView.fiveIncomes}">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{income.approvedBudget}"/>
-                        </p:column>
-
-                        <!-- <p:column headerText="Year">
-                             <h:outputText value="#{car.year}"/>
-                         </p:column>
-
-                         <p:column headerText="Brand">
-                             <h:outputText value="#{car.brand}"/>
-                         </p:column>
-
-                         <p:column headerText="Color">
-                             <h:outputText value="#{car.color}"/>
-                         </p:column>-->
-                    </p:dataTable>
-                </div>
-            </div>
-
-
-            <div style="text-align: left">
-                <br/>
-                <br/>
-                <br/>
-                <p:outputLabel value="Příjmy"
-                               style="color: #0F7C14; text-align: left; margin:0px; font-weight: bold; font-size: 200% !important; "/>
-                <br/>
-                <br/>
-            </div>
-
-
-            <div>
-                <h:form id="formBar">
-                    <div class="barChart">
-                        <ct:chart id="barChart" type="bar" model="#{clickableBudgetView.barChartModel}">
-                            <!--<p:ajax event="itemSelect" listener="#{clickableBudgetView.barItemSelect}"
-                                    update="barChartMessage"/>-->
-                        </ct:chart>
-
-                        <p:message id="barChartMessage" for="barChart" showDetail="true"/>
-                    </div>
-                </h:form>
-            </div>
-
-
-            <div class="ui-g">
-                <h:form id="form">
-                    <p:treeTable value="#{clickableBudgetView.root}" var="vykazRadekDto"
-                                 style="font-size: 100% !important;">
-                        <p:ajax event="expand" update=":formBar"
-                                listener="#{clickableBudgetView.onNodeExpand(vykazRadekDto)}"/>
-                        <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapse(vykazRadekDto)}"
-                                update=":formBar"/>
-                        <!--<f:facet name="header">
-                            Document Viewer
-                        </f:facet>-->
-                        <p:column headerText="Název" style="width:70%">
-                            <h:outputText value="#{vykazRadekDto.name}"/>
-                        </p:column>
-                        <p:column headerText="Schválený rozpočet" style="width:20%">
-                            <h:outputText value="#{vykazRadekDto.stringApprovedBudget}"/>
-                        </p:column>
-                        <p:column headerText="Upravený rozpočet" style="width:20%">
-                            <h:outputText value="#{vykazRadekDto.stringAdjustedBudget}"/>
-                        </p:column>
-                        <p:column headerText="Čerpání" style="width:20%">
-                            <h:outputText value="#{vykazRadekDto.stringSpentBudget}"/>
-                        </p:column>
-                        <p:column headerText="Stav" style="width:40px">
-                            <h:outputText value="#{vykazRadekDto.state}"/>
-                        </p:column>
-                        <!--<p:column style="width:24px">
-                            <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()"
-                                           title="View Detail" styleClass="ui-icon ui-icon-search">
-                                <f:setPropertyActionListener value="#{vykazRadekDto}"
-                                                             target="#{clickableBudgetView.selectedVykazRadek}"/>
-                            </p:commandLink>
-                        </p:column>-->
-                    </p:treeTable>
-
-                    <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog"
-                              modal="true" resizable="false">
-                        <p:outputPanel id="documentPanel">
-                            <p:panelGrid columns="2" columnClasses="label,value"
-                                         rendered="#{not empty clickableBudgetView.selectedVykazRadek}">
-                                <h:outputLabel for="name" value="Name: "/>
-                                <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadek.name}"
-                                              style="font-weight:bold"/>
-
-                                <h:outputLabel for="approvedBudget" value="Size: "/>
-                                <h:outputText id="approvedBudget"
-                                              value="#{clickableBudgetView.selectedVykazRadek.stringApprovedBudget}"
-                                              style="font-weight:bold"/>
-
-                                <h:outputLabel for="adjustedBudget" value="Size: "/>
-                                <h:outputText id="adjustedBudget"
-                                              value="#{clickableBudgetView.selectedVykazRadek.stringAdjustedBudget}"
-                                              style="font-weight:bold"/>
-
-                                <h:outputLabel for="spentBudget" value="Size: "/>
-                                <h:outputText id="spentBudget"
-                                              value="#{clickableBudgetView.selectedVykazRadek.stringSpentBudget}"
-                                              style="font-weight:bold"/>
-
-                                <h:outputLabel for="state" value="Size: "/>
-                                <h:outputText id="state"
-                                              value="#{clickableBudgetView.selectedVykazRadek.state}"
-                                              style="font-weight:bold"/>
-
-                            </p:panelGrid>
-                        </p:outputPanel>
-                    </p:dialog>
-                </h:form>
-            </div>
-
-            <div>
-
-                <br/>
-                <br/>
-
-            </div>
 
         </div>
+
+
+
+
+        <h:form id="mainForm">
+            <h:commandButton value="Render!" action="#{eFindUser.findUser}">
+                <f:ajax event="action"  render=":result" />
+            </h:commandButton>
+        </h:form>
+
+        <h:panelGroup id="result" layout="block" rendered="#{eFindUser.responseRendered}" >
+            This is some text that is supposed to be rendered later
+        </h:panelGroup>
+
+
+
 
     </h:body>
 </f:view>

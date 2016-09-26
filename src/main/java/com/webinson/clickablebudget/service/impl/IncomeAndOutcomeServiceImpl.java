@@ -23,6 +23,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.text.SimpleDateFormat;
@@ -35,7 +36,7 @@ import java.util.*;
 /**
  * Created by Slavo on 13.09.2016.
  */
-@Scope("session")
+@ApplicationScoped
 @Service
 public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
 
