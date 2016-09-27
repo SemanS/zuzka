@@ -15,55 +15,35 @@
 
     <h:body>
         <h:outputStylesheet type="text/css" name="css/styles.css"/>
+        <h:outputStylesheet name="css/font-awesome.css"/>
 
         <div id="header">
             <ui:insert name="header">
                 <ui:include src="/WEB-INF/templates/header.xhtml"/>
             </ui:insert>
         </div>
-
-        <br/>
-        <br/>
-
+        <pre></pre>
         <div id="mainCont" class="mainContainer">
-
             <ui:insert name="date">
-                <ui:insert name="header">
-                    <ui:include src="/WEB-INF/templates/date.xhtml"/>
-                </ui:insert>
+                <ui:include src="/WEB-INF/templates/date.xhtml"/>
             </ui:insert>
 
+            <h:panelGroup id="renderGeneralIncomesAndOutcomes">
+                <h:panelGroup layout="block" rendered="#{clickableBudgetView.incAndOutRen}">
+                    <ui:insert name="generalIncomesAndOutcomes">
+                        <ui:include src="/WEB-INF/templates/generalIncomesAndOutcomes.xhtml"/>
+                    </ui:insert>
+                </h:panelGroup>
+            </h:panelGroup>
 
-            <ui:insert name="generalIncomesAndOutcomes">
-                <ui:insert name="header">
-                    <ui:include src="/WEB-INF/templates/generalIncomesAndOutcomes.xhtml"/>
-                </ui:insert>
-            </ui:insert>
-
-            <ui:insert name="mainIncomes">
-                <ui:insert name="header">
-                    <ui:include src="/WEB-INF/templates/mainIncomes.xhtml"/>
-                </ui:insert>
-            </ui:insert>
-
-
+            <h:panelGroup id="renderIncomes">
+                <h:panelGroup layout="block" rendered="#{clickableBudgetView.incRen}">
+                    <ui:insert name="mainIncomes">
+                        <ui:include src="/WEB-INF/templates/mainIncomes.xhtml"/>
+                    </ui:insert>
+                </h:panelGroup>
+            </h:panelGroup>
         </div>
-
-
-
-
-        <h:form id="mainForm">
-            <h:commandButton value="Render!" action="#{eFindUser.findUser}">
-                <f:ajax event="action"  render=":result" />
-            </h:commandButton>
-        </h:form>
-
-        <h:panelGroup id="result" layout="block" rendered="#{eFindUser.responseRendered}" >
-            This is some text that is supposed to be rendered later
-        </h:panelGroup>
-
-
-
 
     </h:body>
 </f:view>

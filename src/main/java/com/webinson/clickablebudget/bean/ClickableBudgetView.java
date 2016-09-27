@@ -139,8 +139,6 @@ public class ClickableBudgetView implements Serializable {
         return month;
     }
 
-    private boolean responseRendered = false;
-
     @PostConstruct
     public void init() {
 
@@ -240,6 +238,29 @@ public class ClickableBudgetView implements Serializable {
                 + pieChartModel.getData().get(event.getItemIndex()));
 
         FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
+    }
+
+
+    @Getter
+    @Setter
+    private boolean incAndOutRen = true;
+
+    @Getter
+    @Setter
+    private boolean incRen = true;
+
+    renderIncomesAndOutcomes
+
+    public boolean renderIncomesAndOutcomes() {
+        incAndOutRen = !incAndOutRen;
+
+        System.out.println("finding..... (" + incAndOutRen + ")" + this);
+        return incAndOutRen;
+    }
+
+    public void renderIncomes() {
+        incRen = !incRen;
+        System.out.println("finding..... (" + incRen + ")" + this);
     }
 
 }

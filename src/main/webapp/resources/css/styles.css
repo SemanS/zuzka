@@ -6,6 +6,26 @@ div.mainContainer {
     width: 1170px;
 }
 
+/*.fa-pie-chart {
+    color: black;
+!important;
+}*/
+
+.greenStyle .fa-pie-chart{
+    color: green;
+!important;
+}
+
+.redStyle .fa-pie-chart{
+    color: red;
+!important;
+}
+
+body {
+    margin: 0px;
+!important;
+}
+
 div.mainContainer {
     padding-right: 15px;
     padding-left: 15px;
@@ -48,9 +68,8 @@ div.mainContainer {
     stroke: #0F7C14;
 }
 
-
 span.ct-label.ct-vertical.ct-start {
-width: 50px;
+    width: 50px;
     display: inline !important;
 
 }
