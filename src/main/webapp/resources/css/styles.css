@@ -6,19 +6,48 @@ div.mainContainer {
     width: 1170px;
 }
 
-/*.fa-pie-chart {
-    color: black;
-!important;
-}*/
-
-.greenStyle .fa-pie-chart{
-    color: green;
-!important;
+.greenStyleCogs .fa-cogs {
+    color: green !important;
 }
 
-.redStyle .fa-pie-chart{
-    color: red;
-!important;
+.defaultStyleCogs .fa-cogs {
+    color: black !important;
+}
+
+.fa {
+    font-size: small !important;
+}
+
+.greenStylePie .fa-pie-chart {
+    color: green !important;
+}
+
+.defaultStylePie .fa-pie-chart {
+    color: black !important;
+}
+
+.ct-label {
+    fill: black !important;
+    color: black !important;
+    font-size: 1rem !important;
+    font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif !important;
+    line-height: 0.8;
+
+}
+
+.ui-widget button.ui-state-default {
+    background-color: transparent !important;
+    border: none !important;
+    font-weight: normal !important;
+    font-size: larger !important;
+}
+
+.greenStyleBarInc .fa-bar-chart {
+    color: green !important;
+}
+
+.defaultStyleBarInc .fa-bar-chart {
+    color: black !important;
 }
 
 body {

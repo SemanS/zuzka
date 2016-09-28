@@ -24,6 +24,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
@@ -148,7 +149,22 @@ public class ClickableBudgetView implements Serializable {
         root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
 
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
+
+
         barChartModel = createBarModelExpand(selectedVykaz);
+
+        //barChartModel.getAxis(AxisType.Y).setLabelInterpolationFnc("##,## CZ");
+       /* System.out.println(barChartModel.getAxis(AxisType.Y).getLabelInterpolationFnc());
+        System.out.println(barChartModel.getAxis(AxisType.Y).getAxisPosition());
+        System.out.println(barChartModel.getAxis(AxisType.X).getLabelInterpolationFnc());
+
+        System.out.println(barChartModel.getAxis(AxisType.Y).getOffset());
+        System.out.println(barChartModel.getAxis(AxisType.Y).getScaleMinSpace());
+        System.out.println(barChartModel.getAxis(AxisType.Y).getXLabelOffset());*/
+
+        //System.out.println(barChartModel.getSeries().get(0).getData().toString());
+        //System.out.println(barChartModel.get().get(0).toString());
+
         generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, selectedYear, incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7));
         createPieChart();
         selectedMonth = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7);
@@ -184,6 +200,17 @@ public class ClickableBudgetView implements Serializable {
 
         Axis xAxis = barChartModel.getAxis(AxisType.X);
         xAxis.setShowGrid(false);
+        xAxis.setAxisPosition(AxisPosition.START);
+
+        barChartModel.getAxis(AxisType.Y).setYLabelOffset(50);
+        barChartModel.getAxis(AxisType.Y).setScaleMinSpace(40);
+
+        Axis yAxis = barChartModel.getAxis(AxisType.Y);
+        yAxis.setShowGrid(true);
+        yAxis.setYLabelOffset(2);
+        yAxis.setAxisPosition(AxisPosition.START);
+        yAxis.setShowLabel(false);
+        //System.out.println(barChartModel.getSeries().get(0).getData().toString());
 
         barChartModel.setShowTooltip(true);
         barChartModel.setSeriesBarDistance(15);
@@ -248,8 +275,6 @@ public class ClickableBudgetView implements Serializable {
     @Getter
     @Setter
     private boolean incRen = true;
-
-    renderIncomesAndOutcomes
 
     public boolean renderIncomesAndOutcomes() {
         incAndOutRen = !incAndOutRen;

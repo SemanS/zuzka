@@ -33,6 +33,10 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toCollection;
+
 /**
  * Created by Slavo on 13.09.2016.
  */
@@ -85,19 +89,12 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             income.setPolozka(inc.getPolozka());
             income.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
             incomes.add(income);
-            incomeDao.save(incomes);
         }
+        List<Income> unique = incomes.stream()
+                .collect(collectingAndThen(toCollection(() -> new TreeSet<>(comparing(Income::getPolozka))),
+                        ArrayList::new));
+        incomeDao.save(unique);
 
-
-                /*Income income = new Income();
-                income.setAdjustedbudget(inc.getAdjustedBudget());
-                income.setApprovedBudget(inc.getApprovedBudget());
-                income.setSpentBudget(inc.getSpentBudget());
-                income.setCity(cityDao.findIdByIco(incomeAndOutcomes.getVykazHlavicka().getSubjektIco()));
-                income.setPolozka(inc.getPolozka());
-                income.setDate(java.sql.Date.valueOf(LocalDate.parse(incomeAndOutcomes.getVykazHlavicka().getDatumVykaz(), formatter)));
-                incomes.add(income);
-                incomeDao.save(incomes);*/
     }
 
 

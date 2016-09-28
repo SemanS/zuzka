@@ -20,10 +20,15 @@ import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toCollection;
 
 /**
  * Created by Slavo on 14.09.2016.
@@ -137,6 +142,39 @@ public class IncomeDecreeTest {
         for (String text : map.keySet()) {
             System.out.println(text + " " + map.get(text));
         }*/
+    }
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
+    @Test
+    public void daco() {
+
+        VykazRadekDto vykaz1 = new VykazRadekDto();
+        VykazRadekDto vykaz2 = new VykazRadekDto();
+        VykazRadekDto vykaz3 = new VykazRadekDto();
+        vykaz1.setPolozka("1111");
+        vykaz2.setPolozka("1111");
+        vykaz3.setPolozka("1112");
+
+        List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();
+
+        vykazy.add(vykaz1);
+        vykazy.add(vykaz2);
+        vykazy.add(vykaz3);
+
+
+        //vykazy.stream().filter(distinctByKey(p -> p.getPolozka()));
+
+        List<VykazRadekDto> unique = vykazy.stream()
+                .collect(collectingAndThen(toCollection(() -> new TreeSet<>(comparing(VykazRadekDto::getPolozka))),
+                        ArrayList::new));
+
+        System.out.println(unique.get(0).getPolozka());
+        System.out.println(unique.get(1).getPolozka());
+
     }
 
 }

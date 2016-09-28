@@ -22,13 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(userDetailsService())
                 .formLogin()
-                .defaultSuccessUrl("/index.xhtml").and()
+                .defaultSuccessUrl("/fileUpload.xhtml").and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/starter.jsf").permitAll()
-                .antMatchers("/index.jsf").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/city/*.xhtml").permitAll();
     }
 
     @Override

@@ -17,19 +17,33 @@
         <h:form>
             <p:toolbar id="tb" style="margin: 0 px;">
                 <f:facet name="left">
-                    <p:commandButton id="updateIncomesAndOutcomes" type="button" title="Save" icon="fa fa-pie-chart" actionListener="#{buttonView.clickableBudgetView}"
-                                     styleClass="#{clickableBudgetView.incAndOutRen ? 'redStyle' : 'greenStyle'}">
-                        <f:ajax render=":renderGeneralIncomesAndOutcomes"
+                    <p:commandButton id="asd" type="button" title="Save"
+                                     icon="fa fa-cogs"
+                                     styleClass="#{clickableBudgetView.incAndOutRen ? 'greenStyleCogs' : 'defaultStyleCogs'}">
+                    </p:commandButton>
+                    <p:spacer width="1" height="22"
+                              style="position: relative; bottom: -5px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px"/>
+                    <p:commandButton id="updateIncomesAndOutcomes" type="button" title="Save" icon="fa fa-pie-chart"
+                                     styleClass="#{clickableBudgetView.incAndOutRen ? 'greenStylePie' : 'defaultStylePie'}"
+                                     update="updateIncomesAndOutcomes">
+                        <f:setPropertyActionListener value="#{clickableBudgetView.incAndOutRen}"
+                                                     target="#{clickableBudgetView.incAndOutRen}"/>
+                        <f:ajax render=":renderGeneralIncomesAndOutcomes updateIncomesAndOutcomes"
                                 listener="#{clickableBudgetView.renderIncomesAndOutcomes}"/>
                     </p:commandButton>
 
-                    <p:commandButton type="button" title="Save" icon="fa fa-bar-chart">
-                        <f:ajax render=":renderIncomes"
+                    <p:commandButton id="updateIncomes" type="button" title="Save" icon="fa fa-bar-chart"
+                                     styleClass="#{clickableBudgetView.incRen ? 'greenStyleBarInc' : 'defaultStyleBarInc'}"
+                                     update="updateIncomes">
+                        <f:setPropertyActionListener value="#{clickableBudgetView.incRen}"
+                                                     target="#{clickableBudgetView.incRen}"/>
+                        <f:ajax render=":renderIncomes updateIncomes"
                                 listener="#{clickableBudgetView.renderIncomes}"/>
                     </p:commandButton>
                 </f:facet>
                 <f:facet name="right">
-                    <p:commandButton type="button" title="Save" icon="fa fa-pie-chart">
+
+                    <p:commandButton value="Přihlásit se" type="button" title="Save" icon="fa fa-sign-in">
                         <f:ajax render=":renderIncomes"
                                 listener="#{clickableBudgetView.renderIncomes}"/>
                     </p:commandButton>
