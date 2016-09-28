@@ -19,19 +19,19 @@
 
         <div id="header">
             <ui:insert name="header">
-                <ui:include src="/WEB-INF/templates/header.xhtml"/>
+                <ui:include src="/templates/header.xhtml"/>
             </ui:insert>
         </div>
         <pre></pre>
         <div id="mainCont" class="mainContainer">
             <ui:insert name="date">
-                <ui:include src="/WEB-INF/templates/date.xhtml"/>
+                <ui:include src="/templates/date.xhtml"/>
             </ui:insert>
 
             <h:panelGroup id="renderGeneralIncomesAndOutcomes">
                 <h:panelGroup layout="block" rendered="#{clickableBudgetView.incAndOutRen}">
                     <ui:insert name="generalIncomesAndOutcomes">
-                        <ui:include src="/WEB-INF/templates/generalIncomesAndOutcomes.xhtml"/>
+                        <ui:include src="/templates/generalIncomesAndOutcomes.xhtml"/>
                     </ui:insert>
                 </h:panelGroup>
             </h:panelGroup>
@@ -39,7 +39,7 @@
             <h:panelGroup id="renderIncomes">
                 <h:panelGroup layout="block" rendered="#{clickableBudgetView.incRen}">
                     <ui:insert name="mainIncomes">
-                        <ui:include src="/WEB-INF/templates/mainIncomes.xhtml"/>
+                        <ui:include src="/templates/mainIncomes.xhtml"/>
                     </ui:insert>
                 </h:panelGroup>
             </h:panelGroup>

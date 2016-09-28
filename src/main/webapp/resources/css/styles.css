@@ -31,9 +31,18 @@ div.mainContainer {
     color: black !important;
     font-size: 1rem !important;
     font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif !important;
-    line-height: 0.8;
+    line-height: 1;
 
 }
+
+/*
+.smallButton .ui-button-text {
+    font-size: 11px;
+    background-color: gainsboro !important;
+    border: none !important;
+    font-weight: normal !important;
+}
+*/
 
 .ui-widget button.ui-state-default {
     background-color: transparent !important;

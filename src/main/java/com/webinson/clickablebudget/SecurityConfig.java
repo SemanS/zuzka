@@ -22,12 +22,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(userDetailsService())
                 .formLogin()
-                .defaultSuccessUrl("/fileUpload.xhtml").and()
+                .defaultSuccessUrl("/upload").and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/starter.jsf").permitAll()
-                .antMatchers("/city/*.xhtml").permitAll();
+                .antMatchers("/upload").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/fileUpload.xhtml").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/city/**").permitAll()
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/templates/**").permitAll()
+                .anyRequest().permitAll();
     }
 
     @Override

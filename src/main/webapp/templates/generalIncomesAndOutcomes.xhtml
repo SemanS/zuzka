@@ -135,11 +135,14 @@
                 <f:facet name="header">
                     Nejvyšší příjmy
                 </f:facet>
-                <p:column headerText="Rozpočet">
+                <p:column headerText="Název" style="width:50%">
+                    <h:outputText value="#{income.name}"/>
+                </p:column>
+                <p:column headerText="Rozpočet" style="width:25%">
                     <h:outputText value="#{income.stringApprovedBudget}"/>
                 </p:column>
 
-                <p:column headerText="Čerpání">
+                <p:column headerText="Čerpání" style="width:25%">
                     <h:outputText value="#{income.stringSpentBudget}"/>
                 </p:column>
                 <!--
@@ -173,4 +176,7 @@
         </p:dataTable>
     </div>
 </div>
+<br/>
+<br/>
+<br/>
 </html>

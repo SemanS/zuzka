@@ -150,7 +150,6 @@ public class ClickableBudgetView implements Serializable {
 
         selectedVykaz = incomeAndOutcomeService.createFirstRoots();
 
-
         barChartModel = createBarModelExpand(selectedVykaz);
 
         //barChartModel.getAxis(AxisType.Y).setLabelInterpolationFnc("##,## CZ");
@@ -212,7 +211,7 @@ public class ClickableBudgetView implements Serializable {
         yAxis.setShowLabel(false);
         //System.out.println(barChartModel.getSeries().get(0).getData().toString());
 
-        barChartModel.setShowTooltip(true);
+        //barChartModel.setShowTooltip(true);
         barChartModel.setSeriesBarDistance(15);
         barChartModel.setStackBars(true);
         //barChartModel.setAnimateAdvanced(true);
@@ -251,8 +250,8 @@ public class ClickableBudgetView implements Serializable {
     public void createPieChart() {
         pieChartModel = new PieChartModel();
 
-        pieChartModel.addLabel("Upravený");
-        pieChartModel.addLabel("Skutečnost");
+        pieChartModel.addLabel("Přijde");
+        pieChartModel.addLabel("Přišlo");
 
         pieChartModel.set(generalIncome.getAdjustedBudget());
         pieChartModel.set(generalIncome.getAdjustedBudget() - generalIncome.getSpentBudget());
@@ -266,7 +265,6 @@ public class ClickableBudgetView implements Serializable {
 
         FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
     }
-
 
     @Getter
     @Setter

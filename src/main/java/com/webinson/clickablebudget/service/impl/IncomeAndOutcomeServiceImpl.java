@@ -174,9 +174,14 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
 
     public List<VykazRadekDto> getFiveIncomes(String selectedMonth, String selectedCity, String selectedYear) {
 
-        //vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedMonth, new PageRequest(0, 5)));
-        //System.out.println(vykazy.get(0).getApprovedBudget());
-        return vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedMonth, selectedYear, new PageRequest(0, 5)));
+        List<VykazRadekDto> vykazy = new ArrayList<VykazRadekDto>();
+
+        for (VykazRadekDto vykaz : vykazRadekIncomeAssembler.toDtos(incomeDao.findFiveIncomes(selectedCity, selectedMonth, selectedYear, new PageRequest(0, 5)))) {
+            vykaz.setName(decreeCzechDao.findIncomeDecreeCzechByKlass(vykaz.getPolozka()).getName());
+            vykazy.add(vykaz);
+        }
+
+        return vykazy;
     }
 
     @Override
@@ -262,7 +267,6 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
                 }
             }
 
-
             List<VykazRadekDto> vyks2 = new ArrayList<VykazRadekDto>();
             List<VykazRadekDto> vyks3 = new ArrayList<VykazRadekDto>();
             VykazRadekDto vyk2 = new VykazRadekDto();
@@ -274,6 +278,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
             for (String s : map.keySet()) {
                 try {
                     mapper.get(s).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(s).getName());
+                    mapper.get(s).setLevelColor("#F8F8F8");
                 } catch (RuntimeException e) {
                     System.out.println("somarina");
                 }

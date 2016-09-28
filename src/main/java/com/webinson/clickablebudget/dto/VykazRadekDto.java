@@ -49,6 +49,8 @@ public class VykazRadekDto {
     private List<VykazRadekDto> children;
     private VykazRadekDto parent;
 
+    private String levelColor;
+
     /*public VykazRadekDto(VykazRadekDto parent) {
         this.parent = parent;
     }*/
@@ -162,6 +164,8 @@ public class VykazRadekDto {
 
     public String getState() {
 
+        String result;
+
         Double aBudget = new Double(this.adjustedBudget);
         Double sBudget = new Double(this.spentBudget);
 
@@ -171,7 +175,14 @@ public class VykazRadekDto {
         Double state = (sBudget / aBudget) * 100;
         Integer st = (int) Math.round(state);
 
-        return st.toString()+" %";
+        result = st.toString();
+
+        if (st < 0) {
+            result = "100";
+        }
+
+
+        return result + " %";
 
     }
 
