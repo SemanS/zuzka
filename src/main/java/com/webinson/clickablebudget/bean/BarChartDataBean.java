@@ -66,18 +66,18 @@ public class BarChartDataBean {
         barChartModel.setShowTooltip(true);
         barChartModel.setSeriesBarDistance(15);
         barChartModel.setStackBars(true);
-        //barChartModel.setAnimateAdvanced(true);
+        //barChartModelIncome.setAnimateAdvanced(true);
     }
 
     /**
-     * @return the barChartModel
+     * @return the barChartModelIncome
      */
     public BarChartModel getBarChartModel() {
         return barChartModel;
     }
 
     /**
-     * @param barChartModel the barChartModel to set
+     * @param barChartModel the barChartModelIncome to set
      */
     public void setBarChartModel(BarChartModel barChartModel) {
         this.barChartModel = barChartModel;

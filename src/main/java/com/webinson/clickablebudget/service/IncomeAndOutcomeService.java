@@ -21,11 +21,15 @@ public interface IncomeAndOutcomeService {
 
     List<IncomeAndOutcomeDto> findAllByDate(Date date);
 
-    public TreeNode createIncomesAndOutcomes(String selectedYear, String selectedMonth, String selectedCity);
+    public TreeNode createIncomes(String selectedYear, String selectedMonth, String selectedCity);
 
-    public VykazRadekDto createFirstRoots();
+    public VykazRadekDto createFirstRootsIncome();
+
+    public VykazRadekDto createFirstRootsOutcome();
 
     public List<VykazRadekDto> getFiveIncomes(String selectedMonth, String selectedCity, String selectedYear);
+
+    public List<VykazRadekDto> getFiveOutcomes(String selectedMonth, String selectedCity, String selectedYear);
 
     public Date getLastDateByCity(String city);
 
@@ -35,4 +39,7 @@ public interface IncomeAndOutcomeService {
 
     public VykazRadekDto getAllPrijmy(String city, String year, String month);
 
+    public VykazRadekDto getAllVydaje(String city, String year, String month);
+
+    TreeNode createOutcomes(String substring, String selectedCity, String selectedYear);
 }

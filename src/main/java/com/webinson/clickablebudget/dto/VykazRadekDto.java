@@ -24,7 +24,7 @@ public class VykazRadekDto {
     private String name;
 
     @XmlElement(name = "Paragraf")
-    private Integer paragraf;
+    private String paragraf;
 
     @XmlElement(name = "Polozka")
     private String polozka;
@@ -50,6 +50,9 @@ public class VykazRadekDto {
     private VykazRadekDto parent;
 
     private String levelColor;
+
+    private int stateInt;
+    private String stateInt2;
 
     /*public VykazRadekDto(VykazRadekDto parent) {
         this.parent = parent;
@@ -160,6 +163,18 @@ public class VykazRadekDto {
         Double aBudget = new Double(this.spentBudget);
         return df.format(this.spentBudget);
 
+    }
+
+    public int getStateInt() {
+        Double aBudget = new Double(this.adjustedBudget);
+        Double sBudget = new Double(this.spentBudget);
+
+        Integer a = aBudget.intValue();
+        Integer s = sBudget.intValue();
+
+        Double state = (sBudget / aBudget) * 100;
+        Integer st = (int) Math.round(state);
+        return st;
     }
 
     public String getState() {

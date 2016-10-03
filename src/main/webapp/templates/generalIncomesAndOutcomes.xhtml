@@ -47,8 +47,8 @@
                     <div class="chart1" id="chart1">
 
                         <ct:chart id="pieChart1" type="pie"
-                                  model="#{clickableBudgetView.pieChartModel}">
-                            <p:ajax event="itemSelect" listener="#{clickableBudgetView.pieItemSelect}"
+                                  model="#{clickableBudgetView.pieChartModelIncome}">
+                            <p:ajax event="itemSelect" listener="#{clickableBudgetView.pieItemSelectIncome}"
                                     update="pieChartMessage"/>
                         </ct:chart>
                         <p:message id="pieChartMessage" for="pieChart1" showDetail="true"/>
@@ -64,20 +64,31 @@
             <p:outputPanel id="container2" style="text-align: center" layout="block">
 
                 <p:panel layout="block" id="basic22" header="Výsledek hospodaření">
-                    <h:panelGrid styleClass="className" columns="2" cellpadding="5">
 
+                    <h:panelGrid columns="2" styleClass="className" columnClasses="logo,detail">
 
-                        <h:outputText value="Schválený:"/>
-                        <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                        <p:outputPanel>
+                            <ui:repeat value="#{clickableBudgetView.generalDifference}" var="gDifference">
+                                <h:panelGrid columns="2" cellpadding="5">
 
-                        <h:outputText value="Upravený:"/>
-                        <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                                    <h:outputText value="Schválený:"/>
+                                    <h:outputText value="#{gDifference.stringApprovedBudget}"
+                                                  style="font-weight: bold"/>
 
-                        <h:outputText value="Skutečnost:"/>
-                        <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                                    <h:outputText value="Upravený:"/>
+                                    <h:outputText value="#{gDifference.stringAdjustedBudget}"
+                                                  style="font-weight: bold"/>
 
-                        <h:outputText value="Stav plnění:"/>
-                        <h:outputText value="98 %" style="font-weight: bold"/>
+                                    <h:outputText value="Skutečnost:"/>
+                                    <h:outputText value="#{gDifference.stringSpentBudget}"
+                                                  style="font-weight: bold"/>
+
+                                    <h:outputText value="Stav plnění:"/>
+                                    <h:outputText value="#{gDifference.stateInt2}" style="font-weight: bold"/>
+
+                                </h:panelGrid>
+                            </ui:repeat>
+                        </p:outputPanel>
 
                     </h:panelGrid>
                 </p:panel>
@@ -92,30 +103,33 @@
                     <h:panelGrid columns="2" styleClass="className" columnClasses="logo,detail">
 
                         <p:outputPanel>
+                            <ui:repeat value="#{clickableBudgetView.generalOutcome}" var="gOutcome">
+                                <h:panelGrid columns="2" cellpadding="5">
 
-                            <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Schválený:"/>
+                                    <h:outputText value="#{gOutcome.stringApprovedBudget}"
+                                                  style="font-weight: bold"/>
 
-                                <h:outputText value="Schválený:"/>
-                                <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                                    <h:outputText value="Upravený:"/>
+                                    <h:outputText value="#{gOutcome.stringAdjustedBudget}"
+                                                  style="font-weight: bold"/>
 
-                                <h:outputText value="Upravený:"/>
-                                <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                                    <h:outputText value="Skutečnost:"/>
+                                    <h:outputText value="#{gOutcome.stringSpentBudget}"
+                                                  style="font-weight: bold"/>
 
-                                <h:outputText value="Skutečnost:"/>
-                                <h:outputText value="43 652 623 Kč" style="font-weight: bold"/>
+                                    <h:outputText value="Stav plnění:"/>
+                                    <h:outputText value="#{gOutcome.state}" style="font-weight: bold"/>
 
-                                <h:outputText value="Stav plnění:"/>
-                                <h:outputText value="98 %" style="font-weight: bold"/>
-
-                            </h:panelGrid>
-
+                                </h:panelGrid>
+                            </ui:repeat>
                         </p:outputPanel>
 
                     </h:panelGrid>
                     <div class="chart2">
 
-                        <ct:chart id="pieChart3" type="pie" model="#{chartDataBean.pieChartModel}">
-                            <p:ajax event="itemSelect" listener="#{chartDataBean.pieItemSelect}"
+                        <ct:chart id="pieChart3" type="pie" model="#{clickableBudgetView.pieChartModelOutcome}">
+                            <p:ajax event="itemSelect" listener="#{clickableBudgetView.pieItemSelectOutcome}"
                                     update="pieChartMessage3"/>
                         </ct:chart>
                         <p:message id="pieChartMessage3" for="pieChart3" showDetail="true"/>
@@ -157,23 +171,35 @@
         </h:form>
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-6" style="padding-right: 0;">
-        <p:dataTable var="income" value="#{clickabeBudgetView.fiveIncomes}">
-            <p:column headerText="Id">
-                <h:outputText value="#{income.approvedBudget}"/>
-            </p:column>
+        <h:form id="fiveOutcomes">
+            <p:dataTable var="outcome" value="#{clickableBudgetView.fiveOutcomes}">
+                <f:facet name="header">
+                    Nejvyšší výdaje
+                </f:facet>
+                <p:column headerText="Název" style="width:50%">
+                    <h:outputText value="#{outcome.name}"/>
+                </p:column>
+                <p:column headerText="Rozpočet" style="width:25%">
+                    <h:outputText value="#{outcome.stringApprovedBudget}"/>
+                </p:column>
 
-            <!-- <p:column headerText="Year">
-                 <h:outputText value="#{car.year}"/>
-             </p:column>
+                <p:column headerText="Čerpání" style="width:25%">
+                    <h:outputText value="#{outcome.stringSpentBudget}"/>
+                </p:column>
 
-             <p:column headerText="Brand">
-                 <h:outputText value="#{car.brand}"/>
-             </p:column>
+                <!-- <p:column headerText="Year">
+                     <h:outputText value="#{car.year}"/>
+                 </p:column>
 
-             <p:column headerText="Color">
-                 <h:outputText value="#{car.color}"/>
-             </p:column>-->
-        </p:dataTable>
+                 <p:column headerText="Brand">
+                     <h:outputText value="#{car.brand}"/>
+                 </p:column>
+
+                 <p:column headerText="Color">
+                     <h:outputText value="#{car.color}"/>
+                 </p:column>-->
+            </p:dataTable>
+        </h:form>
     </div>
 </div>
 <br/>

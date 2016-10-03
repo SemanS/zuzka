@@ -23,7 +23,7 @@ public class Outcome implements Serializable {
     private long id;
 
     @Column(name = "paragraf")
-    private Integer paragraf;
+    private String paragraf;
 
     @Column(name = "approved_budget")
     private Double approvedBudget;
@@ -44,7 +44,17 @@ public class Outcome implements Serializable {
     @JoinColumn(name = "city_id")
     private City city;
 
+    public Outcome(String paragraf, Double approvedBudget, double adjustedbudget, double spentBudget, Date date, City city) {
+        this.paragraf = paragraf;
+        this.approvedBudget = approvedBudget;
+        this.adjustedbudget = adjustedbudget;
+        this.spentBudget = spentBudget;
+        this.date = date;
+        this.city = city;
+    }
+
     private int getState() {
         return (int) (this.spentBudget / this.adjustedbudget);
     }
+
 }

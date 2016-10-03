@@ -44,8 +44,18 @@ public class Income implements Serializable {
     @JoinColumn(name = "city_id")
     private City city;
 
+    public Income(String polozka, Double approvedBudget, double adjustedbudget, double spentBudget, Date date, City city) {
+        this.polozka = polozka;
+        this.approvedBudget = approvedBudget;
+        this.adjustedbudget = adjustedbudget;
+        this.spentBudget = spentBudget;
+        this.date = date;
+        this.city = city;
+    }
+
     private int getState() {
         return (int) (this.spentBudget / this.adjustedbudget);
     }
+
 
 }

@@ -93,6 +93,8 @@ public class FileMBean implements Serializable {
             e.printStackTrace();
         }
 
+        System.out.println(incomeAndOutcomes.getOutcomes().get(0).getApprovedBudget());
         incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
+        incomeAndOutcomeService.saveOutcomes(incomeAndOutcomes);
     }
 }

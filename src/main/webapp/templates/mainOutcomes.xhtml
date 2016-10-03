@@ -11,8 +11,8 @@
 
 <div style="text-align: left">
 
-    <p:outputLabel value="Příjmy"
-                   style="color: #0F7C14; text-align: left; margin:0px; font-weight: bold; font-size: 200% !important; "/>
+    <p:outputLabel value="Výdaje"
+                   style="color: #eb0003; text-align: left; margin:0px; font-weight: bold; font-size: 200% !important; "/>
     <br/>
     <br/>
     <br/>
@@ -20,14 +20,14 @@
 
 
 <div>
-    <h:form id="formBarIncome">
-        <div class="barChartIncome">
-            <ct:chart id="barChartIncome" type="bar" model="#{clickableBudgetView.barChartModelIncome}">
+    <h:form id="formBarOutcome">
+        <div class="barChartOutcome">
+            <ct:chart id="barChartOutcome" type="bar" model="#{clickableBudgetView.barChartModelOutcome}">
                 <!--<p:ajax event="itemSelect" listener="#{clickableBudgetView.barItemSelect}"
                         update="barChartMessage"/>-->
             </ct:chart>
 
-            <p:message id="barChartMessage" for="barChartIncome" showDetail="true"/>
+            <p:message id="barChartMessage" for="barChartOutcome" showDetail="true"/>
         </div>
     </h:form>
     <br/>
@@ -35,13 +35,13 @@
 
 
 <div class="ui-g">
-    <h:form id="form">
-        <p:treeTable value="#{clickableBudgetView.rootIncomes}" var="vykazRadekDto"
+    <h:form id="formMainOutcome">
+        <p:treeTable value="#{clickableBudgetView.rootOutcomes}" var="vykazRadekDto"
                      style="font-size: 100% !important;">
-            <p:ajax event="expand" update=":formBarIncome"
-                    listener="#{clickableBudgetView.onNodeExpandIncome(vykazRadekDto)}"/>
-            <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapseIncome(vykazRadekDto)}"
-                    update=":formBarIncome"/>
+            <p:ajax event="expand" update=":formBarOutcome"
+                    listener="#{clickableBudgetView.onNodeExpandOutcome(vykazRadekDto)}"/>
+            <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapseOutcome(vykazRadekDto)}"
+                    update=":formBarOutcome"/>
             <!--<f:facet name="header">
                 Document Viewer
             </f:facet>-->
@@ -103,7 +103,6 @@
         </p:dialog>
     </h:form>
 </div>
-<br/>
 
 <br/>
 <br/>

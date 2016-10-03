@@ -55,6 +55,10 @@ div.mainContainer {
     color: green !important;
 }
 
+.redStyleBarInc .fa-bar-chart {
+    color: red !important;
+}
+
 .defaultStyleBarInc .fa-bar-chart {
     color: black !important;
 }
@@ -98,16 +102,28 @@ div.mainContainer {
     stroke-width: 200px
 }
 
-.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-pie.ct-donut {
-    stroke: #80F37B;
+.barChartIncome .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-pie.ct-donut {
+    stroke: #99F595;
 }
 
-.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-pie.ct-donut {
+.barChartIncome .ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-pie.ct-donut {
     stroke: #0F7C14;
+}
+
+.barChartOutcome .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-pie.ct-donut {
+    stroke: #FF9C81;
+}
+
+.barChartOutcome .ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-pie.ct-donut {
+    stroke: #eb0003;
 }
 
 span.ct-label.ct-vertical.ct-start {
     width: 50px;
     display: inline !important;
 
+}
+
+span.ct-label.ct-horizontal.ct-start {
+    height: 22px !important;
 }

@@ -14,23 +14,16 @@ import org.chartistjsf.model.chart.*;
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.TreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UrlPathHelper;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Slavo on 13.09.2016.
@@ -45,7 +38,19 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private PieChartModel pieChartModel;
+    VykazRadekDto generalOutcome;
+
+    @Getter
+    @Setter
+    VykazRadekDto generalDifference;
+
+    @Getter
+    @Setter
+    private PieChartModel pieChartModelIncome;
+
+    @Getter
+    @Setter
+    private PieChartModel pieChartModelOutcome;
 
     @Getter
     @Setter
@@ -53,11 +58,23 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private BarChartModel barChartModel;
+    List<VykazRadekDto> fiveOutcomes;
 
     @Getter
     @Setter
-    VykazRadekDto selectedVykaz;
+    private BarChartModel barChartModelIncome;
+
+    @Getter
+    @Setter
+    private BarChartModel barChartModelOutcome;
+
+    @Getter
+    @Setter
+    VykazRadekDto selectedVykazIncome;
+
+    @Getter
+    @Setter
+    VykazRadekDto selectedVykazOutcome;
 
     @Autowired
     @Setter
@@ -84,7 +101,11 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private TreeNode root;
+    private TreeNode rootIncomes;
+
+    @Getter
+    @Setter
+    private TreeNode rootOutcomes;
 
     @Getter
     @Setter
@@ -118,8 +139,8 @@ public class ClickableBudgetView implements Serializable {
     public String onYearChange(String year) {
 
         selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear(selectedCity, year).toString().substring(5, 7);
-        root = null;
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
+        rootIncomes = null;
+        rootIncomes = incomeAndOutcomeService.createIncomes(selectedMonth, selectedCity, year);
         selectedYear = year;
         return year;
     }
@@ -133,12 +154,16 @@ public class ClickableBudgetView implements Serializable {
         MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
         selectedMonth = monthFormatterReverse.monthFormat(month);
         selectedCity = "Nelahozeves";
-        root = null;
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(selectedMonth, selectedCity, year);
+        rootIncomes = null;
+        rootOutcomes = null;
+        rootIncomes = incomeAndOutcomeService.createIncomes(selectedMonth, selectedCity, year);
+        rootOutcomes = incomeAndOutcomeService.createOutcomes(selectedMonth, selectedCity, year);
         generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, year, selectedMonth);
-        createPieChart();
+        generalOutcome = incomeAndOutcomeService.getAllVydaje(selectedCity, year, selectedMonth);
+        createPieChartOutcome();
         return month;
     }
+
 
     @PostConstruct
     public void init() {
@@ -146,42 +171,58 @@ public class ClickableBudgetView implements Serializable {
         selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
         selectedYear = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(0, 4);
         fiveIncomes = incomeAndOutcomeService.getFiveIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
-        root = incomeAndOutcomeService.createIncomesAndOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
+        fiveOutcomes = incomeAndOutcomeService.getFiveOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
 
-        selectedVykaz = incomeAndOutcomeService.createFirstRoots();
+        rootIncomes = incomeAndOutcomeService.createIncomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
+        rootOutcomes = incomeAndOutcomeService.createOutcomes(incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7), selectedCity, selectedYear);
 
-        barChartModel = createBarModelExpand(selectedVykaz);
+        selectedVykazIncome = incomeAndOutcomeService.createFirstRootsIncome();
+        selectedVykazOutcome = incomeAndOutcomeService.createFirstRootsOutcome();
 
-        //barChartModel.getAxis(AxisType.Y).setLabelInterpolationFnc("##,## CZ");
-       /* System.out.println(barChartModel.getAxis(AxisType.Y).getLabelInterpolationFnc());
-        System.out.println(barChartModel.getAxis(AxisType.Y).getAxisPosition());
-        System.out.println(barChartModel.getAxis(AxisType.X).getLabelInterpolationFnc());
-
-        System.out.println(barChartModel.getAxis(AxisType.Y).getOffset());
-        System.out.println(barChartModel.getAxis(AxisType.Y).getScaleMinSpace());
-        System.out.println(barChartModel.getAxis(AxisType.Y).getXLabelOffset());*/
-
-        //System.out.println(barChartModel.getSeries().get(0).getData().toString());
-        //System.out.println(barChartModel.get().get(0).toString());
+        barChartModelIncome = createBarModelExpandIncome(selectedVykazIncome);
+        barChartModelOutcome = createBarModelExpandOutcome(selectedVykazOutcome);
 
         generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, selectedYear, incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7));
-        createPieChart();
+        generalOutcome = incomeAndOutcomeService.getAllVydaje(selectedCity, selectedYear, incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7));
+        generalDifference = difference(selectedCity, selectedYear, selectedMonth, generalIncome, generalOutcome);
+        createPieChartIncome();
+        createPieChartOutcome();
         selectedMonth = incomeAndOutcomeService.getLastDateByCity(selectedCity).toString().substring(5, 7);
     }
 
-    public void onNodeExpand(VykazRadekDto vykaz) {
-        createBarModelExpand(vykaz);
+    public VykazRadekDto difference(String selectedCity, String selectedYear, String selectedMonth, VykazRadekDto generalIncome, VykazRadekDto generalOutcome) {
+
+        VykazRadekDto newDifference = new VykazRadekDto();
+        newDifference.setApprovedBudget(generalIncome.getApprovedBudget() - generalOutcome.getApprovedBudget());
+        newDifference.setAdjustedBudget(generalIncome.getAdjustedBudget() - generalOutcome.getAdjustedBudget());
+        newDifference.setSpentBudget(generalIncome.getSpentBudget() - generalOutcome.getSpentBudget());
+        //newDifference.setStateInt((generalIncome.getStateInt() + generalOutcome.getStateInt()) / 2);
+        newDifference.setStateInt2(String.valueOf((generalIncome.getStateInt() + generalOutcome.getStateInt()) / 2) + "%");
+        return newDifference;
     }
 
-    public void onNodeCollapse(VykazRadekDto vykaz) {
-        vykaz = selectedVykaz;
-        createBarModelExpand(vykaz);
+    public void onNodeExpandIncome(VykazRadekDto vykaz) {
+        createBarModelExpandIncome(vykaz);
     }
 
-    public BarChartModel createBarModelExpand(VykazRadekDto selectedVykaz) {
+    public void onNodeCollapseIncome(VykazRadekDto vykaz) {
+        vykaz = selectedVykazIncome;
+        createBarModelExpandIncome(vykaz);
+    }
+
+    public void onNodeExpandOutcome(VykazRadekDto vykaz) {
+        createBarModelExpandOutcome(vykaz);
+    }
+
+    public void onNodeCollapseOutcome(VykazRadekDto vykaz) {
+        vykaz = selectedVykazOutcome;
+        createBarModelExpandOutcome(vykaz);
+    }
+
+    public BarChartModel createBarModelExpandIncome(VykazRadekDto selectedVykaz) {
         //Random random = new Random();
-        barChartModel = new BarChartModel();
-        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
+        barChartModelIncome = new BarChartModel();
+        barChartModelIncome.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
 
         BarChartSeries series1 = new BarChartSeries();
         BarChartSeries series2 = new BarChartSeries();
@@ -189,39 +230,39 @@ public class ClickableBudgetView implements Serializable {
         series2.setName("Prijate");
 
         for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
-            barChartModel.addLabel(vyk.getName());
+            barChartModelIncome.addLabel(vyk.getName());
             series1.set(vyk.getApprovedBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
-        barChartModel.addSeries(series1);
-        barChartModel.addSeries(series2);
+        barChartModelIncome.addSeries(series1);
+        barChartModelIncome.addSeries(series2);
 
-        Axis xAxis = barChartModel.getAxis(AxisType.X);
+        Axis xAxis = barChartModelIncome.getAxis(AxisType.X);
         xAxis.setShowGrid(false);
         xAxis.setAxisPosition(AxisPosition.START);
 
-        barChartModel.getAxis(AxisType.Y).setYLabelOffset(50);
-        barChartModel.getAxis(AxisType.Y).setScaleMinSpace(40);
+        barChartModelIncome.getAxis(AxisType.Y).setYLabelOffset(50);
+        barChartModelIncome.getAxis(AxisType.Y).setScaleMinSpace(40);
 
-        Axis yAxis = barChartModel.getAxis(AxisType.Y);
+        Axis yAxis = barChartModelIncome.getAxis(AxisType.Y);
         yAxis.setShowGrid(true);
         yAxis.setYLabelOffset(2);
         yAxis.setAxisPosition(AxisPosition.START);
         yAxis.setShowLabel(false);
-        //System.out.println(barChartModel.getSeries().get(0).getData().toString());
+        //System.out.println(barChartModelIncome.getSeries().get(0).getData().toString());
 
-        //barChartModel.setShowTooltip(true);
-        barChartModel.setSeriesBarDistance(15);
-        barChartModel.setStackBars(true);
-        //barChartModel.setAnimateAdvanced(true);
-        return barChartModel;
+        //barChartModelIncome.setShowTooltip(true);
+        barChartModelIncome.setSeriesBarDistance(15);
+        barChartModelIncome.setStackBars(true);
+        //barChartModelIncome.setAnimateAdvanced(true);
+        return barChartModelIncome;
     }
 
-    public BarChartModel createBarModelCollapse(VykazRadekDto selectedVykaz) {
+    public BarChartModel createBarModelCollapseIncome(VykazRadekDto selectedVykaz) {
 
-        barChartModel = new BarChartModel();
-        barChartModel.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
+        barChartModelIncome = new BarChartModel();
+        barChartModelIncome.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
 
         BarChartSeries series1 = new BarChartSeries();
         BarChartSeries series2 = new BarChartSeries();
@@ -229,39 +270,127 @@ public class ClickableBudgetView implements Serializable {
         series2.setName("Prijate");
 
         for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
-            barChartModel.addLabel(vyk.getName());
+            barChartModelIncome.addLabel(vyk.getName());
             series1.set(vyk.getApprovedBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
-        barChartModel.addSeries(series1);
-        barChartModel.addSeries(series2);
+        barChartModelIncome.addSeries(series1);
+        barChartModelIncome.addSeries(series2);
 
-        Axis xAxis = barChartModel.getAxis(AxisType.X);
+        Axis xAxis = barChartModelIncome.getAxis(AxisType.X);
         xAxis.setShowGrid(false);
 
-        barChartModel.setShowTooltip(true);
-        barChartModel.setSeriesBarDistance(15);
-        barChartModel.setStackBars(true);
+        barChartModelIncome.setShowTooltip(true);
+        barChartModelIncome.setSeriesBarDistance(15);
+        barChartModelIncome.setStackBars(true);
 
-        return barChartModel;
+        return barChartModelIncome;
     }
 
-    public void createPieChart() {
-        pieChartModel = new PieChartModel();
+    public BarChartModel createBarModelExpandOutcome(VykazRadekDto selectedVykaz) {
+        //Random random = new Random();
+        barChartModelOutcome = new BarChartModel();
+        barChartModelOutcome.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
 
-        pieChartModel.addLabel("Přijde");
-        pieChartModel.addLabel("Přišlo");
+        BarChartSeries series1 = new BarChartSeries();
+        BarChartSeries series2 = new BarChartSeries();
+        series1.setName("Prijate");
+        series2.setName("Prijate");
 
-        pieChartModel.set(generalIncome.getAdjustedBudget());
-        pieChartModel.set(generalIncome.getAdjustedBudget() - generalIncome.getSpentBudget());
+        for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
+            barChartModelOutcome.addLabel(vyk.getName());
+            series1.set(vyk.getApprovedBudget());
+            series2.set(vyk.getAdjustedBudget());
+        }
+
+        barChartModelOutcome.addSeries(series1);
+        barChartModelOutcome.addSeries(series2);
+
+        Axis xAxis = barChartModelOutcome.getAxis(AxisType.X);
+        xAxis.setShowGrid(false);
+        xAxis.setAxisPosition(AxisPosition.START);
+
+        barChartModelOutcome.getAxis(AxisType.Y).setYLabelOffset(50);
+        barChartModelOutcome.getAxis(AxisType.Y).setScaleMinSpace(40);
+
+        Axis yAxis = barChartModelOutcome.getAxis(AxisType.Y);
+        yAxis.setShowGrid(true);
+        yAxis.setYLabelOffset(2);
+        yAxis.setAxisPosition(AxisPosition.START);
+        yAxis.setShowLabel(false);
+        //System.out.println(barChartModelIncome.getSeries().get(0).getData().toString());
+
+        //barChartModelIncome.setShowTooltip(true);
+        barChartModelOutcome.setSeriesBarDistance(15);
+        barChartModelOutcome.setStackBars(true);
+        //barChartModelIncome.setAnimateAdvanced(true);
+        return barChartModelOutcome;
+    }
+
+    public BarChartModel createBarModelCollapseOutcome(VykazRadekDto selectedVykaz) {
+
+        barChartModelOutcome = new BarChartModel();
+        barChartModelOutcome.setAspectRatio(AspectRatio.DOUBLE_OCTAVE);
+
+        BarChartSeries series1 = new BarChartSeries();
+        BarChartSeries series2 = new BarChartSeries();
+        series1.setName("Prijate");
+        series2.setName("Prijate");
+
+        for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
+            barChartModelOutcome.addLabel(vyk.getName());
+            series1.set(vyk.getApprovedBudget());
+            series2.set(vyk.getAdjustedBudget());
+        }
+
+        barChartModelOutcome.addSeries(series1);
+        barChartModelOutcome.addSeries(series2);
+
+        Axis xAxis = barChartModelOutcome.getAxis(AxisType.X);
+        xAxis.setShowGrid(false);
+
+        barChartModelOutcome.setShowTooltip(true);
+        barChartModelOutcome.setSeriesBarDistance(15);
+        barChartModelOutcome.setStackBars(true);
+
+        return barChartModelOutcome;
+    }
+
+    public void createPieChartOutcome() {
+        pieChartModelOutcome = new PieChartModel();
+
+        pieChartModelOutcome.addLabel("Utratili jsme");
+        pieChartModelOutcome.addLabel("Utratíme");
+
+        pieChartModelOutcome.set(generalOutcome.getAdjustedBudget());
+        pieChartModelOutcome.set(generalOutcome.getAdjustedBudget() - generalOutcome.getSpentBudget());
 
         //pieChartModel.setShowTooltip(true);
     }
 
-    public void pieItemSelect(ItemSelectEvent event) {
+    public void createPieChartIncome() {
+        pieChartModelIncome = new PieChartModel();
+
+        pieChartModelIncome.addLabel("Přijde");
+        pieChartModelIncome.addLabel("Přišlo");
+
+        pieChartModelIncome.set(generalIncome.getAdjustedBudget());
+        pieChartModelIncome.set(generalIncome.getAdjustedBudget() - generalIncome.getSpentBudget());
+
+        //pieChartModel.setShowTooltip(true);
+    }
+
+    public void pieItemSelectIncome(ItemSelectEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected", "Item Value: "
-                + pieChartModel.getData().get(event.getItemIndex()));
+                + pieChartModelIncome.getData().get(event.getItemIndex()));
+
+        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
+    }
+
+    public void pieItemSelectOutcome(ItemSelectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected", "Item Value: "
+                + pieChartModelOutcome.getData().get(event.getItemIndex()));
 
         FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
     }
@@ -274,6 +403,10 @@ public class ClickableBudgetView implements Serializable {
     @Setter
     private boolean incRen = true;
 
+    @Getter
+    @Setter
+    private boolean outRen = true;
+
     public boolean renderIncomesAndOutcomes() {
         incAndOutRen = !incAndOutRen;
 
@@ -284,6 +417,11 @@ public class ClickableBudgetView implements Serializable {
     public void renderIncomes() {
         incRen = !incRen;
         System.out.println("finding..... (" + incRen + ")" + this);
+    }
+
+    public void renderOutcomes() {
+        outRen = !outRen;
+        System.out.println("finding..... (" + outRen + ")" + this);
     }
 
 }

@@ -142,7 +142,7 @@ public class ApplicationConfig extends SpringBootServletInitializer {
                 DispatcherType.ASYNC,
                 DispatcherType.ERROR);
 
-        // Attach the filter to the root URL for the website. e.g.) http://www.example.com
+        // Attach the filter to the rootIncomes URL for the website. e.g.) http://www.example.com
         rewriteFilter.addUrlPatterns("");
 
         return rewriteFilter;

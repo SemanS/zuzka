@@ -43,6 +43,14 @@
                     </ui:insert>
                 </h:panelGroup>
             </h:panelGroup>
+
+            <h:panelGroup id="renderOutcomes">
+                <h:panelGroup layout="block" rendered="#{clickableBudgetView.outRen}">
+                    <ui:insert name="mainOutcomes">
+                        <ui:include src="/templates/mainOutcomes.xhtml"/>
+                    </ui:insert>
+                </h:panelGroup>
+            </h:panelGroup>
         </div>
 
     </h:body>

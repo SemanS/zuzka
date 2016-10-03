@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.webinson.clickablebudget.assembler.VykazRadekIncomeAssembler;
 import com.webinson.clickablebudget.dao.IncomeDao;
 import com.webinson.clickablebudget.dao.IncomeDecreeCzechDao;
+import com.webinson.clickablebudget.dao.OutcomeDao;
 import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.entity.Income;
 import com.webinson.clickablebudget.entity.QIncome;
@@ -45,6 +46,9 @@ public class IncomeDecreeTest {
     IncomeDao incomeDao;
 
     @Autowired
+    OutcomeDao outcomeDao;
+
+    @Autowired
     VykazRadekIncomeAssembler vykazRadekIncomeAssembler;
 
     @PersistenceContext
@@ -74,18 +78,18 @@ public class IncomeDecreeTest {
 
 
 
-            /*HashMap<String, VykazRadekDto> mapper = new HashMap();
+            /*HashMap<String, VykazRadekDto> mapperIncome = new HashMap();
 
-            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(i)));
+            List<VykazRadekDto> vykazy = vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString(1, String.valueOf(i)));
 
             for (VykazRadekDto vyk : vykazy) {
-                mapper.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(1, String.valueOf(vyk.getPolozka().substring(0, 1)))));
-                mapper.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(2, String.valueOf(vyk.getPolozka().substring(0, 2)))));
-                mapper.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
-                mapper.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString2(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
-                mapper.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString2(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
+                mapperIncome.put(vyk.getPolozka().substring(0, 1), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString(1, String.valueOf(vyk.getPolozka().substring(0, 1)))));
+                mapperIncome.put(vyk.getPolozka().substring(0, 2), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString(2, String.valueOf(vyk.getPolozka().substring(0, 2)))));
+                mapperIncome.put(vyk.getPolozka().substring(0, 3), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
+                mapperIncome.get(vyk.getPolozka().substring(0, 3)).setChildren(vykazRadekIncomeAssembler.toDtos(incomeDao.findIncomeByPolozkaString(3, String.valueOf(vyk.getPolozka().substring(0, 3)))));
+                mapperIncome.put(vyk.getPolozka().substring(0, 4), vykazRadekIncomeAssembler.dtosToDto(incomeDao.findIncomeByPolozkaString(4, String.valueOf(vyk.getPolozka().substring(0, 4)))));
                 try {
-                    mapper.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(vyk.getPolozka()).getName());
+                    mapperIncome.get(vyk.getPolozka().substring(0, 4)).setName(decreeCzechDao.findIncomeDecreeCzechByKlass(vyk.getPolozka()).getName());
                 } catch (RuntimeException e) {
                     System.out.println("somarina");
                 }
@@ -93,7 +97,7 @@ public class IncomeDecreeTest {
 
             }*/
 
-        //System.out.println(mapper.get("1").getPolozka());
+        //System.out.println(mapperIncome.get("1").getPolozka());
     }
 
     @Test
@@ -175,6 +179,13 @@ public class IncomeDecreeTest {
         System.out.println(unique.get(0).getPolozka());
         System.out.println(unique.get(1).getPolozka());
 
+    }
+
+    @Test
+    public void Testikos() {
+        for (String o : outcomeDao.findDistinctVykazy("Nelahozeves", "04", "2015")) {
+            System.out.println(o);
+        }
     }
 
 }
