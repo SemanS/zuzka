@@ -19,6 +19,7 @@ import com.webinson.clickablebudget.service.IncomeAndOutcomeService;
 import com.webinson.clickablebudget.utils.Converter;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,14 @@ public class FileMBean implements Serializable {
     @Setter
     private UploadedFile uploadedFile;
 
-    @Getter
-    @Setter
     private Part file;
+
+    public void fileUploadListener(FileUploadEvent e) {
+        // Get uploaded file from the FileUploadEvent
+        this.uploadedFile = e.getFile();
+        // Print out the information of the file
+        System.out.println("Uploaded File Name Is :: " + uploadedFile.getFileName() + " :: Uploaded File Size :: " + uploadedFile.getSize());
+    }
 
 
     public static Collection<Part> getAllParts(Part part) throws ServletException, IOException {
@@ -51,10 +57,15 @@ public class FileMBean implements Serializable {
     }
 
     public void upload() throws ParserConfigurationException, SAXException, IOException, ServletException {
-
+        //IncomeAndOutcomeDto incomeAndOutcomes = new IncomeAndOutcomeDto();
         for (Part part : getAllParts(file)) {
             try {
-                parseIncomeAndOutcome();
+                IncomeAndOutcomeDto incomeAndOutcomes = new IncomeAndOutcomeDto();
+                incomeAndOutcomes = (IncomeAndOutcomeDto) converter.doUnMarshaling(simpleTransform(file.getInputStream(),
+                        "jdm.xsl"));
+                incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
+                incomeAndOutcomeService.saveOutcomes(incomeAndOutcomes);
+                //parseIncomeAndOutcome();
             } catch (IOException e) {
                 // Error handling
             }
@@ -62,7 +73,7 @@ public class FileMBean implements Serializable {
     }
 
     public InputStream simpleTransform(InputStream inputStream, String xsltPath) throws UnsupportedEncodingException {
-        System.out.println("Marshaling performed");
+
         TransformerFactory tFactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
 
         StringWriter xmlAsWriter = new StringWriter();
@@ -93,8 +104,15 @@ public class FileMBean implements Serializable {
             e.printStackTrace();
         }
 
-        System.out.println(incomeAndOutcomes.getOutcomes().get(0).getApprovedBudget());
         incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
         incomeAndOutcomeService.saveOutcomes(incomeAndOutcomes);
+    }
+
+    public Part getFile() {
+        return null; // Important!
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
     }
 }

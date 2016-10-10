@@ -24,7 +24,7 @@
 <div class="ui-g">
     <h:form id="months">
         <ui:repeat var="month" value="#{clickableBudgetView.getMonths(thisYear)}">
-            <p:commandLink id="monthCommandLink" update=":form :generalIncomes: :stateOfDate monthCommandLink"
+            <p:commandLink id="monthCommandLink" update=":form :generalIncomes: :formBarOutcome :formBarIncome :formMainOutcome :stateOfDate monthCommandLink"
                            action="#{clickableBudgetView.onMonthChange(month, thisYear)}"
                            style="text-decoration: none; color: black;">
                 <h:outputText value="#{month}" style="margin-right:10px;"/>

@@ -18,34 +18,37 @@
     <br/>
 </div>
 
-
+<!--
 <div>
     <h:form id="formBarIncome">
         <div class="barChartIncome">
             <ct:chart id="barChartIncome" type="bar" model="#{clickableBudgetView.barChartModelIncome}">
-                <!--<p:ajax event="itemSelect" listener="#{clickableBudgetView.barItemSelect}"
-                        update="barChartMessage"/>-->
+                &lt;!&ndash;<p:ajax event="itemSelect" listener="#{clickableBudgetView.barItemSelect}"
+                        update="barChartMessage"/>&ndash;&gt;
             </ct:chart>
 
             <p:message id="barChartMessage" for="barChartIncome" showDetail="true"/>
         </div>
     </h:form>
     <br/>
-</div>
+</div>-->
 
 
 <div class="ui-g">
     <h:form id="form">
         <p:treeTable value="#{clickableBudgetView.rootIncomes}" var="vykazRadekDto"
                      style="font-size: 100% !important;">
-            <p:ajax event="expand" update=":formBarIncome"
+            <p:ajax event="expand" update=""
                     listener="#{clickableBudgetView.onNodeExpandIncome(vykazRadekDto)}"/>
             <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapseIncome(vykazRadekDto)}"
-                    update=":formBarIncome"/>
+                    update=""/>
+            <!--<f:facet name="header">
+                Document Viewer
+            </f:facet>-->
             <p:column headerText="Název" style="width:70%">
                 <h:outputText value="#{vykazRadekDto.name}"/>
             </p:column>
-            <p:column headerText="Schválený rozpočet" style="width:20%">
+            <!--<p:column headerText="Schválený rozpočet" style="width:20%">
                 <h:outputText value="#{vykazRadekDto.stringApprovedBudget}"/>
             </p:column>
             <p:column headerText="Upravený rozpočet" style="width:20%">
@@ -56,7 +59,14 @@
             </p:column>
             <p:column headerText="Stav" style="width:40px">
                 <h:outputText value="#{vykazRadekDto.state}"/>
-            </p:column>
+            </p:column>-->
+            <!--<p:column style="width:24px">
+                <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()"
+                               title="View Detail" styleClass="ui-icon ui-icon-search">
+                    <f:setPropertyActionListener value="#{vykazRadekDto}"
+                                                 target="#{clickableBudgetView.selectedVykazRadek}"/>
+                </p:commandLink>
+            </p:column>-->
         </p:treeTable>
 
         <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog"
@@ -68,7 +78,7 @@
                     <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadekIncome.name}"
                                   style="font-weight:bold"/>
 
-                    <h:outputLabel for="approvedBudget" value="Size: "/>
+                    <!--<h:outputLabel for="approvedBudget" value="Size: "/>
                     <h:outputText id="approvedBudget"
                                   value="#{clickableBudgetView.selectedVykazRadekIncome.stringApprovedBudget}"
                                   style="font-weight:bold"/>
@@ -81,11 +91,11 @@
                     <h:outputLabel for="spentBudget" value="Size: "/>
                     <h:outputText id="spentBudget"
                                   value="#{clickableBudgetView.selectedVykazRadekIncome.stringSpentBudget}"
-                                  style="font-weight:bold"/>
+                                  style="font-weight:bold"/>-->
 
                     <h:outputLabel for="state" value="Size: "/>
                     <h:outputText id="state"
-                                  value="#{clickableBudgetView.selectedVykazRadekIncome.state}"
+                                  value="detail"
                                   style="font-weight:bold"/>
 
                 </p:panelGrid>

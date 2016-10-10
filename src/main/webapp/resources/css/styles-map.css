@@ -1,0 +1,17 @@
+div.mainContainer {
+    padding-right: 150px;
+    padding-left: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+div.search {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ui-inputfield {
+    width: 500px;
+    height: 30px;
+}

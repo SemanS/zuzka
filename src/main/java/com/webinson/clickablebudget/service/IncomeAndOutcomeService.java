@@ -41,5 +41,9 @@ public interface IncomeAndOutcomeService {
 
     public VykazRadekDto getAllVydaje(String city, String year, String month);
 
+    public VykazRadekDto getAllPrijmyForBar(String city, String year, String month);
+
+    public VykazRadekDto getAllVydajeForBar(String city, String year, String month);
+
     TreeNode createOutcomes(String substring, String selectedCity, String selectedYear);
 }

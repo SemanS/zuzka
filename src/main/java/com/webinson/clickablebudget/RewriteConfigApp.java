@@ -27,8 +27,8 @@ public class RewriteConfigApp extends HttpConfigurationProvider {
     @Override
     public Configuration getConfiguration(final ServletContext context) {
         return ConfigurationBuilder.begin()
-                .addRule(Join.path("/upload").to("/fileUpload.xhtml"));
-                /*.addRule(Join.path("/nela").to("/index.xhtml"))*/
+                .addRule(Join.path("/upload").to("/fileUpload.xhtml"))
+                .addRule(Join.path("/").to("/map.xhtml"));
                 /*.addRule()
                 .when(Direction.isInbound().and(Path.matches("/index.xhtml")))
                 .perform(Forward.to("/Nelahozeves"));*/

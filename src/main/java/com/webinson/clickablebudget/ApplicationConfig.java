@@ -22,6 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.oxm.castor.CastorMarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
@@ -73,6 +74,14 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         return registrationBean;
     }
 
+    /*@Bean
+    public FilterRegistrationBean FileUploadFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new org.primefaces.webapp.filter.FileUploadFilter());
+        registration.setName("PrimeFaces FileUpload Filter");
+        return registration;
+    }
+*/
     @Bean
     public ServletRegistrationBean facesServletRegistration() {
         ServletRegistrationBean registration = new ServletRegistrationBean(facesServlet(), "*.xhtml");
@@ -122,14 +131,6 @@ public class ApplicationConfig extends SpringBootServletInitializer {
         map.put("jaxb.formatted.output", true);
         jaxb2Marshaller.setMarshallerProperties(map);
         return jaxb2Marshaller;
-    }
-
-    @Bean
-    public FilterRegistrationBean FileUploadFilter() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new org.primefaces.webapp.filter.FileUploadFilter());
-        registration.setName("PrimeFaces FileUpload Filter");
-        return registration;
     }
 
     /*@Bean

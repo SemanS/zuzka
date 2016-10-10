@@ -109,7 +109,11 @@ public class ClickableBudgetView implements Serializable {
 
     @Getter
     @Setter
-    private VykazRadekDto selectedVykazRadek;
+    private VykazRadekDto selectedVykazRadekIncome;
+
+    @Getter
+    @Setter
+    private VykazRadekDto selectedVykazRadekOutcome;
 
     @Getter
     @Setter
@@ -141,6 +145,7 @@ public class ClickableBudgetView implements Serializable {
         selectedMonth = incomeAndOutcomeService.getLastDateByCityAndYear(selectedCity, year).toString().substring(5, 7);
         rootIncomes = null;
         rootIncomes = incomeAndOutcomeService.createIncomes(selectedMonth, selectedCity, year);
+        rootOutcomes = incomeAndOutcomeService.createOutcomes(selectedMonth, selectedCity, year);
         selectedYear = year;
         return year;
     }
@@ -153,13 +158,18 @@ public class ClickableBudgetView implements Serializable {
 
         MonthFormatterReverse monthFormatterReverse = new MonthFormatterReverse();
         selectedMonth = monthFormatterReverse.monthFormat(month);
-        selectedCity = "Nelahozeves";
+        selectedCity = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
         rootIncomes = null;
         rootOutcomes = null;
         rootIncomes = incomeAndOutcomeService.createIncomes(selectedMonth, selectedCity, year);
         rootOutcomes = incomeAndOutcomeService.createOutcomes(selectedMonth, selectedCity, year);
         generalIncome = incomeAndOutcomeService.getAllPrijmy(selectedCity, year, selectedMonth);
         generalOutcome = incomeAndOutcomeService.getAllVydaje(selectedCity, year, selectedMonth);
+
+        barChartModelIncome = createBarModelExpandIncome(incomeAndOutcomeService.getAllPrijmyForBar(selectedCity, year, selectedMonth));
+        barChartModelOutcome = createBarModelExpandOutcome(incomeAndOutcomeService.getAllVydajeForBar(selectedCity, year, selectedMonth));
+
+        createPieChartIncome();
         createPieChartOutcome();
         return month;
     }
@@ -231,7 +241,7 @@ public class ClickableBudgetView implements Serializable {
 
         for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
             barChartModelIncome.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
+            series1.set(vyk.getSpentBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
@@ -250,12 +260,12 @@ public class ClickableBudgetView implements Serializable {
         yAxis.setYLabelOffset(2);
         yAxis.setAxisPosition(AxisPosition.START);
         yAxis.setShowLabel(false);
-        //System.out.println(barChartModelIncome.getSeries().get(0).getData().toString());
 
         //barChartModelIncome.setShowTooltip(true);
         barChartModelIncome.setSeriesBarDistance(15);
         barChartModelIncome.setStackBars(true);
-        //barChartModelIncome.setAnimateAdvanced(true);
+        barChartModelIncome.setAnimateAdvanced(false);
+        barChartModelIncome.setAnimatePath(true);
         return barChartModelIncome;
     }
 
@@ -271,7 +281,7 @@ public class ClickableBudgetView implements Serializable {
 
         for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
             barChartModelIncome.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
+            series1.set(vyk.getSpentBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
@@ -300,7 +310,7 @@ public class ClickableBudgetView implements Serializable {
 
         for (VykazRadekDto vyk : selectedVykaz.getChildren()) {
             barChartModelOutcome.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
+            series1.set(vyk.getSpentBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
@@ -340,7 +350,7 @@ public class ClickableBudgetView implements Serializable {
 
         for (VykazRadekDto vyk : selectedVykaz.getParent().getChildren()) {
             barChartModelOutcome.addLabel(vyk.getName());
-            series1.set(vyk.getApprovedBudget());
+            series1.set(vyk.getSpentBudget());
             series2.set(vyk.getAdjustedBudget());
         }
 
@@ -360,8 +370,8 @@ public class ClickableBudgetView implements Serializable {
     public void createPieChartOutcome() {
         pieChartModelOutcome = new PieChartModel();
 
-        pieChartModelOutcome.addLabel("Utratili jsme");
-        pieChartModelOutcome.addLabel("Utratíme");
+        pieChartModelOutcome.addLabel("Vyčerpáno");
+        pieChartModelOutcome.addLabel("Vyčerpáme");
 
         pieChartModelOutcome.set(generalOutcome.getAdjustedBudget());
         pieChartModelOutcome.set(generalOutcome.getAdjustedBudget() - generalOutcome.getSpentBudget());

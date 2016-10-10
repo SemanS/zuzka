@@ -73,29 +73,29 @@
                   modal="true" resizable="false">
             <p:outputPanel id="documentPanel">
                 <p:panelGrid columns="2" columnClasses="label,value"
-                             rendered="#{not empty clickableBudgetView.selectedVykazRadek}">
+                             rendered="#{not empty clickableBudgetView.selectedVykazRadekOutcome}">
                     <h:outputLabel for="name" value="Name: "/>
-                    <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadek.name}"
+                    <h:outputText id="name" value="#{clickableBudgetView.selectedVykazRadekOutcome.name}"
                                   style="font-weight:bold"/>
 
                     <h:outputLabel for="approvedBudget" value="Size: "/>
                     <h:outputText id="approvedBudget"
-                                  value="#{clickableBudgetView.selectedVykazRadek.stringApprovedBudget}"
+                                  value="#{clickableBudgetView.selectedVykazRadekOutcome.stringApprovedBudget}"
                                   style="font-weight:bold"/>
 
                     <h:outputLabel for="adjustedBudget" value="Size: "/>
                     <h:outputText id="adjustedBudget"
-                                  value="#{clickableBudgetView.selectedVykazRadek.stringAdjustedBudget}"
+                                  value="#{clickableBudgetView.selectedVykazRadekOutcome.stringAdjustedBudget}"
                                   style="font-weight:bold"/>
 
                     <h:outputLabel for="spentBudget" value="Size: "/>
                     <h:outputText id="spentBudget"
-                                  value="#{clickableBudgetView.selectedVykazRadek.stringSpentBudget}"
+                                  value="#{clickableBudgetView.selectedVykazRadekOutcome.stringSpentBudget}"
                                   style="font-weight:bold"/>
 
                     <h:outputLabel for="state" value="Size: "/>
                     <h:outputText id="state"
-                                  value="#{clickableBudgetView.selectedVykazRadek.state}"
+                                  value="#{clickableBudgetView.selectedVykazRadekOutcome.state}"
                                   style="font-weight:bold"/>
 
                 </p:panelGrid>

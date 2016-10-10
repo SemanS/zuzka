@@ -32,7 +32,6 @@ div.mainContainer {
     font-size: 1rem !important;
     font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif !important;
     line-height: 1;
-
 }
 
 /*
@@ -44,11 +43,23 @@ div.mainContainer {
 }
 */
 
+.ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default {
+    color: #000000;
+
+}
+
+.ui-toolbar .ui-widget .ui-widget-header .ui-corner-all .ui-helper-clearfix {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
 .ui-widget button.ui-state-default {
     background-color: transparent !important;
     border: none !important;
     font-weight: normal !important;
-    font-size: larger !important;
+    color: #000000 !important;
 }
 
 .greenStyleBarInc .fa-bar-chart {
@@ -64,8 +75,7 @@ div.mainContainer {
 }
 
 body {
-    margin: 0px;
-!important;
+    margin: 0px !important;
 }
 
 div.mainContainer {
@@ -126,4 +136,16 @@ span.ct-label.ct-vertical.ct-start {
 
 span.ct-label.ct-horizontal.ct-start {
     height: 22px !important;
+}
+
+body {
+    background-color: whitesmoke !important;
+}
+
+.firstIncomePanel .ui-panel .ui-panel-title {
+    color: #0F7C14 !important;
+}
+
+.firstOutcomePanel .ui-panel .ui-panel-title {
+    color: #eb0003 !important;
 }

@@ -158,6 +158,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         return null;
     }
 
+
     public TreeNode createIncomes(String selectedMonth, String selectedCity, String selectedYear) {
 
         TreeNode rootNode = new DefaultTreeNode(new VykazRadekDto("name", 1.0, 2.0, 3.0), null);
@@ -258,9 +259,7 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
 
         VykazRadekDto prijmy = new VykazRadekDto();
         prijmy = vykazRadekIncomeAssembler.dtosToDto(incomeDao.findGeneralIncome(city, month, year));
-
         //System.out.println(prijmy.getApprovedBudget());
-
         return prijmy;
     }
 
@@ -271,6 +270,22 @@ public class IncomeAndOutcomeServiceImpl implements IncomeAndOutcomeService {
         vydaje = vykazRadekOutcomeAssembler.dtosToDto(outcomeDao.findGeneralOutcome(city, month, year));
 
         return vydaje;
+    }
+
+    @Override
+    public VykazRadekDto getAllPrijmyForBar(String city, String year, String month) {
+        List<VykazRadekDto> vykazRadekRootNodeList = getIncomeVykazRadekRoot(year, month, city);
+        VykazRadekDto vykaz = new VykazRadekDto();
+        vykaz.setChildren(vykazRadekRootNodeList);
+        return vykaz;
+    }
+
+    @Override
+    public VykazRadekDto getAllVydajeForBar(String city, String year, String month) {
+        List<VykazRadekDto> vykazRadekRootNodeList = getOutcomeVykazRadekRoot(year, month, city);
+        VykazRadekDto vykaz = new VykazRadekDto();
+        vykaz.setChildren(vykazRadekRootNodeList);
+        return vykaz;
     }
 
     @Override
