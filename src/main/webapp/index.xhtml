@@ -7,13 +7,18 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ct="http://www.chartistjsf.org/charts">
+      xmlns:ct="http://www.chartistjsf.org/charts"
+      data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
 
 <f:view contentType="text/html">
 
-    <h:head/>
+    <h:head>
+        <title>rozpocetmesta.cz</title>
+    </h:head>
+
 
     <h:body>
+
         <h:outputStylesheet type="text/css" name="css/styles.css"/>
         <h:outputStylesheet name="css/font-awesome.css"/>
 
@@ -51,8 +56,18 @@
                     </ui:insert>
                 </h:panelGroup>
             </h:panelGroup>
+
+        </div>
+
+        <div class="footer">
+            <p:outputLabel style="margin-bottom: 10px;">© </p:outputLabel>
+            <h:outputLink type="button" title="Domov" value="http://www.webinson.com">webinson
+                <!--                 actionListener="#{clickableBudgetView.doRedirectHome()}"-->
+
+            </h:outputLink>
         </div>
 
     </h:body>
+
 </f:view>
 </html>

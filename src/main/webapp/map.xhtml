@@ -18,7 +18,7 @@
 
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARDLqRITKfWN-TJHweDzETztbodqmdOF8"
                     type="text/javascript"></script>
-            <p:growl id="growl" showDetail="true"/>
+            <!--<p:growl id="growl" showDetail="true"/>-->
 
             <div id="mainContainer" class="mainContainer">
 
@@ -33,20 +33,23 @@
                 <br/>
                 <p:gmap id="gmap" center="49.856062,15.780029" zoom="7" type="Map"
                         model="#{mapView.simpleModel}" style="width:100%;height:400px">
-                    <p:ajax event="overlaySelect" listener="#{mapView.onMarkerSelect}" update="growl"/>
+                    <p:ajax event="overlaySelect" listener="#{mapView.onMarkerSelect}"/>
                 </p:gmap>
                 <br/>
                 <br/>
 
+
+                <p:growl id="growl2" life="3000"/>
                 <div id="search" class="search">
                     <p:outputLabel value="Zadejte název obce: napr. Nelahozeves" for="acMinLength"/>
                     <br/>
-                    <p:autoComplete id="acMinLength" minQueryLength="3" value="#{autoCompleteView.txt2}"
-                                    completeMethod="#{autoCompleteView.completeText}" effect="fade"/>
-                    <p:button style="height: 40px;" outcome="index.xhtml" value="Hledat" icon="fa fa-search">
-                        <f:param name="productId" value="10"/>
-                    </p:button>
+                    <p:autoComplete id="acMinLength" minQueryLength="2" value="#{mapView.selectedCitySubmit}"
+                                    completeMethod="#{mapView.completeText}" effect="fade"/>
+                    <p:commandButton actionListener="#{mapView.onSubmit}" style="height: 40px;" value="Hledat"
+                                     icon="fa fa-search" update="growl2">
+                    </p:commandButton>
                 </div>
+                <br/>
                 <br/>
                 <br/>
                 <div class="ui-g">
@@ -57,7 +60,7 @@
                             <p:panel layout="block" id="transparentnost" header="Transparentnost">
 
                                 <p:outputPanel deferred="true">
-                                    <p>Slovo, ktoré je v poslednej dobe snáď najskloňovanejším v súvislosti so štátnou správou a samosprávami. To si uvedomujeme aj my, v Luminosity Digital, a preto prichádzame s riešením, ktoré približuje samosprávy k občanom.</p>
+                                    <p>Slovo, které je v posledí době snad nejvíce používaným v souvislosti se státní správou a samosprávami. To si uvědomujeme i my ve webinson a proto přicházíme s řešením které přibližuje samosprávy k občanům.</p>
                                 </p:outputPanel>
 
                             </p:panel>
@@ -67,10 +70,10 @@
                     <div class="ui-g-12 ui-md-6 ui-lg-4" style="padding-right: 0;">
 
                         <p:outputPanel id="containerPrehlednost" layout="block" style="text-align: center">
-                            <p:panel layout="block" id="prehlednost" header="Prehlednost">
+                            <p:panel layout="block" id="prehlednost" header="Přehlednost">
 
                                 <p:outputPanel deferred="true">
-                                    <p>Pohyby financií zverejňované v pdf či word formáte sú pre mnohých občanov neprehľadné a neposkytujú im jasný obraz o hospodárení samosprávy. Náš systém ocenia všetci občania pre jeho jednoduchosť a aktuálnosť.</p>
+                                    <p>Pohyby financí zveřejňované v pdf, či word formátu jsou pro mnoho občanů nepřehledné a neposkytují jim jasný obraz o hospodaření samosprávy. Náš systém ocení všichni obyvatelé pro jeho jednoduchost a aktuálnost.</p>
                                 </p:outputPanel>
 
                             </p:panel>
@@ -83,7 +86,7 @@
                             <p:panel layout="block" id="komplexnost" header="Komplexnost">
 
                                 <p:outputPanel deferred="true">
-                                    <p>Komplexnosť nášho riešenia sa pretavila do jednoduchej orientácie v aplikácii pre každého občana. Naše riešenie už oceňujú obyvatelia mestskej časti Praha 18.</p>
+                                    <p>Komplexnost našeho řešení posaveného na využití nejnovější technologie se přetavila do jednoduché orientace v aplikaci pro každého občana. Jednoduchost aplikace ocení všichni bez ohledu na počítačové dovednosti.</p>
                                 </p:outputPanel>
 
                             </p:panel>
@@ -91,10 +94,10 @@
                     </div>
 
                 </div>
-                <p:separator/>
+                <!--<p:separator/>-->
                 <div class="ui-g">
                     <h:form>
-                        <p:outputPanel deferred="true">
+                        <!--<p:outputPanel deferred="true">
                             <h3>Ako vizualizácia rozpočtu funguje?</h3>
                             <p>1. Spoločne určíme úroveň do akej budeme klikací rozpočet koncipovať
                                 <br/>
@@ -102,11 +105,20 @@
                                 <br/>
                                 3. Systém implementujeme na stránkach samosprávy v koordinácii s IT oddelením a prístupný bude vo forme odkliku (hyperlinkového odkazu)
                             </p>
-                        </p:outputPanel>
+                        </p:outputPanel>-->
                     </h:form>
                 </div>
             </div>
+            <div class="footer">
+                <p:outputLabel style="margin-bottom: 10px;">© </p:outputLabel>
+                <h:outputLink type="button" title="Domov" value="http://www.webinson.com">webinson
+                    <!--                 actionListener="#{clickableBudgetView.doRedirectHome()}"-->
+
+                </h:outputLink>
+            </div>
         </h:form>
+        <br/>
+        <br/>
     </h:body>
 </f:view>
 </html>

@@ -37,7 +37,7 @@
 <div class="ui-g">
     <h:form id="form">
         <p:treeTable value="#{clickableBudgetView.rootIncomes}" var="vykazRadekDto"
-                     style="font-size: 100% !important;">
+                     style="font-size: 100% !important;" rowStyleClass="#{vykazRadekDto.levelColor}">
             <p:ajax event="expand" update=":formBarIncome"
                     listener="#{clickableBudgetView.onNodeExpandIncome(vykazRadekDto)}"/>
             <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapseIncome(vykazRadekDto)}"

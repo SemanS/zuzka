@@ -109,7 +109,7 @@ div.mainContainer {
 }
 
 .ct-bar {
-    stroke-width: 200px
+    stroke-width: 140px
 }
 
 .barChartIncome .ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-pie.ct-donut {
@@ -136,6 +136,7 @@ span.ct-label.ct-vertical.ct-start {
 
 span.ct-label.ct-horizontal.ct-start {
     height: 22px !important;
+
 }
 
 body {
@@ -149,3 +150,80 @@ body {
 .firstOutcomePanel .ui-panel .ui-panel-title {
     color: #eb0003 !important;
 }
+
+.thirdLevelIncome {
+    background: #c0f5cd !important;
+}
+
+.secondLevelIncome {
+    background: #e2f5df !important;
+}
+
+.fourthLevelIncome {
+    background: #aaf5af !important;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    color: #000000;
+    background: #EBEDF0;
+    font-size: 1.1em;
+    text-align: center;
+    line-height: 50px;
+    font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif !important;
+}
+
+.thirdLevelOutcome {
+    background: #f5dcca !important;
+}
+
+.secondLevelOutcome {
+    background: #f5e7df !important;
+}
+
+.fourthLevelOutcome {
+    background: #f5bdab !important;
+}
+
+/*html[data-useragent*='rv:11.0'] body {
+    background: blue !important;
+    color: blue;
+}*/
+
+/*@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .html {
+        background: blue !important;
+        color: blue;
+    }
+}*/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    span.ct-label.ct-horizontal.ct-start {
+        height: 14px !important;
+
+    }
+    .ct-label {
+        fill: black !important;
+        color: black !important;
+        font-size: 0.7rem !important;
+        font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif !important;
+        line-height: 1;
+        overflow: visible !important;
+    }
+
+}
+
+/*html[data-useragent*='MSIE 10.0'] body {
+    background: blue !important;
+    color: blue;
+}*/
+
+/*
+:-ms-fullscreen, :root .selector {
+    background: blue !important;
+    color: blue;
+}*/

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -50,7 +51,6 @@ public class FileMBean implements Serializable {
         System.out.println("Uploaded File Name Is :: " + uploadedFile.getFileName() + " :: Uploaded File Size :: " + uploadedFile.getSize());
     }
 
-
     public static Collection<Part> getAllParts(Part part) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         return request.getParts().stream().filter(p -> part.getName().equals(p.getName())).collect(Collectors.toList());
@@ -60,9 +60,14 @@ public class FileMBean implements Serializable {
         //IncomeAndOutcomeDto incomeAndOutcomes = new IncomeAndOutcomeDto();
         for (Part part : getAllParts(file)) {
             try {
+                /*Class cls = Class.forName("com.webinson.clickablebudget.bean.FileMBean");
+                ClassLoader cLoader = cls.getClassLoader();
+                InputStream i = cLoader.getResourceAsStream("jdm.xsl");*/
+                /*InputStream i = ServletContext.class.getResourceAsStream("/WEB-INF/jdm.xsl");*/
+                InputStream i = getClass().getResourceAsStream("/jdm.xsl");
                 IncomeAndOutcomeDto incomeAndOutcomes = new IncomeAndOutcomeDto();
                 incomeAndOutcomes = (IncomeAndOutcomeDto) converter.doUnMarshaling(simpleTransform(file.getInputStream(),
-                        "jdm.xsl"));
+                        i));
                 incomeAndOutcomeService.saveIncomes(incomeAndOutcomes);
                 incomeAndOutcomeService.saveOutcomes(incomeAndOutcomes);
                 //parseIncomeAndOutcome();
@@ -72,7 +77,7 @@ public class FileMBean implements Serializable {
         }
     }
 
-    public InputStream simpleTransform(InputStream inputStream, String xsltPath) throws UnsupportedEncodingException {
+    public InputStream simpleTransform(InputStream inputStream, InputStream xsltPath) throws UnsupportedEncodingException {
 
         TransformerFactory tFactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
 
@@ -80,7 +85,7 @@ public class FileMBean implements Serializable {
         StreamResult result = new StreamResult(xmlAsWriter);
         try {
             Transformer transformer =
-                    tFactory.newTransformer(new StreamSource(new File(xsltPath)));
+                    tFactory.newTransformer(new StreamSource(xsltPath));
 
             transformer.transform(new StreamSource(inputStream),
                     result);
@@ -97,8 +102,13 @@ public class FileMBean implements Serializable {
         System.out.println("Marshaling performed");
         //Perform UnMarshaling
         try {
+            /*Class cls = Class.forName("com.webinson.clickablebudget.bean.FileMBean");
+            ClassLoader cLoader = cls.getClassLoader();
+            InputStream i = cLoader.getResourceAsStream("jdm.xsl");*/
+            /*InputStream i = ServletContext.class.getResourceAsStream("/WEB-INF/jdm.xsl");*/
+            InputStream i = getClass().getResourceAsStream("/jdm.xsl");
             incomeAndOutcomes = (IncomeAndOutcomeDto) converter.doUnMarshaling(simpleTransform(file.getInputStream(),
-                    "jdm.xsl"));
+                    i));
 
         } catch (IOException e) {
             e.printStackTrace();

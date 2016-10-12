@@ -9,6 +9,12 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ct="http://www.chartistjsf.org/charts">
 
+
+<script>
+    document.getElementsByTagName("text")[0].setAttribute("x", 95);
+</script>
+
+
 <div style="text-align: left">
 
     <p:outputLabel value="Výdaje"
@@ -37,7 +43,7 @@
 <div class="ui-g">
     <h:form id="formMainOutcome">
         <p:treeTable value="#{clickableBudgetView.rootOutcomes}" var="vykazRadekDto"
-                     style="font-size: 100% !important;">
+                     style="font-size: 100% !important;" rowStyleClass="#{vykazRadekDto.levelColor}">
             <p:ajax event="expand" update=":formBarOutcome"
                     listener="#{clickableBudgetView.onNodeExpandOutcome(vykazRadekDto)}"/>
             <p:ajax event="collapse" listener="#{clickableBudgetView.onNodeCollapseOutcome(vykazRadekDto)}"
@@ -106,5 +112,6 @@
 
 <br/>
 <br/>
-
+<br/>
+<br/>
 </html>

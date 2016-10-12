@@ -21,6 +21,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,10 @@ import java.util.List;
 @Component
 @ViewScoped
 public class ClickableBudgetView implements Serializable {
+
+    @Getter
+    @Setter
+    TreeNode selectedRadek;
 
     @Getter
     @Setter
@@ -252,7 +258,7 @@ public class ClickableBudgetView implements Serializable {
         xAxis.setShowGrid(false);
         xAxis.setAxisPosition(AxisPosition.START);
 
-        barChartModelIncome.getAxis(AxisType.Y).setYLabelOffset(50);
+        barChartModelIncome.getAxis(AxisType.Y).setYLabelOffset(20);
         barChartModelIncome.getAxis(AxisType.Y).setScaleMinSpace(40);
 
         Axis yAxis = barChartModelIncome.getAxis(AxisType.Y);
@@ -262,10 +268,8 @@ public class ClickableBudgetView implements Serializable {
         yAxis.setShowLabel(false);
 
         //barChartModelIncome.setShowTooltip(true);
-        barChartModelIncome.setSeriesBarDistance(15);
+        barChartModelIncome.setSeriesBarDistance(12);
         barChartModelIncome.setStackBars(true);
-        barChartModelIncome.setAnimateAdvanced(false);
-        barChartModelIncome.setAnimatePath(true);
         return barChartModelIncome;
     }
 
@@ -292,7 +296,7 @@ public class ClickableBudgetView implements Serializable {
         xAxis.setShowGrid(false);
 
         barChartModelIncome.setShowTooltip(true);
-        barChartModelIncome.setSeriesBarDistance(15);
+        barChartModelIncome.setSeriesBarDistance(12);
         barChartModelIncome.setStackBars(true);
 
         return barChartModelIncome;
@@ -321,8 +325,8 @@ public class ClickableBudgetView implements Serializable {
         xAxis.setShowGrid(false);
         xAxis.setAxisPosition(AxisPosition.START);
 
-        barChartModelOutcome.getAxis(AxisType.Y).setYLabelOffset(50);
-        barChartModelOutcome.getAxis(AxisType.Y).setScaleMinSpace(40);
+        barChartModelOutcome.getAxis(AxisType.Y).setYLabelOffset(10);
+        barChartModelOutcome.getAxis(AxisType.Y).setScaleMinSpace(20);
 
         Axis yAxis = barChartModelOutcome.getAxis(AxisType.Y);
         yAxis.setShowGrid(true);
@@ -332,7 +336,7 @@ public class ClickableBudgetView implements Serializable {
         //System.out.println(barChartModelIncome.getSeries().get(0).getData().toString());
 
         //barChartModelIncome.setShowTooltip(true);
-        barChartModelOutcome.setSeriesBarDistance(15);
+        barChartModelOutcome.setSeriesBarDistance(12);
         barChartModelOutcome.setStackBars(true);
         //barChartModelIncome.setAnimateAdvanced(true);
         return barChartModelOutcome;
@@ -361,7 +365,7 @@ public class ClickableBudgetView implements Serializable {
         xAxis.setShowGrid(false);
 
         barChartModelOutcome.setShowTooltip(true);
-        barChartModelOutcome.setSeriesBarDistance(15);
+        barChartModelOutcome.setSeriesBarDistance(12);
         barChartModelOutcome.setStackBars(true);
 
         return barChartModelOutcome;

@@ -16,4 +16,6 @@ public interface CityService {
 
     List<City> getCities();
 
+    List<String> queryByName(String name);
+
 }

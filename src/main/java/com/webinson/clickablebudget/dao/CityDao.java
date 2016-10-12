@@ -13,5 +13,7 @@ public interface CityDao extends JpaRepository<City, Long>, QueryDslPredicateExe
 
     City findIdByIco(String ico);
 
+    City findByName(String name);
+
 }
 
