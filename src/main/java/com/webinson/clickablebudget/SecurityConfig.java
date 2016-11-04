@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/upload").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/dashboard").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/fileUpload.xhtml").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/city/**").permitAll()
                 .antMatchers("/resources/**").permitAll()

@@ -1,6 +1,9 @@
 package com.webinson.clickablebudget.bean;
 
+import com.ocpsoft.pretty.PrettyContext;
+import com.webinson.clickablebudget.dto.CardDto;
 import com.webinson.clickablebudget.entity.City;
+import com.webinson.clickablebudget.service.CardService;
 import com.webinson.clickablebudget.service.CityService;
 import com.webinson.clickablebudget.service.impl.CityServiceImpl;
 import lombok.Getter;
@@ -29,7 +32,7 @@ import java.util.List;
  */
 @Component
 @ViewScoped
-public class MapView implements Serializable {
+public class CardView implements Serializable {
 
     @Getter
     private MapModel simpleModel;
@@ -48,8 +51,22 @@ public class MapView implements Serializable {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    CardService cardService;
+
+    @Getter
+    @Setter
+    private String selectedCard;
+
+    @Getter
+    @Setter
+    private List<CardDto> cards;
+
     @PostConstruct
     public void init() {
+
+        selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
+        cards = cardService.getAllCards();
         simpleModel = new DefaultMapModel();
 
         //Shared coordinates

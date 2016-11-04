@@ -8,14 +8,14 @@
         <view-id value="/index.xhtml?selectedCity=#{clickableBudgetView.selectedCity}"/>
     </url-mapping>
 
-    <!--<url-mapping id="upload">
-        <pattern value="/upload"/>
-        <view-id value="/fileUpload.xhtml"/>
-    </url-mapping>-->
+    <url-mapping id="cards">
+        <pattern value="/projekt/#{cardView.selectedCard}"/>
+        <view-id value="/index.xhtml?selectedCard=#{cardView.selectedCard}"/>
+    </url-mapping>
 
-   <!-- <url-mapping id="example" >
-        <pattern value="/#{dummyBean.text}" />
-        <view-id value="/pokus.xhtml?text=#{dummyBean.text}" />
-    </url-mapping>-->
+    <url-mapping id="dashboard">
+        <pattern value="/dashboard/#{cardDetailView.selectedCard}"/>
+        <view-id value="/dashboardcarddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}"/>
+    </url-mapping>
 
 </pretty-config>
