@@ -1,7 +1,6 @@
 package com.webinson.clickablebudget.dao;
 
 import com.webinson.clickablebudget.entity.Card;
-import com.webinson.clickablebudget.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;

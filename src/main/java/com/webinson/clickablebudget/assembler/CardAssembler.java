@@ -1,9 +1,7 @@
 package com.webinson.clickablebudget.assembler;
 
 import com.webinson.clickablebudget.dto.CardDto;
-import com.webinson.clickablebudget.dto.VykazRadekDto;
 import com.webinson.clickablebudget.entity.Card;
-import com.webinson.clickablebudget.entity.Income;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

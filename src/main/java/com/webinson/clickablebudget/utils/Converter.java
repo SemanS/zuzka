@@ -1,7 +1,5 @@
 package com.webinson.clickablebudget.utils;
 
-import com.webinson.clickablebudget.dto.IncomeAndOutcomeDto;
-import com.webinson.clickablebudget.entity.Income;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.Unmarshaller;
 
