@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:b="http://bootsfaces.net/ui"
@@ -37,29 +38,73 @@
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i
                             class="material-icons right">arrow_drop_down</i></a></li>
                     <!-- Dropdown Trigger -->
-
+                    asdasdasd
                 </ul>
             </div>
         </nav>
 
         <pre></pre>
 
-        <div id="mainCont" class="mainContainer">
+        <div id="mainCont" style="width: 800px;" class="mainContainer">
 
-            <h3 class="first">Custom Toolbar</h3>
+            <!--<h:outputText value="#{cardDetailView.text}"/>-->
+            <h:form enctype="multipart/form-data">
 
 
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row">
+                        <div class="col s6">
+
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <h:inputFile id="upload"
+                                                 value="#{editorController.file}"
+                                                 label="Insert image"
+                                                 update="editor">
+                                    </h:inputFile>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <p:inputText id="first_name" value="#{getInTouchView.name}"
+                                                 type="text">
+                                    </p:inputText>
+                                    <label for="first_name">Name of image:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <h:commandButton value="Upload"
+                                                     action="#{editorController.uploadListener}"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <pe:ckEditor id="editor"
+                                                 widgetVar="editWidget"
+                                                 value="#{editorController.text}"/>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--</form>-->
+                </div>
+
+            </h:form>
         </div>
 
-        <textarea id="myTextarea"></textarea>
-
         <!--  Scripts-->
-        <script src="resources/js/jquery-3.1.1.min.js"></script>
+        <h:outputScript name="js/jquery-3.1.1.min.js"/>
+        <h:outputScript name="js/materialize.min.js"/>
+        <h:outputScript name="js/init.js"/>
+        <!--<script src="resources/js/jquery-3.1.1.min.js"></script>
         <script src="resources/js/materialize.min.js"></script>
-        <script src="resources/js/init.js"></script>
-        <!--<script src="resources/js/tinymce.min.js"></script>
-        <script src="resources/js/jquery.tinymce.min.js"></script>-->
-
+        <script src="resources/js/init.js"></script>-->
 
     </h:body>
 

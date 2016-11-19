@@ -8,14 +8,19 @@
         <view-id value="/index.xhtml?selectedCity=#{clickableBudgetView.selectedCity}"/>
     </url-mapping>
 
-    <url-mapping id="cards">
-        <pattern value="/projekt/#{cardView.selectedCard}"/>
+<!--    <url-mapping id="cards">
+        <pattern value="/projects/#{cardView.selectedCard}"/>
         <view-id value="/index.xhtml?selectedCard=#{cardView.selectedCard}"/>
-    </url-mapping>
+    </url-mapping>-->
 
     <url-mapping id="dashboard">
-        <pattern value="/dashboard/#{cardDetailView.selectedCard}"/>
-        <view-id value="/dashboardcarddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}"/>
+        <pattern value="/dashboard/#{cardDetailView.selectedCardDashboard}"/>
+        <view-id value="/dashboardcarddetail.xhtml?selectedCard=#{cardDetailView.selectedCardDashboard}"/>
+    </url-mapping>
+
+    <url-mapping id="projects">
+        <pattern value="/projects/#{cardDetailView.selectedCardDashboard}"/>
+        <view-id value="/carddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}"/>
     </url-mapping>
 
 </pretty-config>
