@@ -40,10 +40,13 @@ public class CardView implements Serializable {
     @Setter
     private List<CardDto> cards;
 
+
+
     @PostConstruct
     public void init() {
 
         selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL();
+        //cardDto = cardService.getCardByUrl(selectedCard);
         selectedCardDashboard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
         cards = cardService.getAllCards();
 

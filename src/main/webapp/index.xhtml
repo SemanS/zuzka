@@ -74,17 +74,14 @@
                             <div class="card medium">
                                 <div class="card-image">
                                     <img src="resources/images/image1.jpg"/>
-                                    <span class="card-title">Card Title</span>
+                                    <span class="card-title"><h:outputText value="#{card.header}"/></span>
                                 </div>
                                 <div class="card-content">
                                     <h:outputText value="#{card.text}"/>
                                 </div>
                                 <div class="card-action">
-                                    <p:commandLink value="Edit" id="ajax"
-                                                   action="#{cardView.onEditCard(card)}"
-                                                   styleClass="waves-effect waves-light btn"/>
-                                    <!--<a class="waves-effect waves-light btn">button</a>-->
-                                    <a href="#">This is a link</a>
+                                    <p:commandLink value="Viac" id="ajax"
+                                                   action="#{cardView.onEditCard(card)}"/>
                                 </div>
                             </div>
                         </div>

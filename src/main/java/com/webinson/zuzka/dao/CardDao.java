@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CardDao extends JpaRepository<Card, Long>, QueryDslPredicateExecutor<Card> {
 
-
+    Card findByUrl(String url);
 }

@@ -1,12 +1,19 @@
 package com.webinson.zuzka.bean;
 
+import com.ocpsoft.pretty.PrettyContext;
+import com.webinson.zuzka.dao.CardDao;
+import com.webinson.zuzka.dto.CardDto;
+import com.webinson.zuzka.service.CardService;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -30,6 +37,39 @@ public class EditorController implements Serializable {
     @Getter
     @Setter
     private Part file;
+
+    @Getter
+    @Setter
+    @ManagedProperty(value = "#{param.selectedCard}")
+    private String selectedCard;
+
+    @Autowired
+    CardService cardService;
+
+    @PostConstruct
+    public void init() {
+
+        text = showText();
+    }
+
+    public String showText() {
+
+        String path = PrettyContext.getCurrentInstance().getRequestURL().toURL();
+        String segments[] = path.split("/");
+        String resultUrl = segments[segments.length - 1];
+
+        return cardService.getTextOfCardByUrl(resultUrl);
+    }
+
+    public void saveText() {
+
+        String path = PrettyContext.getCurrentInstance().getRequestURL().toURL();
+        String segments[] = path.split("/");
+        String resultUrl = segments[segments.length - 1];
+
+        cardService.saveCardByUrl(resultUrl, text);
+    }
+
 
     public void uploadListener() {
         FacesContext facesContext = FacesContext.getCurrentInstance();

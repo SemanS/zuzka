@@ -23,6 +23,16 @@ public class CardAssembler {
         return dto;
     }
 
+    public CardDto toDto(Card model) {
+        CardDto card = new CardDto();
+        card.setHeader(model.getHeader());
+        card.setText(model.getText());
+        card.setDate(model.getDate());
+        card.setUrl(model.getUrl());
+        return card;
+    }
+
+
     public List<CardDto> toDtos(final Collection<Card> models) {
         final List<CardDto> dtos = new ArrayList<>();
         if (isNotEmpty(models)) {

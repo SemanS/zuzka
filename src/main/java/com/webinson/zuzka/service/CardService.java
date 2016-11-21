@@ -11,4 +11,10 @@ public interface CardService {
 
     public List<CardDto> getAllCards();
 
+    public String getTextOfCardByUrl(String url);
+
+    public CardDto getCardByUrl(String url);
+
+    public void saveCardByUrl(String url, String text);
+
 }
