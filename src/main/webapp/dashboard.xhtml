@@ -4,9 +4,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pretty="http://ocpsoft.com/prettyfaces">
 
 <f:view contentType="text/html">
+
+    <pretty:link mappingId="categories">
+        <f:param value="#{card.category}"/>
+        <f:param value="#{item.id}"/>
+        View Item. (This is Link Text)
+    </pretty:link>
 
     <h:head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -27,23 +34,18 @@
         <h:outputStylesheet name="css/styles.css"/>
 
 
-        <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Cards</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">Carousal</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="right brand-logo hide-on-med-and-down">Logo</a>
-                <ul class="left">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i
-                            class="material-icons right">arrow_drop_down</i></a></li>
-                    <!-- Dropdown Trigger -->
-
-                </ul>
-            </div>
-        </nav>
+        <div class="navbar-fixed">
+            <nav class="transparent">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo center"><img height="50" width="271"
+                                                                src="resources/images/logo_webinson.png"/></a>
+                    <ul class="right hide-on-med-and-down">
+                        <!--<li><a href="sass.html">About</a></li>-->
+                        <li><a class="waves-effect waves-light btn-large" href="contact.xhtml">Get in touch</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
         <pre></pre>
 

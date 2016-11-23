@@ -22,13 +22,13 @@ public class CardDetailView implements Serializable {
 
     @Getter
     @Setter
-    @ManagedProperty(value = "#{param.selectedCard}")
-    public String selectedCardDashboard;
+    /*@ManagedProperty(value = "#{param.selectedCard}")*/
+    public String selectedCard;
 
     @Getter
     @Setter
-    @ManagedProperty(value = "#{param.selectedCard}")
-    public String selectedCard;
+/*    @ManagedProperty(value = "#{param.selectedCategory}")*/
+    public String selectedCategory;
 
     @Getter
     @Setter
@@ -40,10 +40,9 @@ public class CardDetailView implements Serializable {
     @PostConstruct
     public void init() {
 
-        cardDto = cardService.getCardByUrl(showText());
+        //cardDto = cardService.getCardByUrl(showText());
        /* selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(10);*/
-        selectedCardDashboard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(11);
-
+        //selectedCardDashboard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(11);
     }
 
     public String showText() {
@@ -52,11 +51,7 @@ public class CardDetailView implements Serializable {
         String segments[] = path.split("/");
         String resultUrl = segments[segments.length - 1];
 
-        /*System.out.println(resultUrl);
-        System.out.println(cardService.getTextOfCardByUrl(resultUrl));*/
-        System.out.println(resultUrl);
         return resultUrl;
-        /*System.out.println(cardService.getTextOfCardByUrl(selectedCard));*/
     }
 
 }

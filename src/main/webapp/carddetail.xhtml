@@ -11,7 +11,12 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       xmlns:ct="http://www.chartistjsf.org/charts">
 
+<!--<f:metadata>
+    <f:viewParam name="selectedCard" value="#{cardDetailView.selectedCard}"/>
+</f:metadata>-->
+
 <f:view contentType="text/html">
+
 
     <h:head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -24,30 +29,11 @@
         <h:outputStylesheet name="css/materialize.min.css"/>
         <h:outputStylesheet name="css/styles.css"/>
 
-
-        <!-- Dropdown Structure -->
-        <!--<ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Cards</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">Carousal</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="right brand-logo hide-on-med-and-down">Logo</a>
-                <ul class="left">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i
-                            class="material-icons right">arrow_drop_down</i></a></li>
-                    &lt;!&ndash; Dropdown Trigger &ndash;&gt;
-                    asdasdasd
-                </ul>
-            </div>
-        </nav>-->
-
         <div class="navbar-fixed">
             <nav class="transparent">
                 <div class="nav-wrapper">
                     <a href="#!" class="brand-logo center"><img height="50" width="271"
-                                                                src="resources/images/logo_webinson.png"/></a>
+                                                                src="${facesContext.externalContext.requestContextPath}/resources/images/logo_webinson.png"/></a>
                     <ul class="right hide-on-med-and-down">
                         <!--<li><a href="sass.html">About</a></li>-->
                         <li><a class="waves-effect waves-light btn-large" href="contact.xhtml">Get in touch</a></li>
@@ -57,8 +43,6 @@
         </div>
 
         <pre></pre>
-
-
         <pre></pre>
 
         <div id="mainCont" style="width: 800px;" class="mainContainer">
@@ -71,7 +55,7 @@
                         <div class="col s6">
 
                             <div class="row">
-                                <h:outputText value="#{cardDetailView.cardDto.header}"/>
+                                <h:outputText value="#{cardView.selectedCard}"/>
                             </div>
 
 

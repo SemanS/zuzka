@@ -8,7 +8,8 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-      xmlns:ct="http://www.chartistjsf.org/charts">
+      xmlns:ct="http://www.chartistjsf.org/charts"
+      xmlns:pretty="http://ocpsoft.com/prettyfaces">
 
 <f:view contentType="text/html">
 
@@ -80,8 +81,13 @@
                                     <h:outputText value="#{card.text}"/>
                                 </div>
                                 <div class="card-action">
-                                    <p:commandLink value="Viac" id="ajax"
-                                                   action="#{cardView.onEditCard(card)}"/>
+                                    <!--<p:commandLink value="Viac" id="ajax"
+                                                   action="#{cardView.onEditCard(card)}"/>-->
+
+                                    <h:link outcome="pretty:projects" value="Detail">
+                                        <f:param name="selectedCard" value="#{card.url}"/>
+                                    </h:link>
+
                                 </div>
                             </div>
                         </div>

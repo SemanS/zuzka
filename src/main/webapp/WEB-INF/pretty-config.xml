@@ -3,24 +3,41 @@
                xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
-    <url-mapping id="welcome">
-        <pattern value="/city/#{clickableBudgetView.selectedCity}"/>
-        <view-id value="/index.xhtml?selectedCity=#{clickableBudgetView.selectedCity}"/>
-    </url-mapping>
-
-<!--    <url-mapping id="cards">
-        <pattern value="/projects/#{cardView.selectedCard}"/>
-        <view-id value="/index.xhtml?selectedCard=#{cardView.selectedCard}"/>
+    <!--<url-mapping id="dashboard">
+        <pattern value="/dashboard/#{ selectedCard : cardView.selectedCard}"/>
+        <view-id value="/dashboardcarddetail.xhtml"/>
     </url-mapping>-->
 
-    <url-mapping id="dashboard">
-        <pattern value="/dashboard/#{cardDetailView.selectedCardDashboard}"/>
-        <view-id value="/dashboardcarddetail.xhtml?selectedCard=#{cardDetailView.selectedCardDashboard}"/>
+   <!-- <url-mapping id="projects">
+        <pattern value="/projects/#{ selectedCard : cardView.selectedCard}"/>
+        <view-id value="/carddetail.xhtml"/>
+        &lt;!&ndash;<query-param name="selectedCard">#{cardView.selectedCard}</query-param>&ndash;&gt;
+    </url-mapping>-->
+
+    <url-mapping parentId="projects" id="managementUsers">
+        <pattern value="/users/" />
+        <view-id value="/management-users.face" />
     </url-mapping>
 
-    <url-mapping id="projects">
-        <pattern value="/projects/#{cardDetailView.selectedCardDashboard}"/>
-        <view-id value="/carddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}"/>
-    </url-mapping>
+    <!--<url-mapping id="categories">
+        <pattern value="/#{cat : cardDetailView.selectedCategory}/#{ card : cardDetailView.selectedCard}"/>
+        <view-id value="/carddetail.xhtml"/>
+    </url-mapping>-->
+
+    <!--<url-mapping id="dashboard">
+        <pattern value="/dashboard/#{cardDetailView.selectedCard}"/>
+        <view-id value="/dashboardcarddetail.xhtml?selectedCard=#{cardDetailView.selectedCardDashboard}"/>
+    </url-mapping>-->
+
+    <!-- <url-mapping id="projects">
+         <pattern value="/projects/#{cardDetailView.selectedCard}"/>
+         <view-id value="/carddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}"/>
+     </url-mapping>
+
+     <url-mapping id="categories">
+         <pattern value="/#{cardDetailView.selectedCategory}/#{cardDetailView.selectedCard}"/>
+         <view-id
+                 value="/carddetail.xhtml?selectedCard=#{cardDetailView.selectedCard}?selectedCategory=#{cardDetailView.selectedCategory}"/>
+     </url-mapping>-->
 
 </pretty-config>

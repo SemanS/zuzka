@@ -40,8 +40,13 @@ public class EditorController implements Serializable {
 
     @Getter
     @Setter
-    @ManagedProperty(value = "#{param.selectedCard}")
+   /* @ManagedProperty(value = "#{param.selectedCard}")*/
     private String selectedCard;
+
+    @Getter
+    @Setter
+    /*@ManagedProperty(value = "#{param.selectedCategory}")*/
+    private String selectedCategory;
 
     @Autowired
     CardService cardService;
@@ -49,7 +54,7 @@ public class EditorController implements Serializable {
     @PostConstruct
     public void init() {
 
-        text = showText();
+        //text = showText();
     }
 
     public String showText() {
@@ -63,6 +68,7 @@ public class EditorController implements Serializable {
 
     public void saveText() {
 
+        System.out.println(selectedCard);
         String path = PrettyContext.getCurrentInstance().getRequestURL().toURL();
         String segments[] = path.split("/");
         String resultUrl = segments[segments.length - 1];

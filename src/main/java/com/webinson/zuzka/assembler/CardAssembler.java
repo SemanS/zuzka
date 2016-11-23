@@ -20,6 +20,7 @@ public class CardAssembler {
         dto.setText(model.getText());
         dto.setDate(model.getDate());
         dto.setUrl(model.getUrl());
+        dto.setCategory(model.getCategory());
         return dto;
     }
 
@@ -29,6 +30,7 @@ public class CardAssembler {
         card.setText(model.getText());
         card.setDate(model.getDate());
         card.setUrl(model.getUrl());
+        card.setCategory(model.getCategory());
         return card;
     }
 

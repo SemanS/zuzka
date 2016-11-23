@@ -35,4 +35,8 @@ public class Card implements Serializable {
     @Column(name = "url")
     private String url;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 }

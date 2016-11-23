@@ -26,81 +26,29 @@
         <h:outputStylesheet name="css/materialize.min.css"/>
         <h:outputStylesheet name="css/styles.css"/>
 
-
-        <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Cards</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">Carousal</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="right brand-logo hide-on-med-and-down">Logo</a>
-                <ul class="left">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i
-                            class="material-icons right">arrow_drop_down</i></a></li>
-                    <!-- Dropdown Trigger -->
-
-                </ul>
-            </div>
-        </nav>
+        <div class="navbar-fixed">
+            <nav class="transparent">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo center"><img height="50" width="271"
+                                                                src="${facesContext.externalContext.requestContextPath}/resources/images/logo_webinson.png"/></a>
+                    <ul class="right hide-on-med-and-down">
+                        <!--<li><a href="sass.html">About</a></li>-->
+                        <li><a class="waves-effect waves-light btn-large" href="contact.xhtml">Get in touch</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
         <pre></pre>
 
         <div id="mainCont" class="mainContainer">
-            <!-- <table>
-                 <thead>
-                 <tr>
-                     <th data-field="id">Name</th>
-                     <th data-field="id">Text</th>
-                     <th data-field="name">Item Name</th>
-                     <th data-field="price">Item Price</th>
-                 </tr>
-                 </thead>
-
-                 <tbody>
-                 <tr>
-                     <td>Alvin</td>
-                     <td style="width:70%;" class="truncate"><p class="truncate">This is an extremely long title that will be truncated truncated truncated truncated</p>
-                     </td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                 </tr>
-                 <tr>
-                     <td>Alan</td>
-                     <td style="width:70%;" class="truncate"><p
-                             class="truncate">This is an extremely long title that will be truncated truncated truncated truncated</p>
-                     </td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                 </tr>
-                 <tr>
-                     <td>Jonathan</td>
-                     <td style="width:70%;" class="truncate"><p
-                             class="truncate">This is an extremely long title that will be truncated truncated truncated truncated</p>
-                     </td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                     <td><a class="waves-effect waves-light btn">button</a></td>
-                 </tr>
-                 </tbody>
-             </table>
-
-             <ul class="pagination">
-                 <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                 <li class="active"><a href="#!">1</a></li>
-                 <li class="waves-effect"><a href="#!">2</a></li>
-                 <li class="waves-effect"><a href="#!">3</a></li>
-                 <li class="waves-effect"><a href="#!">4</a></li>
-                 <li class="waves-effect"><a href="#!">5</a></li>
-                 <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-             </ul>-->
             <h:form>
                 <div class="row">
                     <ui:repeat value="#{cardView.getCards()}" var="card">
                         <div class="col s12 m12 l4">
                             <div class="card medium">
                                 <div class="card-image">
-                                    <img src="resources/images/image1.jpg" style="width: 300px; height: 200px"/>
+                                    <img src="resources/images/image1.jpg"/>
                                     <span class="card-title">Card Title</span>
                                 </div>
                                 <div class="card-content">

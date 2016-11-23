@@ -35,8 +35,8 @@
     <schema id="10" parent="1" name="zuzka">
       <object-id>49494</object-id>
       <visible>1</visible>
-      <introspection-state-number>2282</introspection-state-number>
-      <introspection-timestamp>2016-11-21.17:02:17.089</introspection-timestamp>
+      <introspection-state-number>2300</introspection-state-number>
+      <introspection-timestamp>2016-11-23.13:19:00.181</introspection-timestamp>
     </schema>
     <sequence id="11" parent="2" name="hibernate_sequence">
       <object-id>24625</object-id>
@@ -46,48 +46,88 @@
       <object-id>49495</object-id>
       <state-number>2273</state-number>
     </sequence>
-    <table id="13" parent="10" name="card">
+    <sequence id="13" parent="10" name="category_id_seq">
+      <object-id>49507</object-id>
+      <state-number>2297</state-number>
+    </sequence>
+    <table id="14" parent="10" name="card">
       <object-id>49497</object-id>
-      <state-number>2282</state-number>
+      <state-number>2300</state-number>
     </table>
-    <column id="14" parent="13" name="id">
+    <table id="15" parent="10" name="category">
+      <object-id>49509</object-id>
+      <state-number>2297</state-number>
+    </table>
+    <column id="16" parent="14" name="id">
       <state-number>2273</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
       <default-expression>nextval(&apos;card_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="15" parent="13" name="header">
+    <column id="17" parent="14" name="header">
       <state-number>2273</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="16" parent="13" name="text">
+    <column id="18" parent="14" name="text">
       <state-number>2273</state-number>
       <data-type>text|0</data-type>
     </column>
-    <column id="17" parent="13" name="date">
+    <column id="19" parent="14" name="date">
       <state-number>2273</state-number>
       <data-type>date|0</data-type>
     </column>
-    <column id="18" parent="13" name="url">
+    <column id="20" parent="14" name="url">
       <state-number>2282</state-number>
       <data-type>varchar(20)|0</data-type>
     </column>
-    <index id="19" parent="13" name="card_id_uindex">
+    <column id="21" parent="14" name="category_id">
+      <state-number>2300</state-number>
+      <data-type>integer|0</data-type>
+    </column>
+    <index id="22" parent="14" name="card_id_uindex">
       <object-id>49506</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="20" parent="13" name="card_pkey">
+    <index id="23" parent="14" name="card_pkey">
       <object-id>49504</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="21" parent="13" name="card_pkey">
+    <key id="24" parent="14" name="card_pkey">
       <object-id>49505</object-id>
       <columns>id</columns>
       <underlying-index>card_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="25" parent="15" name="id">
+      <state-number>2297</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;category_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="26" parent="15" name="name">
+      <state-number>2297</state-number>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="27" parent="15" name="category_id_uindex">
+      <object-id>49515</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="28" parent="15" name="category_pkey">
+      <object-id>49513</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="29" parent="15" name="category_pkey">
+      <object-id>49514</object-id>
+      <columns>id</columns>
+      <underlying-index>category_pkey</underlying-index>
       <primary>1</primary>
     </key>
   </database-model>

@@ -24,7 +24,12 @@ public class DashboardCardDetailView {
     @PostConstruct
     public void init() {
 
-        selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(11);
+        String path = PrettyContext.getCurrentInstance().getRequestURL().toURL();
+        String segments[] = path.split("/");
+        String resultUrl = segments[segments.length - 1];
+        selectedCard = resultUrl;
+
+        //selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(11);
 
     }
 
