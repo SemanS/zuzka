@@ -22,28 +22,25 @@
     <!-- <h:outputStylesheet name="css/materialize.min.css"/>-->
     <h:outputStylesheet name="css/styles.css"/>
     <h:outputStylesheet name="css/semantic.min.css"/>
+    <h:outputStylesheet name="css/swiper.min.css"/>
 
-    <!--<link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'vertical',
+            loop: true,
 
-    <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
+            // If we need pagination
+            pagination: '.swiper-pagination',
 
-    <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/transition.css">-->
+            // Navigation arrows
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
 
-
-    <!--<script src="assets/library/jquery.min.js"></script>
-    <script src="../dist/components/transition.js"></script>
-    <script src="../dist/components/dropdown.js"></script>
-    <script src="../dist/components/visibility.js"></script>-->
+            // And if we need scrollbar
+            scrollbar: '.swiper-scrollbar',
+        })
+    </script>
     <script>
         $(document)
                 .ready(function () {
@@ -70,13 +67,7 @@
     </script>
 
     <style type="text/css">
-        body {
-            background-color: #FFFFFF;
-        }
 
-        .main.container {
-            margin-top: 2em;
-        }
 
         .main.menu {
             margin-top: 4em;
@@ -103,9 +94,11 @@
         }
 
         .main.menu.fixed {
-            background-color: #FFFFFF;
+            /*background-color: #FFFFFF;*/
             border: 1px solid #DDD;
             box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            -webkit-transform: translate3d(0, 0, 0);
+            -webkit-backface-visibility: hidden;
         }
 
         .overlay.fixed .menu {
@@ -124,211 +117,179 @@
             margin: 5em 0em 0em;
             padding: 5em 0em;
         }
+
+        .landpage-image {
+            height: 100% !important;
+        }
+
+        .landpage-image {
+            background-image: url('resources/images/bg.jpg') !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
     </style>
 
 </h:head>
 <h:body>
 
     <h:outputScript name="js/jquery-3.1.1.min.js"/>
-    <!--<h:outputScript name="js/materialize.min.js"/>-->
     <h:outputScript name="js/init.js"/>
-    <!--<h:outputScript name="js/semantic.min.js"/>-->
+    <h:outputScript name="js/semantic.min.js"/>
     <h:outputScript name="js/visibility.min.js"/>
-    <!--<script src="resources/js/jquery-3.1.1.min.js"></>
-    <script src="resources/js/materialize.min.js"></script>
-    <script src="resources/js/init.js"></script>-->
+    <!--<h:outputScript name="js/materialize.min.js"/>-->
+    <h:outputScript name="js/swiper.min.js"/>
+    <h:outputScript name="js/swiper.jquery.min.js"/>
 
-    <div class="ui main text container">
+    <!--<div class="ui main text container">
         <h1 class="ui header">Sticky Example</h1>
         <p>This example shows how to use lazy loaded images, a sticky menu, and a simple text container</p>
-    </div>
+    </div>-->
 
 
-    <div class="ui borderless main menu">
-        <div class="ui text container">
-            <div class="header item">
-                <img class="logo" src="assets/images/logo.png"/>
-                Project Name
-            </div>
-            <a href="#" class="item">Blog</a>
-            <a href="#" class="item">Articles</a>
-            <a href="#" class="ui right floated dropdown item">
-                Dropdown <i class="dropdown icon"></i>
-                <div class="menu">
-                    <div class="item">Link Item</div>
-                    <div class="item">Link Item</div>
-                    <div class="divider"></div>
-                    <div class="header">Header Item</div>
-                    <div class="item">
-                        <i class="dropdown icon"></i>
-                        Sub Menu
-                        <div class="menu">
-                            <div class="item">Link Item</div>
-                            <div class="item">Link Item</div>
-                        </div>
-                    </div>
-                    <div class="item">Link Item</div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-
-    <div id="mainCont" class="ui container">
-
-
-        <h:form>
-
-            <div class="ui grid">
-                <ui:repeat value="#{cardView.getCards()}" var="card">
-                    <div class="five wide column">
-                        <div class="ui special cards">
-                            <div class="card ui primary button">
-                                <div class="blurring dimmable image">
-                                    <div class="ui inverted dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <div class="ui primary button">Add Friend</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="resources/images/image1.jpg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ui:repeat>
-
-            </div>
-
-
-            <div class="overlay">
-                <div class="ui labeled icon vertical menu">
-                    <a class="item"><i class="twitter icon"></i> Tweet</a>
-                    <a class="item"><i class="facebook icon"></i> Share</a>
-                    <a class="item"><i class="mail icon"></i> E-mail</a>
-                </div>
-            </div>
-
-            <div class="ui grid">
-                <ui:repeat value="#{cardView.getCards()}" var="card">
-                    <div class="five wide column">
-                        <div class="ui special cards">
-                            <div class="card ui primary button">
-                                <div class="blurring dimmable image">
-                                    <div class="ui inverted dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <div class="ui primary button">Add Friend</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="resources/images/image1.jpg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ui:repeat>
-
-            </div>
-
-            <div class="ui grid">
-                <ui:repeat value="#{cardView.getCards()}" var="card">
-                    <div class="five wide column">
-                        <div class="ui special cards">
-                            <div class="card ui primary button">
-                                <div class="blurring dimmable image">
-                                    <div class="ui inverted dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <div class="ui primary button">Add Friend</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="resources/images/image1.jpg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ui:repeat>
-
-            </div>
-
-
-        </h:form>
-    </div>
-
-
-    <!-- <h:form>
-         <div class="row">
-             <ui:repeat value="#{cardView.getCards()}" var="card">
-                 <div class="col s12 m12 l4">
-                     <div class="card medium">
-                         <div class="card-image">
-                             <img src="resources/images/image1.jpg"/>
-                             <span class="card-title"><h:outputText value="#{card.header}"/></span>
-                         </div>
-                         <div class="card-content">
-                             <h:outputText value="#{card.text}"/>
-                         </div>
-                         <div class="card-action">
-                             &lt;!&ndash;<p:commandLink value="Viac" id="ajax"
-                                            action="#{cardView.onEditCard(card)}"/>&ndash;&gt;
-
-                             <h:link value="Detail">
-                                 <f:param name="selectedCard" value="#{card.url}"/>
-                             </h:link>
-
+     <div class="ui borderless main menu">
+         <div class="ui text container">
+             <div class="header item">
+                 <img class="logo" src="assets/images/logo.png"/>
+                 Project Name
+             </div>
+             <a href="#" class="item">Blog</a>
+             <a href="#" class="item">Articles</a>
+             <a href="#" class="ui right floated dropdown item">
+                 Dropdown <i class="dropdown icon"></i>
+                 <div class="menu">
+                     <div class="item">Link Item</div>
+                     <div class="item">Link Item</div>
+                     <div class="divider"></div>
+                     <div class="header">Header Item</div>
+                     <div class="item">
+                         <i class="dropdown icon"></i>
+                         Sub Menu
+                         <div class="menu">
+                             <div class="item">Link Item</div>
+                             <div class="item">Link Item</div>
                          </div>
                      </div>
+                     <div class="item">Link Item</div>
                  </div>
-             </ui:repeat>
+             </a>
          </div>
-     </h:form>-->
+     </div>
 
 
-    <div class="ui inverted vertical footer segment">
-        <div class="ui center aligned container">
-            <div class="ui stackable inverted divided grid">
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 1</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
+    <!--<div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <a class="active item">Home</a>
+            <a class="item">Work</a>
+            <a class="item">Company</a>
+            <a class="item">Careers</a>
+            <div class="right menu">
+                <div class="item">
+                    <a class="ui button">Log in</a>
                 </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 2</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 3</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header">Footer Header</h4>
-                    <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                <div class="item">
+                    <a class="ui primary button">Sign Up</a>
                 </div>
             </div>
-            <div class="ui inverted section divider"></div>
-            <img src="assets/images/logo.png" class="ui centered mini image"/>
-            <div class="ui horizontal inverted small divided link list">
-                <a class="item" href="#">Site Map</a>
-                <a class="item" href="#">Contact Us</a>
-                <a class="item" href="#">Terms and Conditions</a>
-                <a class="item" href="#">Privacy Policy</a>
+        </div>
+    </div>-->
+
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment landpage-image">
+
+            <div class="ui text container">
+                <h1 class="ui inverted header">
+                    Imagine-a-Company
+                </h1>
+                <h2>Do whatever you want when you want to.</h2>
+                <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+            </div>
+
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide column">
+                        <h3 class="ui header">We Help Companies and Companions</h3>
+                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
+                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
+                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+                    </div>
+                    <div class="six wide right floated column">
+                        <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center aligned column">
+                        <a class="ui huge button">Check Them Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui vertical stripe quote segment">
+            <div class="ui equal width stackable internally celled grid">
+                <div class="center aligned row">
+                    <div class="column">
+                        <h3>"What a Company"</h3>
+                        <p>That is what they all say about us</p>
+                    </div>
+                    <div class="column">
+                        <h3>"I shouldn't have gone with their competitor."</h3>
+                        <p>
+                            <img src="assets/images/avatar/nan.jpg" class="ui avatar image"/>
+                            <b>Nan</b> Chief Fun Officer Acme Toys
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui text container">
+                <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
+                <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
+                <a class="ui large button">Read More</a>
+                <h4 class="ui horizontal header divider">
+                    <a href="#">Case Studies</a>
+                </h4>
+                <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
+                <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
+                <a class="ui large button">I'm Still Quite Interested</a>
+            </div>
+        </div>
+
+
+        <div class="ui inverted vertical footer segment">
+            <div class="ui container">
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">About</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Sitemap</a>
+                            <a href="#" class="item">Contact Us</a>
+                            <a href="#" class="item">Religious Ceremonies</a>
+                            <a href="#" class="item">Gazebo Plans</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Services</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Banana Pre-Order</a>
+                            <a href="#" class="item">DNA FAQ</a>
+                            <a href="#" class="item">How To Access</a>
+                            <a href="#" class="item">Favorite X-Men</a>
+                        </div>
+                    </div>
+                    <div class="seven wide column">
+                        <h4 class="ui inverted header">Footer Header</h4>
+                        <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

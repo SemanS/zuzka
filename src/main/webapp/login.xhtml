@@ -1,19 +1,164 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-    <title>Spring 4 Security  + JSF 2 + PrimeFaces 5  Integration Example</title>
+    <title>Spring 4 Security + JSF 2 + PrimeFaces 5 Integration Example</title>
 </h:head>
 <h:body>
-    <h3>Spring 4 Security  + JSF 2 + PrimeFaces 5  Integration Example</h3>
+    <h3>Spring 4 Security + JSF 2 + PrimeFaces 5 Integration Example</h3>
     <font color="red">
         <h:outputLabel value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
     </font>
     <form action="${request.contextPath}/appLogin" method="POST">
-        <h:outputLabel value="Enter UserName:" />
+        <h:outputLabel value="Enter UserName:"/>
         <input type="text" name="app_username"/><br/><br/>
-        <h:outputLabel value="Enter Password:" />
+        <h:outputLabel value="Enter Password:"/>
         <input type="password" name="app_password"/> <br/><br/>
         <input type="submit" value="Login"/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </h:body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:ct="http://www.chartistjsf.org/charts"
+      xmlns:pretty="http://ocpsoft.com/prettyfaces">
+<h:head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+    <!-- Site Properties -->
+    <!--<title>Login Example - Semantic</title>
+    <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
+
+    <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
+
+    <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/form.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/input.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/message.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">-->
+
+    <h:outputStylesheet name="css/font-awesome.css"/>
+    <!-- <h:outputStylesheet name="css/materialize.min.css"/>-->
+    <h:outputStylesheet name="css/styles.css"/>
+    <h:outputStylesheet name="css/semantic.min.css"/>
+
+    <style type="text/css">
+        body {
+            background-color: #DADADA;
+        }
+
+        body > .grid {
+            height: 100%;
+        }
+
+        .image {
+            margin-top: -100px;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+    </style>
+    <script>
+        $(document)
+                .ready(function () {
+                    $('.ui.form')
+                            .form({
+                                fields: {
+                                    email: {
+                                        identifier: 'email',
+                                        rules: [
+                                            {
+                                                type: 'empty',
+                                                prompt: 'Please enter your e-mail'
+                                            },
+                                            {
+                                                type: 'email',
+                                                prompt: 'Please enter a valid e-mail'
+                                            }
+                                        ]
+                                    },
+                                    password: {
+                                        identifier: 'password',
+                                        rules: [
+                                            {
+                                                type: 'empty',
+                                                prompt: 'Please enter your password'
+                                            },
+                                            {
+                                                type: 'length[6]',
+                                                prompt: 'Your password must be at least 6 characters'
+                                            }
+                                        ]
+                                    }
+                                }
+                            })
+                    ;
+                })
+        ;
+    </script>
+</h:head>
+<h:body>
+    <h:outputLabel value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui teal image header">
+                <img src="assets/images/logo.png" class="image"/>
+                <div class="content">
+                    Log-in to your account
+                </div>
+            </h2>
+            <form action="${request.contextPath}/appLogin" method="POST" class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="app_username" placeholder="E-mail address"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="app_password" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <input class="ui fluid large teal submit button" type="submit" value="Login"/>
+                    <!--<div class="ui fluid large teal submit button">Login</div>-->
+                </div>
+                <div class="ui error message"></div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+
+            <div class="ui message">
+                New to us? <a href="#">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <h:outputScript name="js/jquery-3.1.1.min.js"/>
+    <!--<h:outputScript name="js/materialize.min.js"/>-->
+    <h:outputScript name="js/init.js"/>
+    <!--<h:outputScript name="js/semantic.min.js"/>-->
+    <h:outputScript name="js/visibility.min.js"/>
+</h:body>
+
 </html>
