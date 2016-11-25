@@ -14,10 +14,10 @@
         &lt;!&ndash;<query-param name="selectedCard">#{cardView.selectedCard}</query-param>&ndash;&gt;
     </url-mapping>-->
 
-    <url-mapping parentId="projects" id="managementUsers">
+    <!--<url-mapping parentId="projects" id="managementUsers">
         <pattern value="/users/" />
         <view-id value="/management-users.face" />
-    </url-mapping>
+    </url-mapping>-->
 
     <!--<url-mapping id="categories">
         <pattern value="/#{cat : cardDetailView.selectedCategory}/#{ card : cardDetailView.selectedCard}"/>

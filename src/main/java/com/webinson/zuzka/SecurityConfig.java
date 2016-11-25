@@ -22,6 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .userDetailsService(userDetailsService())
                 .formLogin()
+                .loginPage("/login.xhtml")
+                .loginProcessingUrl("/appLogin")
+                .usernameParameter("app_username")
+                .passwordParameter("app_password")
                 .defaultSuccessUrl("/upload").and()
                 .csrf()
                 .disable()

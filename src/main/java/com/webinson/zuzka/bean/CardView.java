@@ -1,6 +1,7 @@
 package com.webinson.zuzka.bean;
 
 import com.ocpsoft.pretty.PrettyContext;
+import com.ocpsoft.pretty.faces.annotation.URLAction;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import com.ocpsoft.pretty.faces.annotation.URLMappings;
 import com.webinson.zuzka.dto.CardDto;
@@ -25,9 +26,17 @@ import java.util.List;
 @ViewScoped
 @URLMappings(mappings = {
         @URLMapping(
-                id = "projects",
-                pattern = "/projects/#{ selectedCard : cardView.selectedCard}",
-                viewId = "/carddetail.xhtml"),
+                id = "home",
+                pattern = "/",
+                viewId = "/index.xhtml"),
+        /*@URLMapping(
+                id = "category",
+                pattern = "/#{ selectedCategory: cardView.selectedCategory}",
+                viewId = "/category.xhtml"),*/
+        /*@URLMapping(
+                id = "item",
+                pattern = "/#{ selectedItem: cardView.selectedItem}",
+                viewId = "/item.xhtml"),*/
         @URLMapping(
                 id = "dashboard",
                 pattern = "/dashboard/#{ selectedCard : cardView.selectedCard}",
@@ -40,22 +49,40 @@ public class CardView implements Serializable {
 
     @Getter
     @Setter
-    /*@ManagedProperty(value = "#{param.selectedCard}")*/
     private String selectedCard;
 
     @Getter
     @Setter
-    /*@ManagedProperty(value = "#{param.selectedCategory}")*/
+    private String selectedProject;
+
+    @Getter
+    @Setter
     private String selectedCategory;
+
+    @Getter
+    @Setter
+    private String selectedItem;
 
     @Getter
     @Setter
     private List<CardDto> cards;
 
+   /* @URLAction(mappingId = "item")*/
+    public void loadItem() {
+
+        this.selectedItem = "item1";
+        this.selectedCategory = "category1";
+        /*if ( itemId != null ) {
+            this.item = items.findById(itemId);
+            return null;*/
+
+    }
 
     @PostConstruct
     public void init() {
 
+        this.selectedCategory = "category1";
+        this.selectedItem = "item1";
         //selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL();
         //cardDto = cardService.getCardByUrl(selectedCard);
         //selectedCardDashboard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(6);
