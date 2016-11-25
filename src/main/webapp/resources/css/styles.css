@@ -314,6 +314,11 @@ nav ul a {
     top: 35% !important;
 }*/
 
+.center-image {
+    display: block !important;
+    margin: 0 auto !important;
+}
+
 .hidden.menu {
     display: none;
 }
