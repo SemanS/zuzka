@@ -1,19 +1,15 @@
 package com.webinson.zuzka.bean;
 
 import com.ocpsoft.pretty.PrettyContext;
-import com.webinson.zuzka.dao.CardDao;
-import com.webinson.zuzka.dto.CardDto;
-import com.webinson.zuzka.service.CardService;
+import com.webinson.zuzka.service.ItemService;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.FileUploadEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -49,7 +45,7 @@ public class EditorController implements Serializable {
     private String selectedCategory;
 
     @Autowired
-    CardService cardService;
+    ItemService itemService;
 
     @PostConstruct
     public void init() {
@@ -63,7 +59,7 @@ public class EditorController implements Serializable {
         String segments[] = path.split("/");
         String resultUrl = segments[segments.length - 1];
 
-        return cardService.getTextOfCardByUrl(resultUrl);
+        return itemService.getTextOfItemByUrl(resultUrl);
     }
 
     public void saveText() {
@@ -73,7 +69,7 @@ public class EditorController implements Serializable {
         String segments[] = path.split("/");
         String resultUrl = segments[segments.length - 1];
 
-        cardService.saveCardByUrl(resultUrl, text);
+        itemService.saveItemByUrl(resultUrl, text);
     }
 
 

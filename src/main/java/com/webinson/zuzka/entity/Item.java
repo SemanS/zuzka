@@ -12,10 +12,10 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "card", schema = "zuzka")
+@Table(name = "item", schema = "zuzka")
 @Data
 @NoArgsConstructor
-public class Card implements Serializable {
+public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

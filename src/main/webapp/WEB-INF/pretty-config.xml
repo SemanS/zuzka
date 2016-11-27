@@ -20,7 +20,7 @@
     </url-mapping>-->
 
     <!--<url-mapping id="categories">
-        <pattern value="/#{cat : cardDetailView.selectedCategory}/#{ card : cardDetailView.selectedCard}"/>
+        <pattern value="/#{cat : cardDetailView.selectedCategory}/#{ item : cardDetailView.selectedCard}"/>
         <view-id value="/carddetail.xhtml"/>
     </url-mapping>-->
 

@@ -40,22 +40,23 @@
     <h:outputScript name="js/init.js"/>
     <h:outputScript name="js/semantic.min.js"/>
 
-    <ui:insert name="date">
-        <ui:include src="WEB-INF/templates/menu.xhtml"/>
-    </ui:insert>
-
-    <pre></pre>
-    <pre></pre>
-    <pre></pre>
-    <pre></pre>
-    <pre></pre>
-    <pre></pre>
-
-    <!-- Page Contents -->
-    <div class="ui text container">
-        <h1 class="ui dividing header"><h:outputText value="#{itemView.selectedItem.header}"/></h1>
-        <h:outputText value="#{itemView.selectedItem.text}" escape="false"/>
+    <div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <a class="active item">Domov</a>
+            <a class="item">Projekty</a>
+            <a class="item">Kontakt</a>
+            <!--<div class="right menu">
+                <div class="item">
+                    <a class="ui button">Log in</a>
+                </div>
+                <div class="item">
+                    <a class="ui primary button">Sign Up</a>
+                </div>
+            </div>-->
+        </div>
     </div>
+
+    <pre></pre>
 
 
 </h:body>

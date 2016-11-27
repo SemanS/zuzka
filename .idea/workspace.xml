@@ -6,17 +6,42 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java" line="98" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java" line="87" />
     <bookmark url="file://$PROJECT_DIR$" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java" line="104" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce8151ef-0d78-4cec-a3e2-b9d6dc83cff1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/zuzka.PNG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/User.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/menu.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/error.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/icon.min.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/loginBean.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/CardAssembler.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/ItemAssembler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardDetailView.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemDetailView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dao/CardDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dao/ItemDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dto/CardDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dto/ItemDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Card.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Item.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/CardService.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/ItemService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/CardServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/81d193c4-019d-45a7-92c4-497dda164da0.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/81d193c4-019d-45a7-92c4-497dda164da0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardView.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/EditorController.java" afterPath="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/EditorController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pretty-config.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pretty-config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/carddetail.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/carddetail.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/category.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/category.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/confirmation.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/confirmation.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/contact.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/contact.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/dashboard.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dashboard.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/dashboardcarddetail.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dashboardcarddetail.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/item.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/item.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/menu.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/menu.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/projects.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/projects.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/init.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/init.js" />
     </list>
     <ignored path="clickable-budget-cz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,28 +112,6 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
     </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PostgreSQL - postgres@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="zuzka" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="card" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -116,11 +119,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.xhtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.xhtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+            <state relative-caret-position="996">
+              <caret line="80" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="208" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1300">
+              <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.xhtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/dashboard.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1611">
+              <caret line="208" column="7" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Item.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.xhtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/menu.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="990">
+              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -128,36 +199,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postgres.zuzka.card" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/init.js">
+      <file leaf-file-name="login.xhtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            <state relative-caret-position="-3102">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/styles.css">
+      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="318" column="30" selection-start-line="318" selection-start-column="30" selection-end-line="318" selection-end-column="30" />
+            <state relative-caret-position="561">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RewriteConfigApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/RewriteConfigApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="32" column="60" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -184,15 +250,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/clickablebudget/entity/Card.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/clickablebudget/service/impl/IncomeAndOutcomeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/clickablebudget/bean/CardView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/clickablebudget/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/mailSend.xhtml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/webinson/clickablebudget/MailTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/ApplicationConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/jsffix.js" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/jsf.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/utils/EmailValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/utils/EmailConstraintValidator.java" />
@@ -215,7 +272,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/projects.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardCardDetailView.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/CardAssembler.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/dashboard.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardDetailView.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/carddetail.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/EditorController.java" />
@@ -224,17 +280,27 @@
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dto/CardDto.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pretty-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/item.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/category.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/menu.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/loginBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/init.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/category.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/template.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/ItemService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Item.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/ItemAssembler.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/error.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/item.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/menu.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/dashboard.xhtml" />
       </list>
     </option>
   </component>
@@ -267,10 +333,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-16" />
-    <option name="y" value="-16" />
-    <option name="width" value="3872" />
-    <option name="height" value="2092" />
+    <option name="x" value="-14" />
+    <option name="width" value="3856" />
+    <option name="height" value="2074" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -303,52 +368,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="zuzka" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-web:4.1.1.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-taglibs:4.1.1.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-core:4.1.1.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -463,7 +482,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -490,40 +513,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -661,74 +650,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bean" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zuzka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assembler" />
+              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -737,24 +666,24 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Code2b/eof-testing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\css" />
+      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\images" />
+      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\js" />
+      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp" />
+      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\WEB-INF" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\Webinson\zuzka\src\main\webapp" />
       <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\images" />
       <recent name="C:\Projects\Webinson\clickable-budget-cz\src\main\webapp\resources\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\images" />
-      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\js" />
-      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\resources\css" />
-      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp" />
-      <recent name="C:\Projects\Webinson\zuzka\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Unnamed">
@@ -1497,7 +1426,10 @@
       <workItem from="1479896664900" duration="18180000" />
       <workItem from="1479973527926" duration="17984000" />
       <workItem from="1480056635386" duration="29309000" />
-      <workItem from="1480091569099" duration="6190000" />
+      <workItem from="1480091569099" duration="12060000" />
+      <workItem from="1480178765436" duration="9823000" />
+      <workItem from="1480246393869" duration="13856000" />
+      <workItem from="1480266822087" duration="3212000" />
     </task>
     <task id="LOCAL-00001" summary="Commit from intellij dummy">
       <created>1475137276872</created>
@@ -1530,10 +1462,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="445445000" />
+    <option name="totallyTimeSpent" value="478206000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
+    <frame x="-14" y="0" width="3856" height="2074" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1543,23 +1475,23 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19278075" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23453493" sideWeight="0.51386034" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12674543" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23453493" sideWeight="0.51386034" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46116504" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4605856" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32552955" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32545045" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5219595" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292964" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30992195" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41192865" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16737968" sideWeight="0.48613963" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4115991" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16917293" sideWeight="0.48613963" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23453493" sideWeight="0.51386034" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -1633,13 +1565,25 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/CardServiceImpl.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java</url>
           <line>28</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java</url>
+          <line>81</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1648,326 +1592,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/main.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nbactions.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/EditorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="76" column="5" selection-start-line="68" selection-start-column="3" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/dashboardcarddetail.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2673">
-          <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.category">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dto/CardDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/CardAssembler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/carddetail.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/semantic.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/menu.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/projects.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/dashboard.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/RewriteConfigApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pretty-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/category.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="60" column="56" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardDetailView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1023">
-          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardCardDetailView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/CardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="8" selection-end-line="38" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/item.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/loginBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1688">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#983#984#0" expanded="false" />
-            <element signature="e#1013#1014#0" expanded="false" />
-            <element signature="e#1058#1059#0" expanded="false" />
-            <element signature="e#1096#1097#0" expanded="false" />
-            <element signature="e#1130#1131#0" expanded="false" />
-            <element signature="e#1161#1162#0" expanded="false" />
-            <element signature="e#1208#1209#0" expanded="false" />
-            <element signature="e#1248#1249#0" expanded="false" />
-            <element signature="e#1282#1283#0" expanded="false" />
-            <element signature="e#1313#1314#0" expanded="false" />
-            <element signature="e#1360#1361#0" expanded="false" />
-            <element signature="e#1400#1401#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.1.RELEASE/spring-security-config-4.1.1.RELEASE.jar!/org/springframework/security/config/spring-security.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.1.RELEASE/spring-security-config-4.1.1.RELEASE.jar!/org/springframework/security/config/annotation/web/HttpSecurityBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.1.1.RELEASE/spring-security-config-4.1.1.RELEASE.jar!/org/springframework/security/config/annotation/web/builders/HttpSecurity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="577">
@@ -2024,34 +1648,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="145" column="22" selection-start-line="145" selection-start-column="22" selection-end-line="145" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -2064,7 +1664,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -2077,7 +1676,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -2088,18 +1686,397 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="318" column="30" selection-start-line="318" selection-start-column="30" selection-end-line="318" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/EditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1815">
+          <caret line="76" column="5" selection-start-line="68" selection-start-column="3" selection-end-line="76" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/loginBean.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/GetInTouchView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/DashboardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/category.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.card">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemDetailView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.2.RELEASE/spring-beans-4.3.2.RELEASE.jar!/org/springframework/beans/factory/annotation/Autowired.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dto/ItemDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/assembler/ItemAssembler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="497" column="0" selection-start-line="497" selection-start-column="0" selection-end-line="497" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23357#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5713#5714#0" expanded="false" />
+            <element signature="e#5740#5741#0" expanded="false" />
+            <element signature="e#5793#5794#0" expanded="false" />
+            <element signature="e#5847#5848#0" expanded="false" />
+            <element signature="e#5896#5897#0" expanded="false" />
+            <element signature="e#5930#5931#0" expanded="false" />
+            <element signature="e#6024#6025#0" expanded="false" />
+            <element signature="e#6052#6053#0" expanded="false" />
+            <element signature="e#6222#6223#0" expanded="false" />
+            <element signature="e#6249#6250#0" expanded="false" />
+            <element signature="e#6333#6334#0" expanded="false" />
+            <element signature="e#6365#6366#0" expanded="false" />
+            <element signature="e#7076#7077#0" expanded="false" />
+            <element signature="e#7109#7110#0" expanded="false" />
+            <element signature="e#8522#8523#0" expanded="false" />
+            <element signature="e#8567#8568#0" expanded="false" />
+            <element signature="e#8985#8986#0" expanded="false" />
+            <element signature="e#9040#9041#0" expanded="false" />
+            <element signature="e#9136#9137#0" expanded="false" />
+            <element signature="e#9181#9182#0" expanded="false" />
+            <element signature="e#9473#9474#0" expanded="false" />
+            <element signature="e#9528#9529#0" expanded="false" />
+            <element signature="e#10540#10541#0" expanded="false" />
+            <element signature="e#10626#10627#0" expanded="false" />
+            <element signature="e#14229#14230#0" expanded="false" />
+            <element signature="e#14314#14315#0" expanded="false" />
+            <element signature="e#18632#18633#0" expanded="false" />
+            <element signature="e#18694#18695#0" expanded="false" />
+            <element signature="e#18797#18798#0" expanded="false" />
+            <element signature="e#18837#18838#0" expanded="false" />
+            <element signature="e#18980#18981#0" expanded="false" />
+            <element signature="e#19022#19023#0" expanded="false" />
+            <element signature="e#20678#20679#0" expanded="false" />
+            <element signature="e#20715#20716#0" expanded="false" />
+            <element signature="e#22696#22697#0" expanded="false" />
+            <element signature="e#22749#22750#0" expanded="false" />
+            <element signature="e#23085#23086#0" expanded="false" />
+            <element signature="e#23155#23156#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.2.RELEASE/spring-beans-4.3.2.RELEASE.jar!/org/springframework/beans/factory/annotation/InitDestroyAnnotationBeanPostProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.2.RELEASE/spring-beans-4.3.2.RELEASE.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32175">
+          <caret line="1067" column="103" selection-start-line="1067" selection-start-column="103" selection-end-line="1067" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/dashboardcarddetail.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.category">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/dao/ItemDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.item">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/error.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1611">
+          <caret line="208" column="7" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/item.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="56" column="76" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/menu.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.user">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/RewriteConfigApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="32" column="60" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a668632f/81d193c4-019d-45a7-92c4-497dda164da0/postgres.zuzka.user">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3102">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/service/impl/ItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/webinson/zuzka/bean/ItemView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+        <state relative-caret-position="996">
+          <caret line="80" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="208" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/dashboard.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1611">
+          <caret line="208" column="7" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#h:head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#ui:insert#0;n#h:body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2158,7 +2135,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Web|clickable-budget-cz</last-edited>
+          <last-edited>clickable-budget-cz</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

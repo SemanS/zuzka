@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/appLogin")
                 .usernameParameter("app_username")
                 .passwordParameter("app_password")
-                .defaultSuccessUrl("/upload").and()
+                .defaultSuccessUrl("/dashboard").and()
                 .csrf()
                 .disable()
                 .authorizeRequests()

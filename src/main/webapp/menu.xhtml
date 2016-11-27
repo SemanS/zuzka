@@ -94,10 +94,10 @@
             <h:form>
 
                 <div class="ui grid">
-                    <ui:repeat value="#{cardView.getCards()}" var="card">
+                    <ui:repeat value="#{cardView.getCards()}" var="item">
                         <div class="five wide column">
                             <div class="ui special cards">
-                                <div class="card ui primary button">
+                                <div class="item ui primary button">
                                     <div class="blurring dimmable image">
                                         <div class="ui inverted dimmer">
                                             <div class="content">
@@ -116,10 +116,10 @@
                 </div>
 
                 <div class="ui grid">
-                    <ui:repeat value="#{cardView.getCards()}" var="card">
+                    <ui:repeat value="#{cardView.getCards()}" var="item">
                         <div class="five wide column">
                             <div class="ui special cards">
-                                <div class="card ui primary button">
+                                <div class="item ui primary button">
                                     <div class="blurring dimmable image">
                                         <div class="ui inverted dimmer">
                                             <div class="content">
@@ -138,10 +138,10 @@
                 </div>
 
                 <div class="ui grid">
-                    <ui:repeat value="#{cardView.getCards()}" var="card">
+                    <ui:repeat value="#{cardView.getCards()}" var="item">
                         <div class="five wide column">
                             <div class="ui special cards">
-                                <div class="card ui primary button">
+                                <div class="item ui primary button">
                                     <div class="blurring dimmable image">
                                         <div class="ui inverted dimmer">
                                             <div class="content">
@@ -166,22 +166,22 @@
 
         <!-- <h:form>
              <div class="row">
-                 <ui:repeat value="#{cardView.getCards()}" var="card">
+                 <ui:repeat value="#{cardView.getItems()}" var="item">
                      <div class="col s12 m12 l4">
-                         <div class="card medium">
-                             <div class="card-image">
+                         <div class="item medium">
+                             <div class="item-image">
                                  <img src="resources/images/image1.jpg"/>
-                                 <span class="card-title"><h:outputText value="#{card.header}"/></span>
+                                 <span class="item-title"><h:outputText value="#{item.header}"/></span>
                              </div>
-                             <div class="card-content">
-                                 <h:outputText value="#{card.text}"/>
+                             <div class="item-content">
+                                 <h:outputText value="#{item.text}"/>
                              </div>
-                             <div class="card-action">
+                             <div class="item-action">
                                  &lt;!&ndash;<p:commandLink value="Viac" id="ajax"
-                                                action="#{cardView.onEditCard(card)}"/>&ndash;&gt;
+                                                action="#{cardView.onEditCard(item)}"/>&ndash;&gt;
 
                                  <h:link value="Detail">
-                                     <f:param name="selectedCard" value="#{card.url}"/>
+                                     <f:param name="selectedCard" value="#{item.url}"/>
                                  </h:link>
 
                              </div>

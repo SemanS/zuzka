@@ -1,7 +1,7 @@
 package com.webinson.zuzka.assembler;
 
-import com.webinson.zuzka.dto.CardDto;
-import com.webinson.zuzka.entity.Card;
+import com.webinson.zuzka.dto.ItemDto;
+import com.webinson.zuzka.entity.Item;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import java.util.List;
  * Created by Slavo on 10/17/2016.
  */
 @Component
-public class CardAssembler {
+public class ItemAssembler {
 
 
-    public CardDto convertToDto(Card model, CardDto dto) {
+    public ItemDto convertToDto(Item model, ItemDto dto) {
         dto.setHeader(model.getHeader());
         dto.setText(model.getText());
         dto.setDate(model.getDate());
@@ -24,22 +24,22 @@ public class CardAssembler {
         return dto;
     }
 
-    public CardDto toDto(Card model) {
-        CardDto card = new CardDto();
-        card.setHeader(model.getHeader());
-        card.setText(model.getText());
-        card.setDate(model.getDate());
-        card.setUrl(model.getUrl());
-        card.setCategory(model.getCategory());
-        return card;
+    public ItemDto toDto(Item model) {
+        ItemDto itemDto = new ItemDto();
+        itemDto.setHeader(model.getHeader());
+        itemDto.setText(model.getText());
+        itemDto.setDate(model.getDate());
+        itemDto.setUrl(model.getUrl());
+        itemDto.setCategory(model.getCategory());
+        return itemDto;
     }
 
 
-    public List<CardDto> toDtos(final Collection<Card> models) {
-        final List<CardDto> dtos = new ArrayList<>();
+    public List<ItemDto> toDtos(final Collection<Item> models) {
+        final List<ItemDto> dtos = new ArrayList<>();
         if (isNotEmpty(models)) {
-            for (final Card card : models) {
-                dtos.add(convertToDto(card, new CardDto()));
+            for (final Item item : models) {
+                dtos.add(convertToDto(item, new ItemDto()));
             }
         }
         return dtos;

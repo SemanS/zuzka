@@ -1,7 +1,7 @@
 package com.webinson.zuzka.bean;
 
-import com.webinson.zuzka.dto.CardDto;
-import com.webinson.zuzka.service.CardService;
+import com.webinson.zuzka.dto.ItemDto;
+import com.webinson.zuzka.service.ItemService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +25,22 @@ public class DashboardView {
     public String selectedCard;
 
     @Autowired
-    CardService cardService;
+    ItemService itemService;
 
     @Getter
     @Setter
-    public List<CardDto> cards;
+    public List<ItemDto> cards;
 
     @PostConstruct
     public void init() {
 
-        cards = cardService.getAllCards();
+        cards = itemService.getAllItems();
 
     }
 
-    public void onEditCard(CardDto cardDto) throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/dashboard/" + cardDto.getUrl());
-        System.out.println(cardDto.getUrl());
+    public void onEditCard(ItemDto itemDto) throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/dashboard/" + itemDto.getUrl());
+        System.out.println(itemDto.getUrl());
     }
 
 }

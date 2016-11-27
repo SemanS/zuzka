@@ -10,7 +10,7 @@ import java.util.Locale;
  * Created by Slavo on 10/17/2016.
  */
 @Data
-public class CardDto {
+public class ItemDto {
 
     private Long id;
     private String header;

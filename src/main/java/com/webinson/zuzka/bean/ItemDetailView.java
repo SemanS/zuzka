@@ -1,15 +1,14 @@
 package com.webinson.zuzka.bean;
 
 import com.ocpsoft.pretty.PrettyContext;
-import com.webinson.zuzka.dto.CardDto;
-import com.webinson.zuzka.service.CardService;
+import com.webinson.zuzka.dto.ItemDto;
+import com.webinson.zuzka.service.ItemService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 
@@ -18,7 +17,7 @@ import java.io.Serializable;
  */
 @Component
 @ViewScoped
-public class CardDetailView implements Serializable {
+public class ItemDetailView implements Serializable {
 
     @Getter
     @Setter
@@ -32,15 +31,15 @@ public class CardDetailView implements Serializable {
 
     @Getter
     @Setter
-    private CardDto cardDto;
+    private ItemDto itemDto;
 
     @Autowired
-    CardService cardService;
+    ItemService itemService;
 
     @PostConstruct
     public void init() {
 
-        //cardDto = cardService.getCardByUrl(showText());
+        //cardDto = itemService.getItemByUrl(showText());
        /* selectedCard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(10);*/
         //selectedCardDashboard = PrettyContext.getCurrentInstance().getRequestURL().toURL().substring(11);
     }

@@ -1,7 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head>
     <!-- Standard Meta -->
     <meta charset="utf-8"/>
@@ -9,13 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
     <!-- Site Properties -->
-    <title>Sticky Example - Semantic</title>
+    <title>Zuzka</title>
 
     <h:outputStylesheet name="css/font-awesome.css"/>
-    <!-- <h:outputStylesheet name="css/materialize.min.css"/>-->
     <h:outputStylesheet name="css/styles.css"/>
     <h:outputStylesheet name="css/semantic.min.css"/>
-    <h:outputStylesheet name="css/swiper.min.css"/>
 
     <style type="text/css">
 
@@ -32,29 +33,18 @@
     </style>
 
 </h:head>
+
 <h:body>
 
     <h:outputScript name="js/jquery-3.1.1.min.js"/>
     <h:outputScript name="js/init.js"/>
     <h:outputScript name="js/semantic.min.js"/>
-    <h:outputScript name="js/visibility.min.js"/>
 
-    <div class="ui large top fixed hidden menu">
-        <div class="ui container">
-            <a class="active item">Home</a>
-            <a class="item">Work</a>
-            <a class="item">Company</a>
-            <a class="item">Careers</a>
-            <div class="right menu">
-                <div class="item">
-                    <a class="ui button">Log in</a>
-                </div>
-                <div class="item">
-                    <a class="ui primary button">Sign Up</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <ui:insert name="date">
+        <ui:include src="WEB-INF/templates/menu.xhtml"/>
+    </ui:insert>
+
+    <pre></pre>
 
     <!-- Page Contents -->
     <div class="pusher">
@@ -96,31 +86,36 @@
             </div>
         </div>
         <pre></pre>
-        <div id="mainCont" class="ui container">
-            <h:form>
-                <div class="ui grid">
-                    <ui:repeat value="#{cardView.getCards()}" var="card">
-                        <div class="five wide column">
-                            <div class="ui special cards">
-                                <div class="card ui primary button">
-                                    <div class="blurring dimmable image">
-                                        <div class="ui inverted dimmer">
+        <pre></pre>
+
+        <h:form>
+            <div class="ui relaxed grid container">
+                <ui:repeat value="#{itemView.getItems()}" var="item">
+                    <div class="five wide column">
+                        <div class="ui special cards">
+                            <div class="card ui primary button">
+                                <div class="blurring dimmable image">
+
+                                    <!--<div class="ui inverted dimmer">-->
+                                        <h:commandLink id="ajax" action="#{itemView.onItemDetail(item)}"
+                                                       styleClass="ui inverted dimmer">
                                             <div class="content">
-                                                <div class="center">
-                                                    <div class="ui primary button">Add Friend</div>
+
+                                                <div class="description">
+                                                    <h3>Elliot Fu is a film-maker from New York.</h3>
                                                 </div>
+
                                             </div>
-                                        </div>
-                                        <img src="resources/images/image1.jpg"/>
-                                    </div>
+                                        </h:commandLink>
+                                    <!--</div>-->
+                                    <img src="resources/images/image1.jpg"/>
                                 </div>
                             </div>
                         </div>
-                    </ui:repeat>
-                </div>
-            </h:form>
-
-        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+        </h:form>
 
 
         <div class="ui vertical stripe segment">
@@ -208,7 +203,6 @@
             </div>
         </div>
     </div>
-
 
 </h:body>
 

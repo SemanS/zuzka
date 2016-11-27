@@ -1,24 +1,3 @@
-<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-    <title>Spring 4 Security + JSF 2 + PrimeFaces 5 Integration Example</title>
-</h:head>
-<h:body>
-    <h3>Spring 4 Security + JSF 2 + PrimeFaces 5 Integration Example</h3>
-    <font color="red">
-        <h:outputLabel value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
-    </font>
-    <form action="${request.contextPath}/appLogin" method="POST">
-        <h:outputLabel value="Enter UserName:"/>
-        <input type="text" name="app_username"/><br/><br/>
-        <h:outputLabel value="Enter Password:"/>
-        <input type="password" name="app_password"/> <br/><br/>
-        <input type="submit" value="Login"/>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    </form>
-</h:body>
-</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -36,30 +15,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
-    <!-- Site Properties -->
-    <!--<title>Login Example - Semantic</title>
-    <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
-
-    <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
-
-    <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/form.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/input.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/message.css">
-    <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">-->
-
     <h:outputStylesheet name="css/font-awesome.css"/>
-    <!-- <h:outputStylesheet name="css/materialize.min.css"/>-->
     <h:outputStylesheet name="css/styles.css"/>
     <h:outputStylesheet name="css/semantic.min.css"/>
+    <!-- <h:outputStylesheet name="css/icon.min.css"/>-->
 
     <style type="text/css">
         body {
@@ -122,35 +81,35 @@
     <div class="ui middle aligned center aligned grid">
         <div class="column">
             <h2 class="ui teal image header">
-                <img src="assets/images/logo.png" class="image"/>
+                <img src="resources/images/zuzka.PNG" class="ui small circular image center-image"/>
                 <div class="content">
-                    Log-in to your account
+                    Login
                 </div>
             </h2>
             <form action="${request.contextPath}/appLogin" method="POST" class="ui large form">
-                <div class="ui stacked segment">
+                <div class="ui segment">
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="app_username" placeholder="E-mail address"/>
+                            <input type="text" name="app_username" placeholder="Prihlasovacie meno:"/>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
-                            <input type="password" name="app_password" placeholder="Password"/>
+                            <input type="password" name="app_password" placeholder="Heslo:"/>
                         </div>
                     </div>
-                    <input class="ui fluid large teal submit button" type="submit" value="Login"/>
+                    <input class="ui fluid large teal submit button" type="submit" value="Prihlásiť sa"/>
                     <!--<div class="ui fluid large teal submit button">Login</div>-->
                 </div>
                 <div class="ui error message"></div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
 
-            <div class="ui message">
+            <!--<div class="ui message">
                 New to us? <a href="#">Sign Up</a>
-            </div>
+            </div>-->
         </div>
     </div>
 
