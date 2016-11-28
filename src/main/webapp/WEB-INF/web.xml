@@ -4,7 +4,15 @@
      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error</location>
+    </error-page>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error</location>
+    </error-page>
     <!--
         <listener>
             <listener-class>org.ocpsoft.rewrite.servlet.impl.RewriteServletRequestListener</listener-class>
@@ -30,6 +38,7 @@
         </filter-mapping>-->
 
     <property description="Uploaded Images" name="alternatedocroot_1" value="from=/uploads/* dir=C:\var\webapp\"/>
+
     <context-param>
         <param-name>primefaces.UPLOADER</param-name>
         <param-value>commons</param-value>
@@ -54,9 +63,9 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-<!--
-If you intend to hide the resources from public access
--->
+    <!--
+    If you intend to hide the resources from public access
+    -->
 
     <!--<context-param>
         <param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
@@ -69,22 +78,22 @@ If you intend to hide the resources from public access
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
 
-<!--
+    <!--
 
-    <servlet>
-        <servlet-name>DirectoryListing</servlet-name>
-        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
-        <init-param>
-            <param-name>listings</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+        <servlet>
+            <servlet-name>DirectoryListing</servlet-name>
+            <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+            <init-param>
+                <param-name>listings</param-name>
+                <param-value>true</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+        </servlet>
 
-    <servlet-mapping>
-        <servlet-name>DirectoryListing</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>-->
+        <servlet-mapping>
+            <servlet-name>DirectoryListing</servlet-name>
+            <url-pattern>/</url-pattern>
+        </servlet-mapping>-->
 
     <!-- <filter>
          <filter-name>PrimeFaces FileUpload Filter</filter-name>

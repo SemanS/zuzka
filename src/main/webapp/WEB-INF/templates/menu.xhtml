@@ -25,7 +25,7 @@
         }
 
         .landpage-image {
-            background-image: url('resources/images/bg.jpg') !important;
+            background-image: url('resources/images/zuzka_bg.png') !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;
         }
@@ -40,11 +40,14 @@
     <h:outputScript name="js/init.js"/>
     <h:outputScript name="js/semantic.min.js"/>
 
-    <div class="ui large top fixed hidden menu">
-        <div class="ui container">
-            <a class="active item">Domov</a>
-            <a class="item">Projekty</a>
-            <a class="item">Kontakt</a>
+    <div class="ui vertical fluid large top fixed hidden pointing secondary menu"
+         style="background-color: transparent !important; border-bottom: none !important">
+        <div class="ui right fluid container">
+            <div class="ui right item">
+                <a class="active item">Domov</a>
+                <a class="item">Projekty</a>
+                <a class="item">Kontakt</a>
+            </div>
             <!--<div class="right menu">
                 <div class="item">
                     <a class="ui button">Log in</a>
@@ -55,8 +58,6 @@
             </div>-->
         </div>
     </div>
-
-    <pre></pre>
 
 
 </h:body>

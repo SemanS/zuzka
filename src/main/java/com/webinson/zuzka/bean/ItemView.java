@@ -38,17 +38,21 @@ import java.util.List;
                 pattern = "/category/#{ selectedCategory: itemView.selectedCategory}/#{ selectedItem : itemView.selectedItem}",
                 viewId = "/category.xhtml"),
         @URLMapping(
-                id = "item",
+                id = "items",
+                pattern = "/items",
+                viewId = "/items.xhtml"),
+        @URLMapping(
+                id = "item-detail",
                 pattern = "/items/#{ itemUrl : itemView.itemUrl }",
-                viewId = "/item.xhtml"),
+                viewId = "/itemDetail.xhtml"),
         @URLMapping(
                 id = "dashboard",
                 pattern = "/dashboard",
                 viewId = "/dashboard.xhtml"),
         @URLMapping(
                 id = "dashboard-detail",
-                pattern = "/dashboard/#{ selectedItem : itemView.selectedItem}",
-                viewId = "/dashboardcarddetail.xhtml")
+                pattern = "/dashboard/#{ itemUrl : itemView.itemUrl}",
+                viewId = "/dashboarditemdetail.xhtml")
 })
 public class ItemView implements Serializable {
 
@@ -79,12 +83,12 @@ public class ItemView implements Serializable {
     @URLAction
     public String loadItem() throws IOException {
 
-        if (itemUrl != null && itemUrl != "login" && itemUrl != "dashboard") {
+        if (itemUrl != null) {
             this.selectedItem = itemService.getItemByUrl(itemUrl);
             return selectedItem.getUrl();
         }
+
         // Add a message here, "The item {..} could not be found."
-        //FacesContext.getCurrentInstance().getExternalContext().redirect("/error.xhtml");
         return "";
     }
 
@@ -95,8 +99,11 @@ public class ItemView implements Serializable {
     }
 
     public void onItemDetail(ItemDto itemDto) throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/" + itemDto.getUrl());
-        System.out.println(itemDto.getUrl());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/items/" + itemDto.getUrl());
+    }
+
+    public void onDashboardItemDetail(ItemDto itemDto) throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/dashboard/" + itemDto.getUrl());
     }
 
     public void saveText() {
