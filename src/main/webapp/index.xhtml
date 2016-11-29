@@ -18,20 +18,6 @@
     <h:outputStylesheet name="css/styles.css"/>
     <h:outputStylesheet name="css/semantic.min.css"/>
 
-    <!--<style type="text/css">
-
-        .landpage-image {
-            height: 100% !important;
-        }
-
-        .landpage-image {
-            background-image: url('resources/images/zuzka_bg.png') !important;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-        }
-
-    </style>-->
-
 </h:head>
 
 <h:body>
@@ -46,48 +32,83 @@
 
     <!-- Page Contents -->
     <div class="pusher">
-        <div class="ui inverted vertical masthead center aligned segment landpage-image ui container">
+        <div class="ui inverted vertical masthead  segment landpage-image ">
 
-            <!--<div class="ui text container">
-                <h1 class="ui inverted header">
-                    Imagine-a-Company
-                </h1>
-                <h2>Do whatever you want when you want to.</h2>
-                <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
-            </div>-->
+            <div class="ui container">
+                <p class="ui inverted" style="font-size: 4em; padding: 20px 0px">
+                    <i> Dorotka</i>
+                </p>
+                <!--<h2>Do whatever you want when you want to.</h2>
+                <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>-->
+            </div>
+
+        </div>
+
+        <div class="ui container vertical stripe segment">
+            <h1 class="ui header">Teplé slovo na úvod</h1>
+            <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing
+                nothing by providing massive amounts of whitespace and generic content that can seem massive,
+                monolithic and worth your attention.</p>
+        </div>
+        <pre></pre>
+        <pre></pre>
+        <pre></pre>
+
+        <!--<div class="ui vertical stripe segment">-->
+        <div class="ui middle aligned stackable grid container divided vertical stripe segment">
+            <div class="row">
+                <div class="five wide column">
+                    <img class="ui small circular image center-image" src="resources/images/zuzka.PNG"/>
+                    <h3 class="ui header">Zuzka</h3>
+                    <p>We can give your company superpowers to do things that they never thought possible. Let us
+                        delight your customers and empower your needs...through pure data analytics.</p>
+                </div>
+
+                <div class="five wide column">
+                    <img class="ui small circular image center-image" src="resources/images/viki.png"/>
+                    <h3 class="ui header">Viki</h3>
+                    <p>We can give your company superpowers to do things that they never thought possible. Let us
+                        delight your customers and empower your needs...through pure data analytics.</p>
+                </div>
+
+                <div class="five wide column">
+                    <img class="ui small circular image center-image" src="resources/images/viking.png"/>
+                    <h3 class="ui header">Uhlíř</h3>
+                    <p>We can give your company superpowers to do things that they never thought possible. Let us
+                        delight your customers and empower your needs...through pure data analytics.</p>
+
+                </div>
+            </div>
 
         </div>
 
         <div class="ui vertical stripe segment">
-            <div class="ui middle aligned stackable grid container divided">
+            <div class="ui middle aligned  grid container">
                 <div class="row">
-                    <div class="five wide column">
-                        <img class="ui small circular image center-image" src="resources/images/zuzka.PNG"/>
-                        <h3 class="ui header">Zuzka</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
+                    <div class="eight wide column">
+                        <h3 class="ui header">Snažíme sa dobre robiť</h3>
+                        <p>We can give your company superpowers to do things that they never thought possible. Let us
+                            delight your customers and empower your needs...through pure data analytics.</p>
+                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
+                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be
+                            bioengineered.</p>
                     </div>
-
-                    <div class="five wide column">
-                        <img class="ui small circular image center-image" src="resources/images/zuzka.PNG"/>
-                        <h3 class="ui header">Viki</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                    </div>
-
-                    <div class="five wide column">
-                        <img class="ui small circular image center-image" src="resources/images/zuzka.PNG"/>
-                        <h3 class="ui header">Uhlir</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-
+                    <div class="six wide right floated column">
+                        <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image"/>
                     </div>
                 </div>
-
+                <!--<div class="row">
+                    <div class="center aligned column">
+                        <a class="ui huge button">Check Them Out</a>
+                    </div>
+                </div>-->
             </div>
         </div>
-        <pre></pre>
+        <!--</div>-->
         <pre></pre>
 
         <h:form>
-            <div class="ui relaxed grid container">
+            <div class="ui middle aligned grid container">
                 <ui:repeat value="#{itemView.getItems()}" var="item">
                     <div class="five wide column">
                         <div class="ui special cards">
@@ -114,60 +135,24 @@
                 </ui:repeat>
             </div>
         </h:form>
+        <pre></pre>
 
-
-        <div class="ui vertical stripe segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="eight wide column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-                    </div>
-                    <div class="six wide right floated column">
-                        <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="center aligned column">
-                        <a class="ui huge button">Check Them Out</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <div class="ui fitted divider"></div>
         <div class="ui vertical stripe quote segment">
             <div class="ui equal width stackable internally celled grid">
                 <div class="center aligned row">
                     <div class="column">
-                        <h3>"What a Company"</h3>
-                        <p>That is what they all say about us</p>
+                        <h3>"Padol som na zadok, keď som uvidel projekt"</h3>
+                        <p>Slavo Seman, zákazník</p>
                     </div>
                     <div class="column">
-                        <h3>"I shouldn't have gone with their competitor."</h3>
+                        <h3>"Doteraz nemôžem uveriť tomu, čo som videla"</h3>
                         <p>
                             <img src="assets/images/avatar/nan.jpg" class="ui avatar image"/>
-                            <b>Nan</b> Chief Fun Officer Acme Toys
+                            <b>Taže tak</b> Marušenka, roboš
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <pre></pre>
-
-        <div class="ui vertical stripe segment">
-            <div class="ui text container">
-                <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
-                <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-                <a class="ui large button">Read More</a>
-                <h4 class="ui horizontal header divider">
-                    <a href="#">Case Studies</a>
-                </h4>
-                <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
-                <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-                <a class="ui large button">I'm Still Quite Interested</a>
             </div>
         </div>
 
