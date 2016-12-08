@@ -17,7 +17,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-
     <properties>
         <!--Uncomment this if you want to use tomcat7-->
         <!-- <tomcat.version>7.0.70</tomcat.version>-->
